@@ -48,17 +48,18 @@ once you have the files in there simply add the following to your css (rename th
            url('/web/fonts/ubuntu-v15-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
            url('/web/fonts/ubuntu-v15-latin-regular.svg#Ubuntu') format('svg'); /* Legacy iOS */
     }
-
-html { font-family: "Ubuntu" !important;}
-
-body { -ms-overflow-style: none !important; }
-#loginPage .cardPadder { background-color: #24242400 !important; }
-
-.visualCardBox .cardContent{background-size: contain !important;}
-
+    html { font-family: "Ubuntu" !important;}
 
 ## Login Background that changes each reload
 
 this one was just a quick javascript and some files for backgrounds that will let a user be more impressed by certain content you can decide to showcase for that please visit the repo i made https://github.com/BobHasNoSoul/jellyfin-fanartbackground it explains it in full and has some screen shots and all required files to download.
 
-## more to be added at a later date when i can write up each of them in a simple how and why kind of way
+## to be added that work on 10.7.x
+- animated seasonal themes (look at https://camo.githubusercontent.com/3201f60e995291c6f68d8e3d19d094a359d4f6658aef1e74f62f97010cb62079/68747470733a2f2f692e696d6775722e636f6d2f7844576b4a6b632e676966 for the basic idea) and i will add this when i can get time for a clear write up of each section this will take a little while. 
+- replace the trailers tab with requests https://camo.githubusercontent.com/b21d09d7c6ca84c6c19a480aea9c55236531a2aa42416efa65c43a1ca3caab4d/68747470733a2f2f692e6962622e636f2f744d39476a6e772f747261696c6572746f72657175657374732e706e67
+- my custom css (partial jellyflix with a big set of my own modifications for personal touches and fixes like a fixed sidebar in xbox browsers)
+- adding icon to side bar https://camo.githubusercontent.com/ffd52556715cd72021af339118fe1bb3466b7686c3d75bd473c694d0ff1228a3/68747470733a2f2f692e696d6775722e636f6d2f74386d316f79362e706e67
+- adding icon above manual login boxes https://camo.githubusercontent.com/78386998de212ff5a56eced6fbdf4c96e1870ddc1134ccef1f0c5bb59720d10b/687474703a2f2f696d6775722e636f6d2f6a66364c7859756c2e706e67
+
+## idea that may be retired or revived if i can get it to work
+- https://i.imgur.com/Qq2eWIz.mp4 extra fanart (useful for displaying box covers disc covers and other good stuff like if you have p90x calendars etc so when a user clicks it they have that image open full size in a new tab) but seeing as the code has changed a lot since i had this and had the time to work on this chances are this will be retired. i am leaving this here as a possibility and reminder for myself.

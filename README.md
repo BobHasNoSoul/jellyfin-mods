@@ -29,7 +29,9 @@ and then replace the other instance in the splashlogo that is originally this st
 you can even direct it outside of your host to any other host by changing the part inside the brackets to a full form url e.g. https://media.tenor.com/images/f0e22aca6a9498ce63497ca56fb49602/tenor.gif for that cool 80s rick roll feeling or you can go more proffesional looking... i dont care, its not my server.. your the one modding and using it.
 
 ## Change font to whatever you want
-firstly get a font pack.. there are many out there.. seriously many so take the next few mins to look for the one you like the look of and download the font pack and unzip it into a new folder you will be making in the web root called "fonts" (your font pack should contain woff woff2 tff eot and svg files. for this example i used the ubuntu font (dont ask me why i just like the font and see it most of the day when using my daily driver pc so dont judge me). You can get the same font from here https://google-webfonts-helper.herokuapp.com/api/fonts/ubuntu-mono?download=zip&subsets=latin&variants=regular this will work out the box with the following example
+firstly get a font pack.. there are many out there.. seriously many so take the next few mins to look for the one you like the look of and download the font pack and unzip it into a new folder you will be making in the web root called "fonts" (your font pack should contain woff woff2 tff eot and svg files). for this example i used the ubuntu font (dont judge me). You can get the same font from here https://google-webfonts-helper.herokuapp.com/api/fonts/ubuntu-mono?download=zip&subsets=latin&variants=regular this will work out the box with the following example extract the woff etc into the following directory:
+
+    /usr/share/jellyfin/web/fonts/
 
 once you have the files in there simply add the following to your css (rename them for your files in turn unless using the linked pack)
 

@@ -57,4 +57,8 @@ body { -ms-overflow-style: none !important; }
 .visualCardBox .cardContent{background-size: contain !important;}
 
 
+## Login Background that changes each reload
+
+this one was just a quick javascript and some files for backgrounds that will let a user be more impressed by certain content you can decide to showcase for that please visit the repo i made https://github.com/BobHasNoSoul/jellyfin-fanartbackground it explains it in full and has some screen shots and all required files to download.
+
 ## more to be added at a later date when i can write up each of them in a simple how and why kind of way

@@ -1,5 +1,7 @@
 # jellyfin-mods
-This is just a guide for various modifications and dumping ground for jellyfin mods so i dont have to make a new jftool for every platform and revision
+This is just a guide for various modifications and dumping ground for jellyfin mods so i dont have to make a new jftool for every platform and revision 
+
+#### Please note this is if you do not want or are unable to compile the web client yourself.. there are better ways of doing these mods but if you insist here is the way to run at it. (not preaching its your server after all :D )
 
 ## Force backdrops for all users (10.7.x)
 

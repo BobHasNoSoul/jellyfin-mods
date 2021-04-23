@@ -28,3 +28,4 @@ and then replace the other instance in the splashlogo that is originally this st
     
 you can even direct it outside of your host to any other host by changing the part inside the brackets to a full form url e.g. https://media.tenor.com/images/f0e22aca6a9498ce63497ca56fb49602/tenor.gif for that cool 80s rick roll feeling or you can go more proffesional looking... i dont care, its not my server.. your the one modding and using it.
 
+## more to be added at a later date when i can write up each of them in a simple how and why kind of way

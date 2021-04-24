@@ -102,7 +102,7 @@ now directly after this string paste the following (but ammend for your own logo
 ## add a link to get more avatars on the profile page 
 (this is great to host your own avatars but needs the user to manually download them :/ )
 
-![Capture](https://user-images.githubusercontent.com/23018412/115956876-436c9900-a4f7-11eb-82ab-389ecc45dfb8.PNG)
+![Capture](https://user-images.githubusercontent.com/23018412/115957171-d65a0300-a4f8-11eb-8a8a-698e4620ea6d.PNG)
 
 open the file user-profile-index-html.xxxxxxxxxxxxxxxxxxxxx.bundle.js (xs are placeholders) from your jellyfin web root (/usr/share/jellyfin/web) then
 
@@ -112,7 +112,7 @@ replace the following string
 
 with the following string obviously replace the capitalised link that clearly is just a placeholder all of mine are selfhosted so a link to me would be worthless
 
-    <span>${DeleteImage}</span> </button> <button is="emby-buttoon" type="button" class="raised" id="btnMoreImages"><span>${<a href="https://YOURLINKTOAVATARS.COM" target="_blank">More Images</a>}</span></button>
+    <span>${DeleteImage}</span> </button> <button is="emby-buttoon" type="button" class="raised" id="btnMoreImages">><STYLE>A {text-decoration: none; color: #def3fb} </STYLE><span>${<a href="https://YOURLINKTOAVATARS.COM" target="_blank">More Images</a>}</span></button>
 
 save and reload the profile page
 

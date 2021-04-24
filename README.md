@@ -75,13 +75,16 @@ replace it with the following (replace the img src for a different url or image 
 
     <div style="height:.5em;"></div>',n+='<img src="/web/logowhite.png" width=250px style="padding: 5px;display:block; margin-left: auto; margin-right: auto;">',
 
-## my custom css (partial jellyflix with a set of my own modifications)
+## custom css (jellyflix with a set of my own modifications/ tweaks added)
 
 simply copy the contents of customcss.css (in this repo https://github.com/BobHasNoSoul/jellyfin-mods/blob/main/customcss.css ) to your general custom css tab and paste.. or host it yourself or link to it the following is an example if you download customcss.css to your web root (/usr/share/jellyfin/web/)
 
     @import url("customcss.css");  
 
 ## Adding your logo at the top of the login page
+
+![Capture](https://user-images.githubusercontent.com/23018412/115956212-6b59fd80-a4f3-11eb-915c-324688cf10cb.PNG)
+![Capture2](https://user-images.githubusercontent.com/23018412/115956214-6dbc5780-a4f3-11eb-902c-c1068de13163.PNG)
 
 simply go to your web root for jellyfin /usr/share/jellyfin/web/ and use nano (or your own text editor) to edit the session-login-index-html.xxxxxxxxxxxxxxxxxxxxx.bundle.js file
 for nano just use 

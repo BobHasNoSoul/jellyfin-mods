@@ -174,6 +174,9 @@ replace it with:
 
     +m.ZP.translate("Home")+"</span></a>", n+='<a is="emby-linkbutton" class="navMenuOption lnkMediaFolder" href="http://YOUROMBIHERE.COM"><i class="md-icon navMenuOptionIcon"><img src="https://i.ibb.co/zhc7zKV/ombi10.png"></i><span class="navMenuOptionText">'+m.ZP.translate("Requests")+"</span></a>",
 
+want more links just keep adding these to the end of the string:
+
+     n+='<a is="emby-linkbutton" class="navMenuOption lnkMediaFolder" href="http://YOURLINK.COM"><i class="md-icon navMenuOptionIcon"><img src="https://ICONIMAGE.COM"></i><span class="navMenuOptionText">'+m.ZP.translate("LINKNAME")+"</span></a>",
 
 ## to be added that work on 10.7.x
 - animated seasonal themes (look at https://camo.githubusercontent.com/3201f60e995291c6f68d8e3d19d094a359d4f6658aef1e74f62f97010cb62079/68747470733a2f2f692e696d6775722e636f6d2f7844576b4a6b632e676966 for the basic idea) and i will add this when i can get time for a clear write up of each section this will take a little while. 

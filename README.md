@@ -54,11 +54,25 @@ once you have the files in there simply add the following to your css (rename th
 
 this one was just a quick javascript and some files for backgrounds that will let a user be more impressed by certain content you can decide to showcase for that please visit the repo i made https://github.com/BobHasNoSoul/jellyfin-fanartbackground it explains it in full and has some screen shots and all required files to download.
 
+## Adding logo to sidebar
+
+![logosidebar](https://camo.githubusercontent.com/ffd52556715cd72021af339118fe1bb3466b7686c3d75bd473c694d0ff1228a3/68747470733a2f2f692e696d6775722e636f6d2f74386d316f79362e706e67)
+
+This one is failry simmilar to adding a custom side bar link so edit main.xxxxxxxxxx.bundle.js
+
+find this string:
+
+    <div style="height:.5em;"></div>',
+
+replace it with the following (replace the img src for a different url or image if you wish by default it will grab the logowhite.png from the web root which will need to be added by the user, any full form url will also work instead of "/web/logowhite.png"):
+
+    <div style="height:.5em;"></div>',n+='<img src="/web/logowhite.png" width=250px style="padding: 5px;display:block; margin-left: auto; margin-right: auto;">',
+
+
 ## to be added that work on 10.7.x
 - animated seasonal themes (look at https://camo.githubusercontent.com/3201f60e995291c6f68d8e3d19d094a359d4f6658aef1e74f62f97010cb62079/68747470733a2f2f692e696d6775722e636f6d2f7844576b4a6b632e676966 for the basic idea) and i will add this when i can get time for a clear write up of each section this will take a little while. 
 - replace the trailers tab with requests https://camo.githubusercontent.com/b21d09d7c6ca84c6c19a480aea9c55236531a2aa42416efa65c43a1ca3caab4d/68747470733a2f2f692e6962622e636f2f744d39476a6e772f747261696c6572746f72657175657374732e706e67
 - my custom css (partial jellyflix with a big set of my own modifications for personal touches and fixes like a fixed sidebar in xbox browsers)
-- adding icon to side bar https://camo.githubusercontent.com/ffd52556715cd72021af339118fe1bb3466b7686c3d75bd473c694d0ff1228a3/68747470733a2f2f692e696d6775722e636f6d2f74386d316f79362e706e67
 - adding icon above manual login boxes https://camo.githubusercontent.com/78386998de212ff5a56eced6fbdf4c96e1870ddc1134ccef1f0c5bb59720d10b/687474703a2f2f696d6775722e636f6d2f6a66364c7859756c2e706e67
 
 ## idea that may be retired or revived if i can get it to work

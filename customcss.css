@@ -15,6 +15,7 @@
        url('/web/fonts/ubuntu-v15-latin-regular.svg#Ubuntu') format('svg'); /* Legacy iOS */
 }
 html { font-family: "Ubuntu" !important;}
+#divUsers { padding-top: 70px !important; }
 #loginPage .cardPadder { background-color: #24242400 !important; }
 .visualCardBox .cardContent{background-size: contain !important;}
 /* this fixes xbox side bars but may need to be moved into the actual theme css not as a 3rd party */

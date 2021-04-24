@@ -52,6 +52,13 @@ once you have the files in there simply add the following to your css (rename th
 
 ## Login Background that changes each reload
 
+after a reload the image changes, these are stills to give you the basic idea (yes all images can also be changed for whatever you like or even add more or less depending on use case).
+![1](https://user-images.githubusercontent.com/23018412/114848291-75cf1580-9dd6-11eb-982c-02c1829785aa.PNG)
+after another reload
+![2](https://user-images.githubusercontent.com/23018412/114848300-78ca0600-9dd6-11eb-8120-174a7d22f3ab.PNG)
+after another reload
+![3](https://user-images.githubusercontent.com/23018412/114848306-79fb3300-9dd6-11eb-8880-ecdba1b47650.PNG)
+
 this one was just a quick javascript and some files for backgrounds that will let a user be more impressed by certain content you can decide to showcase for that please visit the repo i made https://github.com/BobHasNoSoul/jellyfin-fanartbackground it explains it in full and has some screen shots and all required files to download.
 
 ## Adding logo to sidebar

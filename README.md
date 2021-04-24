@@ -99,6 +99,21 @@ now directly after this string paste the following (but ammend for your own logo
 
     <img src="/web/logo.png" width=350px style="padding: 0px;display:block; margin-left: auto; margin-right: auto;">
 
+## add a link to get more avatars on the profile page 
+(this is great to host your own avatars but needs the user to manually download them :/ )
+
+open the file user-profile-index-html.xxxxxxxxxxxxxxxxxxxxx.bundle.js (xs are placeholders) then
+
+replace the following string
+
+    <span>${DeleteImage}</span> </button>
+
+with the following string obviously replace the capitalised link that clearly is just a placeholder all of mine are selfhosted so a link to me would be worthless
+
+    <span>${DeleteImage}</span> </button> <button is="emby-buttoon" type="button" class="raised" id="btnMoreImages"><span>${<a href="https://YOURLINKTOAVATARS.COM" target="_blank">More Images</a>}</span></button>
+
+save and reload the profile page
+
 ## to be added that work on 10.7.x
 - animated seasonal themes (look at https://camo.githubusercontent.com/3201f60e995291c6f68d8e3d19d094a359d4f6658aef1e74f62f97010cb62079/68747470733a2f2f692e696d6775722e636f6d2f7844576b4a6b632e676966 for the basic idea) and i will add this when i can get time for a clear write up of each section this will take a little while. 
 - replace the trailers tab with requests https://camo.githubusercontent.com/b21d09d7c6ca84c6c19a480aea9c55236531a2aa42416efa65c43a1ca3caab4d/68747470733a2f2f692e6962622e636f2f744d39476a6e772f747261696c6572746f72657175657374732e706e67

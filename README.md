@@ -77,10 +77,10 @@ replace it with the following (replace the img src for a different url or image 
 
 
 ## to be added that work on 10.7.x
-- animated seasonal themes (look at !(screenshot)[https://camo.githubusercontent.com/3201f60e995291c6f68d8e3d19d094a359d4f6658aef1e74f62f97010cb62079/68747470733a2f2f692e696d6775722e636f6d2f7844576b4a6b632e676966] for the basic idea) and i will add this when i can get time for a clear write up of each section this will take a little while. 
-- replace the trailers tab with requests !(screenshot)[https://camo.githubusercontent.com/b21d09d7c6ca84c6c19a480aea9c55236531a2aa42416efa65c43a1ca3caab4d/68747470733a2f2f692e6962622e636f2f744d39476a6e772f747261696c6572746f72657175657374732e706e67]
+- animated seasonal themes (look at https://camo.githubusercontent.com/3201f60e995291c6f68d8e3d19d094a359d4f6658aef1e74f62f97010cb62079/68747470733a2f2f692e696d6775722e636f6d2f7844576b4a6b632e676966 for the basic idea) and i will add this when i can get time for a clear write up of each section this will take a little while. 
+- replace the trailers tab with requests https://camo.githubusercontent.com/b21d09d7c6ca84c6c19a480aea9c55236531a2aa42416efa65c43a1ca3caab4d/68747470733a2f2f692e6962622e636f2f744d39476a6e772f747261696c6572746f72657175657374732e706e67
 - my custom css (partial jellyflix with a big set of my own modifications for personal touches and fixes like a fixed sidebar in xbox browsers)
-- adding icon above manual login boxes !(screenshot)[https://camo.githubusercontent.com/78386998de212ff5a56eced6fbdf4c96e1870ddc1134ccef1f0c5bb59720d10b/687474703a2f2f696d6775722e636f6d2f6a66364c7859756c2e706e67]
+- adding icon above manual login boxes https://camo.githubusercontent.com/78386998de212ff5a56eced6fbdf4c96e1870ddc1134ccef1f0c5bb59720d10b/687474703a2f2f696d6775722e636f6d2f6a66364c7859756c2e706e67
 
 ## idea that may be retired or revived if i can get it to work
-- !(video extrafanart) [https://i.imgur.com/Qq2eWIz.mp4] extra fanart (useful for displaying box covers disc covers and other good stuff like if you have p90x calendars etc so when a user clicks it they have that image open full size in a new tab) but seeing as the code has changed a lot since i had this and had the time to work on this chances are this will be retired. i am leaving this here as a possibility and reminder for myself.
+- https://i.imgur.com/Qq2eWIz.mp4 extra fanart (useful for displaying box covers disc covers and other good stuff like if you have p90x calendars etc so when a user clicks it they have that image open full size in a new tab) but seeing as the code has changed a lot since i had this and had the time to work on this chances are this will be retired. i am leaving this here as a possibility and reminder for myself.

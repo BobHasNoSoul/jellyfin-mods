@@ -81,6 +81,8 @@ simply copy the contents of customcss.css (in this repo https://github.com/BobHa
 
     @import url("customcss.css");  
 
+this theme does use the font pack for ubuntu you can find this here https://google-webfonts-helper.herokuapp.com/api/fonts/ubuntu-mono?download=zip&subsets=latin&variants=regular and you can just unzip that font pack into /usr/share/jellyfin/web/fonts so .woff files etc are in that dir (not a nested folder)
+
 ## Adding your logo at the top of the login page
 
 ![Capture](https://user-images.githubusercontent.com/23018412/115956212-6b59fd80-a4f3-11eb-915c-324688cf10cb.PNG)

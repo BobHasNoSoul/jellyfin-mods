@@ -77,7 +77,7 @@ replace it with the following (replace the img src for a different url or image 
 
 ## my custom css (partial jellyflix with a set of my own modifications)
 
-simply copy the contents of customcss.css (in this repo) to your general custom css tab and paste.. or host it yourself or link to it the following is an example if you download customcss.css to your web root (/usr/share/jellyfin/web/)
+simply copy the contents of customcss.css (in this repo https://github.com/BobHasNoSoul/jellyfin-mods/blob/main/customcss.css ) to your general custom css tab and paste.. or host it yourself or link to it the following is an example if you download customcss.css to your web root (/usr/share/jellyfin/web/)
 
     @import url("customcss.css");  
 

@@ -102,7 +102,9 @@ now directly after this string paste the following (but ammend for your own logo
 ## add a link to get more avatars on the profile page 
 (this is great to host your own avatars but needs the user to manually download them :/ )
 
-open the file user-profile-index-html.xxxxxxxxxxxxxxxxxxxxx.bundle.js (xs are placeholders) then
+![Capture](https://user-images.githubusercontent.com/23018412/115956876-436c9900-a4f7-11eb-82ab-389ecc45dfb8.PNG)
+
+open the file user-profile-index-html.xxxxxxxxxxxxxxxxxxxxx.bundle.js (xs are placeholders) from your jellyfin web root (/usr/share/jellyfin/web) then
 
 replace the following string
 

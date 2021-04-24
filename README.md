@@ -50,6 +50,19 @@ once you have the files in there simply add the following to your css (rename th
     }
     html { font-family: "Ubuntu" !important;}
 
+Easy mode copy paste commands for ubuntu font.. you can use this as a guide to do this for other fonts too if you like
+
+    cd /usr/share/jellyfin/web/
+    sudo mkdir fonts
+    sudo wget https://google-webfonts-helper.herokuapp.com/api/fonts/ubuntu-mono?download=zip&subsets=latin&variants=regular
+
+that wget might do what looks like an error [1] [2] but just ignore that and press ctrl+c and go to the next command
+
+    sudo mv ubuntu-mono* fonts/ubuntu.zip
+    sudo unzip fonts/ubuntu.zip
+    
+and your font is now where it should be, just modify the css to suit different names of fonts
+
 ## Login Background that changes each reload
 
 after a reload the image changes, these are stills to give you the basic idea (yes all images can also be changed for whatever you like or even add more or less depending on use case).

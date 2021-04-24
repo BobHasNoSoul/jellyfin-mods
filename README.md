@@ -116,6 +116,38 @@ with the following string obviously replace the capitalised link that clearly is
 
 save and reload the profile page
 
+## Trailers tab to Requests tab
+
+![Capture](https://user-images.githubusercontent.com/23018412/115960108-5ab38280-a507-11eb-8404-3821854de8bb.PNG)
+
+this replaces the broken trailers tab with a working requests tab, giving clients the ability to login to your ombi from the movie requests tab :D
+
+okay so first you need to modify two files located inside your jellyfin webroot (/usr/share/jellyfin/web/) obviously change the xs to your unique identication
+
+the first file
+
+    sudo nano movies-moviesrecommended.xxxxxxxxxxx.bundle.js
+
+find the string
+
+    {name:h.ZP.translate("Trailers")}
+
+replace it with
+
+    {name:h.ZP.translate("Requests")}
+	
+the second file (a little bit more complex)
+
+    sudo nano movies-movies-html.xxxxxxxxxxxx.bundle.js
+
+find the string
+
+    <div class="pageTabContent" id="trailersTab" data-index="2"> <div class="flex align-items-center justify-content-center flex-wrap-wrap padded-top padded-left padded-right padded-bottom"> <div class="paging"></div> <button is="paper-icon-button-light" class="btnSort autoSize" title="${Sort}"><span class="material-icons sort_by_alpha"></span></button> <button is="paper-icon-button-light" class="btnFilter autoSize" title="${Filter}"><span class="material-icons filter_list"></span></button> </div> <div class="alphaPicker alphaPicker-fixed alphaPicker-fixed-right alphaPicker-vertical"> </div> <div is="emby-itemscontainer" class="itemsContainer vertical-wrap padded-left padded-right"> </div> <div class="flex align-items-center justify-content-center flex-wrap-wrap padded-top padded-left padded-right padded-bottom"> <div class="paging"></div> </div> </div> <div class="pageTabContent" id="favoritesTab" data-index="3"> <div class="flex align-items-center justify-content-center flex-wrap-wrap padded-top padded-left padded-right padded-bottom"> <div class="paging"></div> <button is="paper-icon-button-light" class="btnSelectView autoSize" title="${ButtonSelectView}"><span class="material-icons view_comfy"></span></button> </div> <div is="emby-itemscontainer" class="itemsContainer padded-left padded-right"> </div> <div class="flex align-items-center justify-content-center flex-wrap-wrap padded-top padded-left padded-right padded-bottom"> <div class="paging"></div> </div> </div> <div class="pageTabContent" id="collectionsTab" data-index="4"> <div class="flex align-items-center justify-content-center flex-wrap-wrap padded-top padded-left padded-right padded-bottom"> <div class="paging"></div> <button is="paper-icon-button-light" class="btnSelectView autoSize" title="${ButtonSelectView}"><span class="material-icons view_comfy"></span></button> <button is="paper-icon-button-light" class="btnSort autoSize" title="${Sort}"><span class="material-icons sort_by_alpha"></span></button> <button type="button" is="paper-icon-button-light" class="btnNewCollection autoSize"><span class="material-icons add"></span></button> </div> <div is="emby-itemscontainer" class="itemsContainer vertical-wrap centered padded-left padded-right" style="text-align:center"> </div> <div class="flex align-items-center justify-content-center flex-wrap-wrap padded-top padded-left padded-right padded-bottom"> <div class="paging"></div> </div> </div> 
+	
+replace it with this (replace the obvious part inside the string too)	
+
+    <div class="pageTabContent" id="trailersTab" data-index="2"> <div> <iframe src="https://REPLACEME.COM" width="100%" height="850px"></iframe> </div> </div> 
+
 ## to be added that work on 10.7.x
 - animated seasonal themes (look at https://camo.githubusercontent.com/3201f60e995291c6f68d8e3d19d094a359d4f6658aef1e74f62f97010cb62079/68747470733a2f2f692e696d6775722e636f6d2f7844576b4a6b632e676966 for the basic idea) and i will add this when i can get time for a clear write up of each section this will take a little while. 
 - replace the trailers tab with requests https://camo.githubusercontent.com/b21d09d7c6ca84c6c19a480aea9c55236531a2aa42416efa65c43a1ca3caab4d/68747470733a2f2f692e6962622e636f2f744d39476a6e772f747261696c6572746f72657175657374732e706e67

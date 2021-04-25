@@ -3,6 +3,10 @@ This is just a guide for various modifications and dumping ground for jellyfin m
 
 #### Please note this is if you do not want or are unable to compile the web client yourself.. there are better ways of doing these mods but if you insist here is the way to run at it. (not preaching its your server after all :D )
 
+
+
+
+
 ## Force backdrops for all users (10.7.x)
 
 Modify this string in your main.Xxxxxxxxxx.bundle.js to default it to tick (forcing most users default.. unless disabled by them)
@@ -14,6 +18,10 @@ Change it to
     enableBackdrops:function() {return x}
 
 Save and clear cache reload on clients
+
+
+
+
 
 ## Change splash logo 
 besides changing the logo image in the web root files location (/usr/share/jellyfin/web/assets/img/ banner-light.png and icon-transparent.png) which is easy but stops them being animated you can modify index.html to add in your own image or custom gif personally i use a gif that is animated to pulse with my server "BlueBoxOfDOOM" logo
@@ -27,6 +35,10 @@ and then replace the other instance in the splashlogo that is originally this st
     background-image: url(assets/img/banner-light.png)
     
 you can even direct it outside of your host to any other host by changing the part inside the brackets to a full form url e.g. https://media.tenor.com/images/f0e22aca6a9498ce63497ca56fb49602/tenor.gif for that cool 80s rick roll feeling or you can go more proffesional looking... i dont care, its not my server.. your the one modding and using it.
+
+
+
+
 
 ## Change font to whatever you want
 firstly get a font pack.. there are many out there.. seriously many so take the next few mins to look for the one you like the look of and download the font pack (you can get some from https://google-webfonts-helper.herokuapp.com/fonts/ or from other sources) and unzip it into a new folder you will be making in the web root called "fonts" (your font pack should contain woff woff2 tff eot and svg files). for this example i used the ubuntu font (dont judge me). You can get the same font from here https://google-webfonts-helper.herokuapp.com/api/fonts/ubuntu-mono?download=zip&subsets=latin&variants=regular this will work out the box with the following example extract the woff etc into the following directory:
@@ -74,6 +86,10 @@ after another reload
 
 this one was just a quick javascript and some files for backgrounds that will let a user be more impressed by certain content you can decide to showcase for that please visit the repo i made https://github.com/BobHasNoSoul/jellyfin-fanartbackground it explains it in full and has some screen shots and all required files to download.
 
+
+
+
+
 ## Adding logo to sidebar
 
 ![logosidebar](https://camo.githubusercontent.com/ffd52556715cd72021af339118fe1bb3466b7686c3d75bd473c694d0ff1228a3/68747470733a2f2f692e696d6775722e636f6d2f74386d316f79362e706e67)
@@ -88,6 +104,10 @@ replace it with the following (replace the img src for a different url or image 
 
     <div style="height:.5em;"></div>',n+='<img src="/web/logowhite.png" width=250px style="padding: 5px;display:block; margin-left: auto; margin-right: auto;">',
 
+
+
+
+
 ## custom css (jellyflix with a set of my own modifications/ tweaks added)
 
 simply copy the contents of customcss.css (in this repo https://github.com/BobHasNoSoul/jellyfin-mods/blob/main/customcss.css ) to your general custom css tab and paste.. or host it yourself or link to it the following is an example if you download customcss.css to your web root (/usr/share/jellyfin/web/)
@@ -95,6 +115,10 @@ simply copy the contents of customcss.css (in this repo https://github.com/BobHa
     @import url("customcss.css");  
 
 this theme does use the font pack for ubuntu you can find this here https://google-webfonts-helper.herokuapp.com/api/fonts/ubuntu-mono?download=zip&subsets=latin&variants=regular and you can just unzip that font pack into /usr/share/jellyfin/web/fonts so .woff files etc are in that dir (not a nested folder)
+
+
+
+
 
 ## Adding your logo at the top of the login page
 
@@ -114,10 +138,18 @@ now directly after this string paste the following (but ammend for your own logo
 
     <img src="/web/logo.png" width=350px style="padding: 0px;display:block; margin-left: auto; margin-right: auto;">
 
+
+
+
+
 ## add a link to get more avatars on the profile page 
 (this is great to host your own avatars but needs the user to manually download them :/ )
 
 ![Capture](https://user-images.githubusercontent.com/23018412/115957171-d65a0300-a4f8-11eb-8a8a-698e4620ea6d.PNG)
+
+i have mine opening a new tab on a host with loads of avatars from many different services, psn, xbl, netflix and a few others
+
+![Capture](https://user-images.githubusercontent.com/23018412/115976186-3eddca00-a563-11eb-8597-81341924c750.PNG)
 
 open the file user-profile-index-html.xxxxxxxxxxxxxxxxxxxxx.bundle.js (xs are placeholders) from your jellyfin web root (/usr/share/jellyfin/web) then
 
@@ -130,6 +162,10 @@ with the following string obviously replace the capitalised link that clearly is
     <span>${DeleteImage}</span> </button> <button is="emby-buttoon" type="button" class="raised" id="btnMoreImages">><STYLE>A {text-decoration: none; color: #def3fb} </STYLE><span>${<a href="https://YOURLINKTOAVATARS.COM" target="_blank">More Images</a>}</span></button>
 
 save and reload the profile page
+
+
+
+
 
 ## Trailers tab to Requests tab
 
@@ -163,6 +199,10 @@ replace it with this (replace the obvious part inside the string too)
 
     <div class="pageTabContent" id="trailersTab" data-index="2"> <div> <iframe src="https://REPLACEME.COM" width="100%" height="850px"></iframe> </div> </div> 
 
+
+
+
+
 ## Add custom link to side bar
 open your jellyfin web root (/usr/share/jellyfin/web) and modify main.XXXXXXXXXXXXXXXX.bundle.js replace the Xs.. with your own unique id
 
@@ -177,6 +217,14 @@ replace it with:
 want more links just keep adding these to the end of the string:
 
      n+='<a is="emby-linkbutton" class="navMenuOption lnkMediaFolder" href="http://YOURLINK.COM"><i class="md-icon navMenuOptionIcon"><img src="https://ICONIMAGE.COM"></i><span class="navMenuOptionText">'+m.ZP.translate("LINKNAME")+"</span></a>",
+     
+     
+     
+     
+     
+     
+     
+     
 
 ## to be added that work on 10.7.x
 - animated seasonal themes (look at https://camo.githubusercontent.com/3201f60e995291c6f68d8e3d19d094a359d4f6658aef1e74f62f97010cb62079/68747470733a2f2f692e696d6775722e636f6d2f7844576b4a6b632e676966 for the basic idea) and i will add this when i can get time for a clear write up of each section this will take a little while. 

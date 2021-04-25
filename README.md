@@ -148,7 +148,7 @@ now directly after this string paste the following (but ammend for your own logo
 ---
 
 ## add a link to get more avatars on the profile page 
-(this is great to host your own avatars but needs the user to manually download them :/ )
+(this is great to host your own avatars but needs the user to manually download them :/ here is a full guide for a selfhosted pack https://github.com/BobHasNoSoul/jellyfin-avatars but the one bellow is for litterally any other host you want to use)
 
 ![Capture](https://user-images.githubusercontent.com/23018412/115957171-d65a0300-a4f8-11eb-8a8a-698e4620ea6d.PNG)
 

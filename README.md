@@ -204,6 +204,9 @@ replace it with this (replace the obvious part inside the string too)
 
 
 ## Add custom link to side bar
+
+!()[https://camo.githubusercontent.com/ffd52556715cd72021af339118fe1bb3466b7686c3d75bd473c694d0ff1228a3/68747470733a2f2f692e696d6775722e636f6d2f74386d316f79362e706e67]
+
 open your jellyfin web root (/usr/share/jellyfin/web) and modify main.XXXXXXXXXXXXXXXX.bundle.js replace the Xs.. with your own unique id
 
 find the string:

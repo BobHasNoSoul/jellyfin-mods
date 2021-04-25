@@ -133,7 +133,7 @@ save and reload the profile page
 
 ## Trailers tab to Requests tab
 
-![Capture](https://user-images.githubusercontent.com/23018412/115960108-5ab38280-a507-11eb-8404-3821854de8bb.PNG)
+![Capture](https://user-images.githubusercontent.com/23018412/115976129-c5de7280-a562-11eb-9a07-62338388aa9c.PNG)
 
 this replaces the broken trailers tab with a working requests tab, giving clients the ability to login to your ombi from the movie requests tab :D
 

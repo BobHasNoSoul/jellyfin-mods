@@ -5,7 +5,7 @@ This is just a guide for various modifications and dumping ground for jellyfin m
 
 
 
-
+---
 
 ## Force backdrops for all users (10.7.x)
 
@@ -19,9 +19,9 @@ Change it to
 
 Save and clear cache reload on clients
 
+*** If you cannot find it (because of regex in search like in nano) try searching for `enableBackdrops:function` this should give you the ability to find the string above ***
 
-
-
+---
 
 ## Change splash logo 
 besides changing the logo image in the web root files location (/usr/share/jellyfin/web/assets/img/ banner-light.png and icon-transparent.png) which is easy but stops them being animated you can modify index.html to add in your own image or custom gif personally i use a gif that is animated to pulse with my server "BlueBoxOfDOOM" logo
@@ -38,7 +38,7 @@ you can even direct it outside of your host to any other host by changing the pa
 
 
 
-
+---
 
 ## Change font to whatever you want
 firstly get a font pack.. there are many out there.. seriously many so take the next few mins to look for the one you like the look of and download the font pack (you can get some from https://google-webfonts-helper.herokuapp.com/fonts/ or from other sources) and unzip it into a new folder you will be making in the web root called "fonts" (your font pack should contain woff woff2 tff eot and svg files). for this example i used the ubuntu font (dont judge me). You can get the same font from here https://google-webfonts-helper.herokuapp.com/api/fonts/ubuntu-mono?download=zip&subsets=latin&variants=regular this will work out the box with the following example extract the woff etc into the following directory:
@@ -75,6 +75,11 @@ that wget might do what looks like an error [1] [2] but just ignore that and pre
     
 and your font is now where it should be, just modify the css to suit different names of fonts
 
+
+
+
+---
+
 ## Login Background that changes each reload
 
 after a reload the image changes, these are stills to give you the basic idea (yes all images can also be changed for whatever you like or even add more or less depending on use case).
@@ -88,7 +93,7 @@ this one was just a quick javascript and some files for backgrounds that will le
 
 
 
-
+---
 
 ## Adding logo to sidebar
 
@@ -106,7 +111,7 @@ replace it with the following (replace the img src for a different url or image 
 
 
 
-
+---
 
 ## custom css (jellyflix with a set of my own modifications/ tweaks added)
 
@@ -118,7 +123,7 @@ this theme does use the font pack for ubuntu you can find this here https://goog
 
 
 
-
+---
 
 ## Adding your logo at the top of the login page
 
@@ -140,7 +145,7 @@ now directly after this string paste the following (but ammend for your own logo
 
 
 
-
+---
 
 ## add a link to get more avatars on the profile page 
 (this is great to host your own avatars but needs the user to manually download them :/ )
@@ -165,7 +170,7 @@ save and reload the profile page
 
 
 
-
+---
 
 ## Trailers tab to Requests tab
 
@@ -201,7 +206,7 @@ replace it with this (replace the obvious part inside the string too)
 
 
 
-
+---
 
 ## Add custom link to side bar
 
@@ -228,9 +233,12 @@ want more links just keep adding these to the end of the string:
      
      
      
+---
 
 ## to be added that work on 10.7.x
 - animated seasonal themes (look at https://camo.githubusercontent.com/3201f60e995291c6f68d8e3d19d094a359d4f6658aef1e74f62f97010cb62079/68747470733a2f2f692e696d6775722e636f6d2f7844576b4a6b632e676966 for the basic idea) and i will add this when i can get time for a clear write up of each section this will take a little while. 
+
+---
 
 ## idea that may be retired or revived if i can get it to work
 - https://i.imgur.com/Qq2eWIz.mp4 extra fanart (useful for displaying box covers disc covers and other good stuff like if you have p90x calendars etc so when a user clicks it they have that image open full size in a new tab) but seeing as the code has changed a lot since i had this and had the time to work on this chances are this will be retired. i am leaving this here as a possibility and reminder for myself.

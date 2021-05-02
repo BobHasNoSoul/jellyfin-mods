@@ -80,18 +80,15 @@ and your font is now where it should be, just modify the css to suit different n
 
 ---
 
-## Login Background that changes each reload
+## Login Background that changes every 10 seconds and reload
 
-after a reload the image changes, these are stills to give you the basic idea (yes all images can also be changed for whatever you like or even add more or less depending on use case).
+(yes all images can also be changed for whatever you like or even add more or less depending on use case) here are some examples.
+
 ![1](https://user-images.githubusercontent.com/23018412/114848291-75cf1580-9dd6-11eb-982c-02c1829785aa.PNG)
-after another reload
 ![2](https://user-images.githubusercontent.com/23018412/114848300-78ca0600-9dd6-11eb-8120-174a7d22f3ab.PNG)
-after another reload
 ![3](https://user-images.githubusercontent.com/23018412/114848306-79fb3300-9dd6-11eb-8880-ecdba1b47650.PNG)
 
-this one was just a quick javascript and some files for backgrounds that will let a user be more impressed by certain content you can decide to showcase for that please visit the repo i made https://github.com/BobHasNoSoul/jellyfin-fanartbackground it explains it in full and has some screen shots and all required files to download.
-
-
+this one was just a quick javascript and some files for backgrounds that will let a user be more impressed by certain content you can decide to showcase for that please visit the repo i made http://github.com/BobHasNoSoul/jellyfin-fanartbackground it explains it in full and has some screen shots and all required files to download. (including some simple copy paste commands to install it)
 
 ---
 
@@ -115,7 +112,7 @@ replace it with the following (replace the img src for a different url or image 
 
 ## custom css (jellyflix with a set of my own modifications/ tweaks added)
 
-simply copy the contents of customcss.css (in this repo https://github.com/BobHasNoSoul/jellyfin-mods/blob/main/customcss.css ) to your general custom css tab and paste.. or host it yourself or link to it the following is an example if you download customcss.css to your web root (/usr/share/jellyfin/web/)
+simply copy the contents of customcss.css (in this repo http://github.com/BobHasNoSoul/jellyfin-mods/blob/main/customcss.css ) to your general custom css tab and paste.. or host it yourself or link to it the following is an example if you download customcss.css to your web root (/usr/share/jellyfin/web/)
 
     @import url("customcss.css");  
 
@@ -227,16 +224,50 @@ want more links just keep adding these to the end of the string:
      n+='<a is="emby-linkbutton" class="navMenuOption lnkMediaFolder" href="http://YOURLINK.COM"><i class="md-icon navMenuOptionIcon"><img src="https://ICONIMAGE.COM"></i><span class="navMenuOptionText">'+m.ZP.translate("LINKNAME")+"</span></a>",
      
      
-     
-     
-     
-     
-     
-     
 ---
 
-## to be added that work on 10.7.x
-- animated seasonal themes (look at https://camo.githubusercontent.com/3201f60e995291c6f68d8e3d19d094a359d4f6658aef1e74f62f97010cb62079/68747470733a2f2f692e696d6775722e636f6d2f7844576b4a6b632e676966 for the basic idea) and i will add this when i can get time for a clear write up of each section this will take a little while. 
+## Seasonal Animations
+
+*note the snow animation has been upgraded for a more blizzard effect*
+
+[[https://i.imgur.com/xDWkJkc.gif]]
+
+simply run the following
+
+    cd /usr/share/jellyfin/web
+    sudo git clone http://github.com/BobHasNoSoul/jellyfin-mods.git
+    cd jellyfin-mods
+    sudo mv seasonal ../ 
+    cd ..
+    sudo rm -r jellyfin-mods
+
+
+to manually change to each animation you can run the scripts located:
+    /usr/share/jellyfin/seasonal/add*.sh
+and to remove run the remove script
+
+
+insert these into your sudo crontab for automated changing (to do that use `sudo crontab -e` )
+
+    ## adding seasonal themes
+    ## add snow
+    0 0 1 12 * /usr/share/jellyfin/seasonal/addsnow.sh
+    ## remove snow
+    0 0 26 12 * /usr/share/jellyfin/seasonal/removeseasonal.sh
+    ## add hearts
+    0 0 14 2 * /usr/share/jellyfin/seasonal/addhearts.sh
+    ## remove hearts
+    0 0 15 2 * /usr/share/jellyfin/seasonal/removeseasonal.sh
+    ## add pattysday
+    0 0 17 3 * /usr/share/jellyfin/seasonal/addpattysday.sh
+    ## remove pattysday
+    0 0 18 3 * /usr/share/jellyfin/seasonal/removeseasonal.sh
+    ## add halloween
+    0 0 1 10 * /usr/share/jellyfin/seasonal/addshalloween.sh
+    ## remove halloween
+    0 0 1 11 * /usr/share/jellyfin/seasonal/removeseasonal.sh
+
+
 
 ---
 

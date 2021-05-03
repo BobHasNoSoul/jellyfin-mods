@@ -115,6 +115,12 @@ replace it with the following (replace the img src for a different url or image 
 simply copy the contents of customcss.css (in this repo http://github.com/BobHasNoSoul/jellyfin-mods/blob/main/customcss.css ) to your general custom css tab and paste.. or host it yourself or link to it the following is an example if you download customcss.css to your web root (/usr/share/jellyfin/web/)
 
     @import url("customcss.css");  
+    /*fix text being half over to the left on details page*/
+    .detail-clamp-text {width: 98vw !important; left: 1% !important; right 1% !important;}
+    .detailPagePrimaryContent {padding-bottom: 1rem !important;}
+    .backgroundContainer { background-color: #181818 !important;}
+    /*fix spacing on the my media*/
+    .card {    margin-left: auto !important;    margin-right: auto !important; padding-top: 22px !important;}
 
 this theme does use the font pack for ubuntu you can find this here https://google-webfonts-helper.herokuapp.com/api/fonts/ubuntu-mono?download=zip&subsets=latin&variants=regular and you can just unzip that font pack into /usr/share/jellyfin/web/fonts so .woff files etc are in that dir (not a nested folder)
 

@@ -286,9 +286,3 @@ insert these into your crontab for automated changing
     sudo sed -i -e '$abody { -ms-overflow-style: none !important; }' /usr/share/jellyfin/web/themes/dark/theme.css
 
 this adds a line to make it hide the scroll bar while retaining function of the scroll.. yay no more invasive scroll bar from the early 00s
-
-
----
-
-## idea that may be retired or revived if i can get it to work
-- https://i.imgur.com/Qq2eWIz.mp4 extra fanart (useful for displaying box covers disc covers and other good stuff like if you have p90x calendars etc so when a user clicks it they have that image open full size in a new tab) but seeing as the code has changed a lot since i had this and had the time to work on this chances are this will be retired. i am leaving this here as a possibility and reminder for myself.

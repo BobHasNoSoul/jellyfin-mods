@@ -88,7 +88,7 @@ and your font is now where it should be, just modify the css to suit different n
 ![2](https://user-images.githubusercontent.com/23018412/114848300-78ca0600-9dd6-11eb-8120-174a7d22f3ab.PNG)
 ![3](https://user-images.githubusercontent.com/23018412/114848306-79fb3300-9dd6-11eb-8880-ecdba1b47650.PNG)
 
-this one was just a quick javascript and some files for backgrounds that will let a user be more impressed by certain content you can decide to showcase for that please visit the repo i made http://github.com/BobHasNoSoul/jellyfin-fanartbackground it explains it in full and has some screen shots and all required files to download. (including some simple copy paste commands to install it)
+this one was just a quick javascript and some files for backgrounds that will let a user be more impressed by certain content you can decide to showcase for that please visit the repo i made http://git.bbod.tk/BobHasNoSoul/jellyfin-fanartbackground it explains it in full and has some screen shots and all required files to download. (including some simple copy paste commands to install it)
 
 ---
 
@@ -112,7 +112,7 @@ replace it with the following (replace the img src for a different url or image 
 
 ## custom css (jellyflix with a set of my own modifications/ tweaks added)
 
-simply copy the contents of customcss.css (in this repo http://github.com/BobHasNoSoul/jellyfin-mods/blob/main/customcss.css ) to your general custom css tab and paste.. or host it yourself or link to it the following is an example if you download customcss.css to your web root (/usr/share/jellyfin/web/)
+simply copy the contents of customcss.css (in this repo http://git.bbod.tk/BobHasNoSoul/jellyfin-mods/blob/main/customcss.css ) to your general custom css tab and paste.. or host it yourself or link to it the following is an example if you download customcss.css to your web root (/usr/share/jellyfin/web/)
 
     @import url("customcss.css");  
     /*fix text being half over to the left on details page*/
@@ -236,12 +236,12 @@ want more links just keep adding these to the end of the string:
 
 *note the snow animation has been upgraded for a more blizzard effect*
 
-![seasongif](https://i.imgur.com/xDWkJkc.gif)
+[[https://i.imgur.com/xDWkJkc.gif]]
 
 simply run the following
 
     cd /usr/share/jellyfin/web
-    sudo git clone http://github.com/BobHasNoSoul/jellyfin-mods.git
+    sudo git clone http://git.bbod.tk/BobHasNoSoul/jellyfin-mods.git
     cd jellyfin-mods
     sudo mv seasonal ../ 
     cd ..
@@ -253,35 +253,40 @@ to manually change to each animation you can run the scripts located:
 and to remove run the remove script
 
 
-insert these into your sudo crontab for automated changing (to do that use `sudo crontab -e` )
+insert these into your crontab for automated changing
 
     ## adding seasonal themes
-    ## add snow
-    0 0 1 12 * /usr/share/jellyfin/seasonal/addsnow.sh
+    ## add snow (uncomment one of the snow effects bellow and comment the others out, by default the most snow is enabled)
+    #0 0 1 12 * /usr/share/jellyfin/web/seasonal/addsnow.sh
+    #0 0 1 12 * /usr/share/jellyfin/web/seasonal/addsnowflakes.sh
+    0 0 1 12 * /usr/share/jellyfin/web/seasonal/addmoresnow.sh
     ## remove snow
-    0 0 26 12 * /usr/share/jellyfin/seasonal/removeseasonal.sh
+    0 0 26 12 * /usr/share/jellyfin/web/seasonal/removeseasonal.sh
     ## add hearts
-    0 0 14 2 * /usr/share/jellyfin/seasonal/addhearts.sh
+    0 0 14 2 * /usr/share/jellyfin/web/seasonal/addhearts.sh
     ## remove hearts
-    0 0 15 2 * /usr/share/jellyfin/seasonal/removeseasonal.sh
+    0 0 15 2 * /usr/share/jellyfin/web/seasonal/removeseasonal.sh
     ## add pattysday
-    0 0 17 3 * /usr/share/jellyfin/seasonal/addpattysday.sh
+    0 0 17 3 * /usr/share/jellyfin/web/seasonal/addpattysday.sh
     ## remove pattysday
-    0 0 18 3 * /usr/share/jellyfin/seasonal/removeseasonal.sh
+    0 0 18 3 * /usr/share/jellyfin/web/seasonal/removeseasonal.sh
     ## add halloween
-    0 0 1 10 * /usr/share/jellyfin/seasonal/addshalloween.sh
+    0 0 1 10 * /usr/share/jellyfin/web/seasonal/addshalloween.sh
     ## remove halloween
-    0 0 1 11 * /usr/share/jellyfin/seasonal/removeseasonal.sh
-
-
+    0 0 1 11 * /usr/share/jellyfin/web/seasonal/removeseasonal.sh
+    ## Adding fireworks (DISABLED BY DEFAULT THIS BREAKS XBOX MICROSOFT EDGE)
+    0 0 31 12 * /usr/share/jellyfin/web/seasonal/addfireworks.sh
+    ## Remove fireworks (Disabled by default)
+    # 0 0 1 1 * /usr/share/jellyfin/web/seasonal/removeseasonal.sh
 
 ---
 
-## Hide Scrollbar in older microsoft edge (xbox clients fix) 
+## Hide Scrollbar in older microsoft edge (xbox clients) 
 
     sudo sed -i -e '$abody { -ms-overflow-style: none !important; }' /usr/share/jellyfin/web/themes/dark/theme.css
 
-this adds a line to make it hide the scroll bar while retaining function of the scroll.. yay no more invasive scroll bar from the early 00s (note you can do this for any theme you have installed just change the path from `/usr/share/jellyfin/web/themes/dark/theme.css` to the other theme like `/usr/share/jellyfin/web/themes/light/theme.css` in the code above
+this adds a line to make it hide the scroll bar while retaining function of the scroll.. yay no more invasive scroll bar from the early 00s
+
 
 ---
 

@@ -236,7 +236,7 @@ want more links just keep adding these to the end of the string:
 
 *note the snow animation has been upgraded for a more blizzard effect*
 
-[[https://i.imgur.com/xDWkJkc.gif]]
+![screen](https://i.imgur.com/xDWkJkc.gif)
 
 simply run the following
 

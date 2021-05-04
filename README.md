@@ -275,7 +275,7 @@ insert these into your crontab for automated changing
     ## remove halloween
     0 0 1 11 * /usr/share/jellyfin/web/seasonal/removeseasonal.sh
     ## Adding fireworks (DISABLED BY DEFAULT THIS BREAKS XBOX MICROSOFT EDGE)
-    0 0 31 12 * /usr/share/jellyfin/web/seasonal/addfireworks.sh
+    #0 0 31 12 * /usr/share/jellyfin/web/seasonal/addfireworks.sh
     ## Remove fireworks (Disabled by default)
     # 0 0 1 1 * /usr/share/jellyfin/web/seasonal/removeseasonal.sh
 

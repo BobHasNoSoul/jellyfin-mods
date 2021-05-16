@@ -7,6 +7,24 @@ This is just a guide for various modifications and dumping ground for jellyfin m
 
 ---
 
+## Force Theme Music for all users (10.7.x)
+
+Modify this string in your main.Xxxxxxxxxx.bundle.js to default it to tick (forcing most users default.. unless disabled by them)
+
+    enableThemeSongs:function(){return w}
+
+Change it to
+
+    enableThemeSongs:function(){return x}
+
+Save and clear cache reload on clients
+
+*** If you cannot find it (because of regex in search like in nano) try searching for `enableThemeSongs:function` this should give you the ability to find the string above ***
+
+Pro tip: use the theme songs plugin to grab many theme songs for tv shows in one go ( https://github.com/danieladov/jellyfin-plugin-themesongs ) or manually add a theme.mp3 at in the root of each tv show folder i.e. `/tv/breaking bad/theme.mp3` also works for movies but you will have to manuall grab them.
+
+---
+
 ## Force backdrops for all users (10.7.x)
 
 Modify this string in your main.Xxxxxxxxxx.bundle.js to default it to tick (forcing most users default.. unless disabled by them)
@@ -296,22 +314,24 @@ this is custom css and you can use and adjust all or any values you like but per
 /*pan the background for backdrops*/
 @keyframes backgroundScroll {
 0% { background-position: 99% 1%; opacity:0;}
-33% { background-position: 50% 50%; opacity:1;}
+33% { background-position: 50% 50%;opacity:1;}
 40% { background-position: 99% 99%; opacity:0;}
 66% { background-position: 50% 50%; }
 75% { background-position: 1% 1%; }
 100% { background-position: 50% 50%; }}
-.backdropImage {background-size: 150% 150%;  opacity:0 ;background-position: 99% 1%; animation: backgroundScroll 60s ease-in-out 1s infinite;}
+.backdropImage {background-size: 150% 150%;  opacity:0 ;background-position: 99% 1%; animation: backgroundScroll 60s ease-in-out 1s;}
 
 @keyframes backgroundScrollmob {
 0% { background-position: 99% 1%; opacity:0;}
-33% { background-position: 50% 50%; opacity:1;}
+33% { background-position: 50% 50%;opacity:1;}
 40% { background-position: 1% 99%; opacity:0}
 66% { background-position: 99% 50%; }
 75% { background-position: 99%% 99%; }
 100% { background-position: 50% 50%; }}
 @media (max-width: 600px) {
-  .backdropImage {background-size: 120% 120% cover; opacity:0 ; background-position: 99% 1%; animation: backgroundScrollmob 60s ease-in-out 1s infinite;}
+  .backdropImage {background-size: 150% 150% cover; opacity:0 ; background-position: 99% 1%; animation: backgroundScrollmob 60s ease-in-out 1s;}
 }
 ```
 simply paste that into your custom css in general settings and hit save (works really well with forced backdrop mod)
+
+---

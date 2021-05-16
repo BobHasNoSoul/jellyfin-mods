@@ -309,7 +309,11 @@ this adds a line to make it hide the scroll bar while retaining function of the 
 
 ## Pan and tilt the backdrops with fades in and out
 
+Video of this mod in action:
+https://giant.gfycat.com/SizzlingCavernousGalapagospenguin.mp4
+
 this is custom css and you can use and adjust all or any values you like but personally i like these values
+
 ```
 /*pan the background for backdrops*/
 @keyframes backgroundScroll {

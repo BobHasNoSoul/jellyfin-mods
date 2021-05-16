@@ -286,3 +286,32 @@ insert these into your crontab for automated changing
     sudo sed -i -e '$abody { -ms-overflow-style: none !important; }' /usr/share/jellyfin/web/themes/dark/theme.css
 
 this adds a line to make it hide the scroll bar while retaining function of the scroll.. yay no more invasive scroll bar from the early 00s
+
+--- 
+
+## Pan and tilt the backdrops with fades in and out
+
+this is custom css and you can use and adjust all or any values you like but personally i like these values
+```
+/*pan the background for backdrops*/
+@keyframes backgroundScroll {
+0% { background-position: 99% 1%; opacity:0;}
+33% { background-position: 50% 50%; opacity:1;}
+40% { background-position: 99% 99%; opacity:0;}
+66% { background-position: 50% 50%; }
+75% { background-position: 1% 1%; }
+100% { background-position: 50% 50%; }}
+.backdropImage {background-size: 150% 150%;  opacity:0 ;background-position: 99% 1%; animation: backgroundScroll 60s ease-in-out 1s infinite;}
+
+@keyframes backgroundScrollmob {
+0% { background-position: 99% 1%; opacity:0;}
+33% { background-position: 50% 50%; opacity:1;}
+40% { background-position: 1% 99%; opacity:0}
+66% { background-position: 99% 50%; }
+75% { background-position: 99%% 99%; }
+100% { background-position: 50% 50%; }}
+@media (max-width: 600px) {
+  .backdropImage {background-size: 120% 120% cover; opacity:0 ; background-position: 99% 1%; animation: backgroundScrollmob 60s ease-in-out 1s infinite;}
+}
+```
+simply paste that into your custom css in general settings and hit save (works really well with forced backdrop mod)

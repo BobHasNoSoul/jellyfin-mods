@@ -11,11 +11,11 @@ This is just a guide for various modifications and dumping ground for jellyfin m
 
 Modify this string in your main.Xxxxxxxxxx.bundle.js to default it to tick (forcing most users default.. unless disabled by them)
 
-    enableBackdrops:function() {return _}
+    enableBackdrops:function(){return _}
 
 Change it to
 
-    enableBackdrops:function() {return x}
+    enableBackdrops:function(){return x}
 
 Save and clear cache reload on clients
 

@@ -339,3 +339,17 @@ this is custom css and you can use and adjust all or any values you like but per
 simply paste that into your custom css in general settings and hit save (works really well with forced backdrop mod)
 
 ---
+
+## Default every users page size
+
+change this in your main.xxxxxxxxxxxx.bundle.js (so `sudo nano main.*.bundle.js` )
+
+from this
+`this.get("libraryPageSize",!1),10);return 0===t?0:t||100}`
+
+to this
+`this.get("libraryPageSize",!1),10);return 0===t?0:t||300}`
+
+you can modifiy the number from 100 to any number you want each users default to be.. note requires users to clear cache in their browser to see the new change.
+
+---

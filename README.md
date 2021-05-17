@@ -338,7 +338,6 @@ this is custom css and you can use and adjust all or any values you like but per
 ```
 simply paste that into your custom css in general settings and hit save (works really well with forced backdrop mod)
 
----
 ## Change the Title of Jellyfin in the browser tab
 This is a fairly simple mod, all you have to do is edit the main.xxxxxxxxxx.bundle.js in the Jellyfin install directory. Open it up and in the massive wall of text find
 ```
@@ -353,4 +352,4 @@ Change the text from Jellyfin to whatever you want. Then open up index.html in t
 <title>Jellyfin</title>
 ```
 and change that as well.
-```
+---

@@ -128,24 +128,6 @@ replace it with the following (replace the img src for a different url or image 
 
 ---
 
-## custom css (jellyflix with a set of my own modifications/ tweaks added)
-
-simply copy the contents of customcss.css (in this repo http://git.bbod.tk/BobHasNoSoul/jellyfin-mods/blob/main/customcss.css ) to your general custom css tab and paste.. or host it yourself or link to it the following is an example if you download customcss.css to your web root (/usr/share/jellyfin/web/)
-
-    @import url("customcss.css");  
-    /*fix text being half over to the left on details page*/
-    .detail-clamp-text {width: 98vw !important; left: 1% !important; right 1% !important;}
-    .detailPagePrimaryContent {padding-bottom: 1rem !important;}
-    .backgroundContainer { background-color: #181818 !important;}
-    /*fix spacing on the my media*/
-    .card {    margin-left: auto !important;    margin-right: auto !important; padding-top: 22px !important;}
-
-this theme does use the font pack for ubuntu you can find this here https://google-webfonts-helper.herokuapp.com/api/fonts/ubuntu-mono?download=zip&subsets=latin&variants=regular and you can just unzip that font pack into /usr/share/jellyfin/web/fonts so .woff files etc are in that dir (not a nested folder)
-
-
-
----
-
 ## Adding your logo at the top of the login page
 
 ![Capture](https://user-images.githubusercontent.com/23018412/115956212-6b59fd80-a4f3-11eb-915c-324688cf10cb.PNG)
@@ -374,3 +356,25 @@ wait, it looks like the same file?
 no its simmilar i removed a few errors mainly linking to an "auto" directory that did not exist, then also bug fixed the issues with the /web/ dir locations.. nothing too fancy but this allows it to actually be ran like it should.
 
 if all went well you can see a install button next to the address bar on the right, this also will not throw any errors in developer tools in chrome.
+
+---
+
+### CSS Modifications
+
+---
+
+## my custom css (jellyflix with a set of my own modifications/ tweaks added)
+
+simply copy the contents of customcss.css (in this repo http://git.bbod.tk/BobHasNoSoul/jellyfin-mods/blob/main/customcss.css ) to your general custom css tab and paste.. or host it yourself or link to it the following is an example if you download customcss.css to your web root (/usr/share/jellyfin/web/)
+
+    @import url("customcss.css");  
+    /*fix text being half over to the left on details page*/
+    .detail-clamp-text {width: 98vw !important; left: 1% !important; right 1% !important;}
+    .detailPagePrimaryContent {padding-bottom: 1rem !important;}
+    .backgroundContainer { background-color: #181818 !important;}
+    /*fix spacing on the my media*/
+    .card {    margin-left: auto !important;    margin-right: auto !important; padding-top: 22px !important;}
+
+this theme does use the font pack for ubuntu you can find this here https://google-webfonts-helper.herokuapp.com/api/fonts/ubuntu-mono?download=zip&subsets=latin&variants=regular and you can just unzip that font pack into /usr/share/jellyfin/web/fonts so .woff files etc are in that dir (not a nested folder)
+
+---

@@ -348,6 +348,8 @@ Change the text from Jellyfin to whatever you want, Then open up index.html in t
 
 ## Fix the serviceworker.js so it does not throw errors and plays nice in nginx
 
+![error](https://user-images.githubusercontent.com/23018412/119361783-eefa3c00-bca3-11eb-870c-7908e2b01886.PNG)
+
 Tested working on 10.7.5
 
 simply download the serviceworker.js from this repo and upload into your jellyfin-web root `/usr/share/jellyfin/web/` this will give you a working service worker for use with nginx reverse proxy (please see the serviceworker.js.LICENSE file for the license of that file) 

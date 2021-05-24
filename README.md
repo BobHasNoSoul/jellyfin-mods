@@ -338,20 +338,6 @@ this is custom css and you can use and adjust all or any values you like but per
 ```
 simply paste that into your custom css in general settings and hit save (works really well with forced backdrop mod)
 
-## Change the Title of Jellyfin in the browser tab
-This is a fairly simple mod, all you have to do is edit the main.xxxxxxxxxx.bundle.js in the Jellyfin install directory. Open it up and in the massive wall of text find
-```
-document.title="Jellyfin"
-```
-and 
-```
-document.title=e||"Jellyfin"}
-```
-Change the text from Jellyfin to whatever you want. Then open up index.html in the same folder and find
-```
-<title>Jellyfin</title>
-```
-and change that as well.
 ---
 
 ## Default every users page size
@@ -367,3 +353,24 @@ to this
 you can modifiy the number from 100 to any number you want each users default to be.. note requires users to clear cache in their browser to see the new change.
 
 ---
+
+## Change the Title of Jellyfin in the browser tab
+
+This is a fairly simple mod, all you have to do is edit the main.xxxxxxxxxx.bundle.js in the Jellyfin install directory. Open it up and in the massive wall of text find
+
+`document.title="Jellyfin"` and `document.title=e||"Jellyfin"}`
+
+Change the text from Jellyfin to whatever you want, Then open up index.html in the same folder and find `<title>Jellyfin</title>` and change that as well.
+
+---
+
+## Fix the serviceworker.js so it does not throw errors and plays nice in nginx
+
+Tested working on 10.7.5
+
+simply download the serviceworker.js from this repo and upload into your jellyfin-web root `/usr/share/jellyfin/web/` this will give you a working service worker for use with nginx reverse proxy (please see the serviceworker.js.LICENSE file for the license of that file) 
+
+wait, it looks like the same file?
+no its simmilar i removed a few errors mainly linking to an "auto" directory that did not exist, then also bug fixed the issues with the /web/ dir locations.. nothing too fancy but this allows it to actually be ran like it should.
+
+if all went well you can see a install button next to the address bar on the right, this also will not throw any errors in developer tools in chrome.

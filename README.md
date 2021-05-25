@@ -380,3 +380,13 @@ simply copy the contents of customcss.css (in this repo http://git.bbod.tk/BobHa
 this theme does use the font pack for ubuntu you can find this here https://google-webfonts-helper.herokuapp.com/api/fonts/ubuntu-mono?download=zip&subsets=latin&variants=regular and you can just unzip that font pack into /usr/share/jellyfin/web/fonts so .woff files etc are in that dir (not a nested folder)
 
 ---
+# Some Extra tools to be used with Jellyfin
+these are some extremely helpfull tools that can be used with Jellyfin and increase functionality.
+## Jfa-Go
+This is a Jellyfin account manager and creator that can be used to make links to invite people to Jellyfin and allow them to create their username and passsword. Its written in go and can be installed on most OS's. You can find it here https://github.com/hrfee/jfa-go
+## Ombi
+Ombi is a media requesting service that can be used with Jellyfin. After adding a custom link in the sidebar , when your friends on family want to request a media, they can request it on Ombi, which will then using integration with Radarr, Sonarr among ohers download it. You can get it here https://github.com/Ombi-app/Ombi
+## ErsatzTV
+ErsatzTV is a bit like PseudoTV for Kodi but more like a Live TV media server. its open source and you can get it here https://github.com/jasongdove/ErsatzTV
+## Intros Plugin
+Intros Plugin allows you to use a video from preroll.video or a custom video to be played before a movie or show. The offical intros repo seems to be down so you can get it from here https://github.com/dab2020/Jellyfin-intros-repo

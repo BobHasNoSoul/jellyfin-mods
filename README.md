@@ -379,6 +379,32 @@ simply copy the contents of customcss.css (in this repo http://git.bbod.tk/BobHa
 
 this theme does use the font pack for ubuntu you can find this here https://google-webfonts-helper.herokuapp.com/api/fonts/ubuntu-mono?download=zip&subsets=latin&variants=regular and you can just unzip that font pack into /usr/share/jellyfin/web/fonts so .woff files etc are in that dir (not a nested folder)
 
+the following hides please login dialog and prevents the login going up to the top by adding a margin.
+
+    /*Hide "please login" text, margin is to prevent login form moving too far up*/
+    #loginPage h1 {display: none}
+    #loginPage .padded-left.padded-right.padded-bottom-page {margin-top: 10px}
+
+lighten the backdrop background using the following
+
+    /*Lighten background*/
+    .backgroundContainer.withBackdrop {background-color: rgba(0, 0, 0, 0.34) !important;}
+
+Transparent top bar using the following
+    
+    /*transparent top bar*/
+    .skinHeader-withBackground {background-color: #20202000 !important;}
+
+Partially transparent side menu with the following
+
+    /*Partialy transparent side bar*/
+    div.mainDrawer {background-color: rgba(0,0,0,0.6) !important;}
+
+Remove the title "My Media" with the following
+
+    /* remove My Media title */
+    .section0 .sectionTitle {display: none;}
+
 ---
 # Some Extra tools to be used with Jellyfin
 these are some extremely helpfull tools that can be used with Jellyfin and increase functionality.

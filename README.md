@@ -390,4 +390,3 @@ Ombi is a media requesting service that can be used with Jellyfin. After adding 
 ErsatzTV is a bit like PseudoTV for Kodi but more like a Live TV media server. its open source and you can get it here https://github.com/jasongdove/ErsatzTV
 ## Intros Plugin
 Intros Plugin allows you to use a video from preroll.video or a custom video to be played before a movie or show. The offical intros repo seems to be down so you can get it from here https://github.com/dab2020/Jellyfin-intros-repo
----

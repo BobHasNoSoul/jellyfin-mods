@@ -352,12 +352,12 @@ Change the text from Jellyfin to whatever you want, Then open up index.html in t
 
 Tested working on 10.7.5
 
-simply download the serviceworker.js from this repo and upload into your jellyfin-web root `/usr/share/jellyfin/web/` this will give you a working service worker for use with nginx reverse proxy (please see the serviceworker.js.LICENSE file for the license of that file) 
+edit your main.XXXXXXXXXXXXXX.bundle.js and find this string `/serviceworker.js` and replace it with `/web/serviceworker.js` then simply download the serviceworker.js from this repo and upload into your jellyfin-web root `/usr/share/jellyfin/web/` this will give you a working service worker for use with nginx reverse proxy (please see the serviceworker.js.LICENSE file for the license of that file) 
 
 wait, it looks like the same file?
-no its simmilar i removed a few errors mainly linking to an "auto" directory that did not exist, then also bug fixed the issues with the /web/ dir locations.. nothing too fancy but this allows it to actually be ran like it should.
+no its simmilar i removed a few errors mainly the woff2 files being reffered to as auto then the original file name which lead to a non existing file that did not exist, then also bug fixed the issues with the /web/ dir locations.. nothing too fancy but this allows it to actually be ran like it should.
 
-if all went well you can see a install button next to the address bar on the right, this also will not throw any errors in developer tools in chrome.
+if all went well you can see a install button next to the address bar on the right, this also will not throw any errors in developer tools in chrome. (may need a cache clear on the client)
 
 ---
 

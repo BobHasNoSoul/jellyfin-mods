@@ -346,6 +346,47 @@ Change the text from Jellyfin to whatever you want, Then open up index.html in t
 
 ---
 
+# Adding a footer to jellyfin
+
+![footer](https://user-images.githubusercontent.com/23018412/128029941-9e0074e0-7668-45d3-9f36-936b1271e75f.png)
+
+This will add a footer to your jellyfin server (see red arrow in the picture) that will auto hide on 5 seconds of mouse inactivity and appear when there is mouse activity this would be typically used for down time of a private server to tell clients that are using the server when to expect there to be "down time" or you could change it to say whatever you like really just modify the footer contents in the index.html once done if that is the case. this will also allow you to turn it off and on at will using the custom css in the admin panel without the need to edit the index.html multiple times (unless you want to change the message for whatever reason).
+
+add the following into your index.html just before the last `</body></html>` tags
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script>
+    var timedelay = 1;
+    function delayCheck()
+    {
+    if(timedelay == 5)
+    {
+    $('#footer').fadeOut();
+    timedelay = 1;
+    }
+    timedelay = timedelay+1;
+    }
+    $(document).mousemove(function() {
+    $('#footer').fadeIn();
+    timedelay = 1;
+    clearInterval(_delay);
+    _delay = setInterval(delayCheck, 500);
+    });
+    // page loads starts delay timer
+    _delay = setInterval(delayCheck, 500)
+    </script><div id="footer">Scheduled Server Maintenance on Tuesday 3PM - 4PM BST. The Server will be down for this time.</div>
+
+nearly done just add this in your custom css (Admin panel> General> Custom CSS)
+
+    #footer {position: fixed;  bottom: 0; width: 100%; height: 20px; background: #191818; z-index: 0;
+    /*comment out below to hide footer*/
+    /*display: none !important;*/
+    }
+
+obviously when you want to deactivate it just uncomment the display line to hide it
+
+---
+
 ## Fix the serviceworker.js so it does not throw errors and plays nice in nginx
 
 ![error](https://user-images.githubusercontent.com/23018412/119361783-eefa3c00-bca3-11eb-870c-7908e2b01886.PNG)

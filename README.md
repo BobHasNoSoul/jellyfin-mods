@@ -385,7 +385,9 @@ nearly done just add this in your custom css (Admin panel> General> Custom CSS)
 
 obviously when you want to deactivate it just uncomment the display line to hide it
 
-### Note if you do not want to edit the index.html each time for different messages you can just use the admin panel in the following steps
+---
+
+## Add a footer that you can edit from admin panel
 
 like the option above you need to add the following to your index.html before the final `</body></html>` tags
 

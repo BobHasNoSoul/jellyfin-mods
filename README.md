@@ -378,12 +378,55 @@ add the following into your index.html just before the last `</body></html>` tag
 
 nearly done just add this in your custom css (Admin panel> General> Custom CSS)
 
-    #footer {position: fixed;  bottom: 0; width: 100%; height: 20px; background: #191818; z-index: 0;
+    #footer {position: fixed;  bottom: 0; width: 100%; height: 20px; background: #191818; z-index: 0;text-align: center;
     /*comment out below to hide footer*/
     /*display: none !important;*/
     }
 
 obviously when you want to deactivate it just uncomment the display line to hide it
+
+### Note if you do not want to edit the index.html each time for different messages you can just use the admin panel in the following steps
+
+like the option above you need to add the following to your index.html before the final `</body></html>` tags
+
+    <script>
+    var timedelay = 1;
+    function delayCheck()
+    {
+    if(timedelay == 5)
+    {
+    $('#footer').fadeOut();
+    timedelay = 1;
+    }
+    timedelay = timedelay+1;
+    }
+    $(document).mousemove(function() {
+    $('#footer').fadeIn();
+    timedelay = 1;
+    clearInterval(_delay);
+    _delay = setInterval(delayCheck, 500);
+    });
+    // page loads starts delay timer
+    _delay = setInterval(delayCheck, 500)
+    </script><div id="footer"><span></span></div>
+
+note that this version has no content but instead a span tag.. that is because we will be inserting the message via css, this is not how it is meant to be done but can be done to make life a little easier i guess. 
+
+next we add the following to your custom css in the admin panel
+
+    #footer {position: fixed;  bottom: 0; width: 100%; height: 20px; background: #191818; z-index: 0;text-align: center;
+    /*comment out below to hide banner*/
+    /*display: none !important;*/
+    }
+    
+    #footer span {
+      display: none;
+    }
+    #footer:after {
+      content: 'YOUR MESSAGE HERE, SERIOUSLY CHANGE ME';
+    }
+
+
 
 ---
 

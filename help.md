@@ -36,4 +36,4 @@ then you will have all the files in your `${HOME}/Docker/jellyfin/jellyfin-web` 
 
 ## Windows
 
-This one needs a few modifications to the guide (like using notepad ++ to replace text and running notepad++ as an admin) but your web root files are availible here `C:\Program Files\Jellyfin\Server\jellyfin-web\assets\img\devices` so you can use that instead of /usr/share/jellyfin/web in the main guide.
+This one needs a few modifications to the guide (like using notepad ++ to replace text and running notepad++ as an admin) but your web root files are availible here `C:\Program Files\Jellyfin\Server\jellyfin-web\` this is where your main.xxxxxxxxxxxxxx.bundle.js is located so you can use that instead of /usr/share/jellyfin/web in the main guide.

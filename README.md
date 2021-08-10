@@ -1,4 +1,7 @@
 # jellyfin-mods
+
+If you are having issues with finding the web root you may need to see the [help.md](https://github.com/BobHasNoSoul/jellyfin-mods/blob/main/help.md) to find help with your particular deployment (yes this includes docker)
+
 This is just a guide for various modifications and dumping ground for jellyfin mods i have been kicking around so i dont have to make a new jftool for every platform and revision when they change one single thing that can break it for those that cant or dont want to recompile (yes recompiling would be the way forward but it is not for everyone)
 
 #### Please note this is if you do not want or are unable to compile the web client yourself.. there are better ways of doing these mods but if you insist here is the way to run at it. (not preaching its your server after all :D )

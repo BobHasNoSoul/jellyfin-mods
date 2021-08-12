@@ -432,6 +432,43 @@ next we add the following to your custom css in the admin panel
     }
 
 
+---
+
+# changing live tv movies from portrait cards to landscape
+
+Some xmltv guides may not contain a portrait image and if that is the case you get something like the following
+
+![livetvbefore](https://user-images.githubusercontent.com/23018412/129268597-70e68e8a-ed35-4044-bf50-1b68064d0d50.PNG)
+
+but this can look a bit messy so here are the steps to fix it and make it look like this
+
+![livetvafter](https://user-images.githubusercontent.com/23018412/129268615-539b4ca8-30ab-4847-be67-c6009ef37927.PNG)
+
+simply modify the following file in your web root (replace the * with your uuid) livetv-livetvsuggested.*.bundle.js
+
+find `"upcomingTvMovieItems",null,{shape:v()?"overflowPortrait":"portrait"`
+
+replace it with `"upcomingTvMovieItems",null,{shape:v()?"overflowBackdrop":"backdrop"`
+
+now save it and close the file
+
+this will effect the live tv page, however you will notice you still have the same issue when you press the movie header inside the live tv section 
+
+![moviesbefore](https://user-images.githubusercontent.com/23018412/129268691-21cc2c2d-96db-4871-adc0-52bf40eaba6e.PNG)
+
+lets fix that so it looks like the following
+
+![moviesafter](https://user-images.githubusercontent.com/23018412/129268768-2c5204ff-7730-49b9-9f52-0b70475c50f5.PNG)
+
+open the file list.*.bundle.js from inside your webroot (replace the * with your uuid)
+
+find `"Recordings"===r.type?(t="true"===r.IsMovie?"portrait":"autoVertical",i="true"!==r.IsMovie&&"auto",o="true"===r.IsMovie?"portrait":"backdrop"`
+
+replace it with `"Recordings"===r.type?(t="true"===r.IsMovie?"backdrop":"autoVertical",i="true"!==r.IsMovie&&"auto",o="true"===r.IsMovie?"backdrop":"backdrop"`
+
+save then close the file
+
+all done, you will need to clear the cache in your client browser to see the change.
 
 ---
 

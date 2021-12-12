@@ -6,8 +6,31 @@ This is just a guide for various modifications and dumping ground for jellyfin m
 
 #### Please note this is if you do not want or are unable to compile the web client yourself.. there are better ways of doing these mods but if you insist here is the way to run at it. (not preaching its your server after all :D )
 
+---
 
+## Add picture links to metadata of a show / movie
 
+to do this simply click edit meta data and add the following *change the url to your own as needed* you can also modify the first image url to a static page link for a series or tv show if you want also.
+
+    <style>
+    metimage {
+    height: 300px;
+    padding-bottom: 500px;
+    padding-left: 16vw; /*adjust as needed to center or off center what ever you like*/
+    padding-top: 50vh;
+    overflow: hidden;
+    }
+    metimage img {
+    transition: transform .5s ease;
+    }
+    metimage:hover img {
+    transform: scale(1.3);
+    }</style>
+    <br><br>
+    <metimage><a href="https://URL.COM/IMAGE.jpg" target="_blank"><img src="https://URL.COM/IMAGE.jpg" width=200vw"></a></metimage>
+    <br><br><br>
+
+the <br> tags just add a slight spacer to expand the metadata box jellyfin creates
 ---
 
 ## Force Theme Music for all users (10.7.x)

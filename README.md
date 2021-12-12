@@ -36,6 +36,8 @@ to do this simply click edit meta data and add the following *change the url to 
 
 the br tags just add a slight spacer to expand the metadata box jellyfin creates
 
+on a side note this is very very similar to what i attempted to do with extrafanart mod back in the day.. funny how times fly.
+
 ---
 
 ## Force Theme Music for all users (10.7.x)

@@ -8,6 +8,50 @@ This is just a guide for various modifications and dumping ground for jellyfin m
 
 ---
 
+## Add links to other shows inside of the metadata
+
+![Screenshot 2021-12-13 123925](https://user-images.githubusercontent.com/23018412/145814230-f9571084-daa0-4567-bed2-a8e315b28b2e.png)
+
+
+note this requires you to go into season 1 for a link to a single season tv series or it will infitite load or the root of the series (the page listing all seasons) for a series with multiple seasons.
+
+in the metadata just add the following but adjust the link near the bottom
+
+    <style>
+    redbutton {
+        border: 0;
+        line-height: 2.5;
+        padding: 0 20px;
+        font-size: 1rem;
+        text-align: center;
+        color: #fff;
+        text-shadow: 1px 1px 1px #000;
+        border-radius: 10px;
+        background-color: rgba(220, 0, 0, 1);
+        background-image: linear-gradient(to top left,
+                                          rgba(0, 0, 0, .2),
+                                          rgba(0, 0, 0, .2) 30%,
+                                          rgba(0, 0, 0, 0));
+        box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
+                    inset -2px -2px 3px rgba(0, 0, 0, .6);
+    }
+    
+    redbutton:hover {
+        background-color: rgba(255, 0, 0, 1);
+    }
+    redbutton:active {
+        box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
+                    inset 2px 2px 3px rgba(0, 0, 0, .6);
+    }
+    </style>
+    <redbutton>
+    <a href="https://YOUR.LINK.HERE.COM/INDEX.PHP" target="_blank" rel="noreferrer">LINK NAME HERE</a>
+    </redbutton>
+
+and click save, all should work if not please check the note above this code segment because that is a known bug.
+
+---
+
 ## Add picture links to metadata of a show / movie
 
 

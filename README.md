@@ -12,7 +12,9 @@ This is just a guide for various modifications and dumping ground for jellyfin m
 
 ![ezgif-1-8eb65ab839](https://user-images.githubusercontent.com/23018412/153445894-56040fe0-3561-40fb-8b0e-e2c7951cc22a.gif)
 
-this one is very hard to screenshot properly but basically it hides that music bar on the bottom of the screen when the mouse is idle (this was made to fix the issue with theme music displaying an empty bar at the bottom of the page but i like the way it hides the music bar also)
+this one is very hard to screenshot properly but basically it hides that music bar on the bottom of the screen when the mouse is idle as a bonus it also hides the overlay bug (the following is a picture of the overlay bug)
+
+![overlay](https://user-images.githubusercontent.com/23018412/153467810-38a146a3-f03a-499b-80e3-446ef9bad94e.png)
 
 to do this simply run the following in your webroot directory
 

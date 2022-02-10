@@ -8,6 +8,46 @@ This is just a guide for various modifications and dumping ground for jellyfin m
 
 ---
 
+## Auto-hide the music player bar at the bottom when mouse is idle
+
+this one is very hard to screenshot properly but basically it hides that music bar on the bottom of the screen when the mouse is idle (this was made to fix the issue with theme music displaying an empty bar at the bottom of the page)
+
+to do this simply run the following in your webroot directory
+
+`sudo nano index.html`
+
+add the following just before the final `</body>` tag
+
+```
+<script>
+let idleTimer = null;
+let idleState = false;
+
+function showFoo(time) {
+  clearTimeout(idleTimer);
+  if (idleState == true) {
+    document.getElementsByClassName("appfooter")[0].style.visibility = "visible";
+  }
+  idleState = false;
+  idleTimer = setTimeout(function() {
+    document.getElementsByClassName("appfooter")[0].style.visibility = "hidden";
+    idleState = true;
+  }, time);
+}
+
+showFoo(2000);
+
+$(window).mousemove(function(){
+    showFoo(2000);
+});
+</script>
+
+```
+
+save it with `ctrl+x` and confirm with y and enter then you can clear the cache on your client device and boom auto hide on mouse idle for the appfooter (music player bar) and it auto comes back when you move the mouse when you need it.
+
+---
+
 ## Add links to other shows inside of the metadata
 
 ![Screenshot 2021-12-13 123925](https://user-images.githubusercontent.com/23018412/145814230-f9571084-daa0-4567-bed2-a8e315b28b2e.png)

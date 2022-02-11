@@ -98,9 +98,7 @@ and click save, all should work if not please check the note above this code seg
 
 ## Add picture links to metadata of a show / movie
 
-
-![Screenshot 2021-12-12 222412](https://user-images.githubusercontent.com/23018412/145731974-f684e3ad-5eec-4f12-ba69-127bb9d08d9c.png)
-![Screenshot 2021-12-12 222438](https://user-images.githubusercontent.com/23018412/145731972-931950bc-d0e8-4888-a666-9dc0f55450d7.png)
+![screen](https://user-images.githubusercontent.com/23018412/153666157-07623158-9c3d-4bdf-a446-0cbf07860c48.png)
 
 to do this simply click edit meta data and add the following *change the url to your own as needed* you can also modify the first image url to a static page link for a series or tv show if you want also.
 

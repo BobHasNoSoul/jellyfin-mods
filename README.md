@@ -126,15 +126,15 @@ on a side note this is very very similar to what i attempted to do with extrafan
 
 ---
 
-## Force Theme Music for all users (10.7.x)
+## Force Theme Music for all users (10.8.x)
 
-Modify this string in your main.Xxxxxxxxxx.bundle.js to default it to tick (forcing most users default.. unless disabled by them)
+Modify this string in your main.jellyfin.bundle.js to default it to tick (forcing most users default.. unless disabled by them)
 
     enableThemeSongs:function(){return w}
 
 Change it to
 
-    enableThemeSongs:function(){return x}
+    enableThemeSongs:function(){return _}
 
 Save and clear cache reload on clients
 
@@ -144,15 +144,15 @@ Pro tip: use the theme songs plugin to grab many theme songs for tv shows in one
 
 ---
 
-## Force backdrops for all users (10.7.x)
+## Force backdrops for all users (10.8.x)
 
-Modify this string in your main.Xxxxxxxxxx.bundle.js to default it to tick (forcing most users default.. unless disabled by them)
+Modify this string in your main.jellyfin.bundle.js to default it to tick (forcing most users default.. unless disabled by them)
 
-    enableBackdrops:function(){return _}
+    enableBackdrops:function(){return P}
 
 Change it to
 
-    enableBackdrops:function(){return x}
+    enableBackdrops:function(){return _}
 
 Save and clear cache reload on clients
 

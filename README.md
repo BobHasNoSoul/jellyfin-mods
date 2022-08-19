@@ -126,15 +126,15 @@ on a side note this is very very similar to what i attempted to do with extrafan
 
 ---
 
-## Force Theme Music for all users (10.7.x)
+## Force Theme Music for all users (10.8.x)
 
-Modify this string in your main.Xxxxxxxxxx.bundle.js to default it to tick (forcing most users default.. unless disabled by them)
+Modify this string in your main.jellyfin.bundle.js to default it to tick (forcing most users default.. unless disabled by them)
 
     enableThemeSongs:function(){return w}
 
 Change it to
 
-    enableThemeSongs:function(){return x}
+    enableThemeSongs:function(){return _}
 
 Save and clear cache reload on clients
 
@@ -144,15 +144,15 @@ Pro tip: use the theme songs plugin to grab many theme songs for tv shows in one
 
 ---
 
-## Force backdrops for all users (10.7.x)
+## Force backdrops for all users (10.8.x)
 
-Modify this string in your main.Xxxxxxxxxx.bundle.js to default it to tick (forcing most users default.. unless disabled by them)
+Modify this string in your main.jellyfin.bundle.js to default it to tick (forcing most users default.. unless disabled by them)
 
-    enableBackdrops:function(){return _}
+    enableBackdrops:function(){return P}
 
 Change it to
 
-    enableBackdrops:function(){return x}
+    enableBackdrops:function(){return _}
 
 Save and clear cache reload on clients
 
@@ -332,23 +332,22 @@ replace it with this (replace the obvious part inside the string too)
 
 ## Add custom link to side bar
 
-![](https://camo.githubusercontent.com/ffd52556715cd72021af339118fe1bb3466b7686c3d75bd473c694d0ff1228a3/68747470733a2f2f692e696d6775722e636f6d2f74386d316f79362e706e67)
+Find the file config.json in your webroot. In the section "menuLinks" change it to the following and change the properties to suit your needs (icons are from [Material Design Icons](https://jossef.github.io/material-design-icons-iconfont/)).
 
-open your jellyfin web root (/usr/share/jellyfin/web) and modify main.XXXXXXXXXXXXXXXX.bundle.js replace the Xs.. with your own unique id
+	"menuLinks": [
+    {
+        "name": "Custom Link",
+        "url": "https://jellyfin.org"
+    },
+    {
+        "name": "Custom Link w. Custom Icon",
+        "icon": "attach_money",
+        "url": "https://demo.jellyfin.org/stable"
+    }
+	],
 
-find the string:
+If you only want one link, make sure to remove the comma after the closing bracket (}). If you want to add more links, add a comma for every entry except the last one.
 
-    +m.ZP.translate("Home")+"</span></a>",
-
-replace it with:
-
-    +m.ZP.translate("Home")+"</span></a>", n+='<a is="emby-linkbutton" class="navMenuOption lnkMediaFolder" href="http://YOUROMBIHERE.COM"><i class="md-icon navMenuOptionIcon"><img src="https://i.ibb.co/zhc7zKV/ombi10.png"></i><span class="navMenuOptionText">'+m.ZP.translate("Requests")+"</span></a>",
-
-want more links just keep adding these to the end of the string:
-
-     n+='<a is="emby-linkbutton" class="navMenuOption lnkMediaFolder" href="http://YOURLINK.COM"><i class="md-icon navMenuOptionIcon"><img src="https://ICONIMAGE.COM"></i><span class="navMenuOptionText">'+m.ZP.translate("LINKNAME")+"</span></a>",
-     
-     
 ---
 
 ## Seasonal Animations

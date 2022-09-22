@@ -233,7 +233,7 @@ this one was just a quick javascript and some files for backgrounds that will le
 
 ![logosidebar](https://camo.githubusercontent.com/ffd52556715cd72021af339118fe1bb3466b7686c3d75bd473c694d0ff1228a3/68747470733a2f2f692e696d6775722e636f6d2f74386d316f79362e706e67)
 
-This one is failry simmilar to adding a custom side bar link so edit main.xxxxxxxxxx.bundle.js
+This one is failry simmilar to adding a custom side bar link so edit main.jellyfin.bundle.js
 
 find this string:
 
@@ -241,7 +241,7 @@ find this string:
 
 replace it with the following (replace the img src for a different url or image if you wish by default it will grab the logowhite.png from the web root which will need to be added by the user, any full form url will also work instead of "/web/logowhite.png"):
 
-    <div style="height:.5em;"></div>',n+='<img src="/web/logowhite.png" width=250px style="padding: 5px;display:block; margin-left: auto; margin-right: auto;">',
+    <div style="height:.5em;"></div>',t+='<img src="/web/logowhite.png" width=250px style="padding: 5px;display:block; margin-left: auto; margin-right: auto;">',
 
 
 

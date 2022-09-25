@@ -6,6 +6,34 @@ This is just a guide for various modifications and dumping ground for jellyfin m
 
 #### Please note this is if you do not want or are unable to compile the web client yourself.. there are better ways of doing these mods but if you insist here is the way to run at it. (not preaching its your server after all :D )
 
+## Table of Contents
+
+- [jellyfin-mods](#jellyfin-mods)
+  * [Auto-hide the music player bar at the bottom when mouse is idle](#auto-hide-the-music-player-bar-at-the-bottom-when-mouse-is-idle)
+  * [Add links to other shows inside of the metadata](#add-links-to-other-shows-inside-of-the-metadata)
+  * [Add picture links to metadata of a show / movie](#add-picture-links-to-metadata-of-a-show--movie)
+  * [Force Theme Music for all users (10.8.x)](#force-theme-music-for-all-users-108x)
+  * [Force backdrops for all users (10.8.x)](#force-backdrops-for-all-users-108x)
+  * [Change splash logo](#change-splash-logo)
+  * [Change font to whatever you want](#change-font-to-whatever-you-want)
+  * [Login Background that changes every 10 seconds and reload](#login-background-that-changes-every-10-seconds-and-reload)
+  * [Adding logo to sidebar](#adding-logo-to-sidebar)
+  * [Adding your logo at the top of the login page](#adding-your-logo-at-the-top-of-the-login-page)
+  * [add a link to get more avatars on the profile page](#add-a-link-to-get-more-avatars-on-the-profile-page)
+  * [Trailers tab to Requests tab](#trailers-tab-to-requests-tab)
+  * [Add custom link to side bar](#add-custom-link-to-side-bar)
+  * [Seasonal Animations](#seasonal-animations)
+  * [Hide Scrollbar in older microsoft edge (xbox clients)](#hide-scrollbar-in-older-microsoft-edge-xbox-clients)
+  * [Pan and tilt the backdrops with fades in and out](#pan-and-tilt-the-backdrops-with-fades-in-and-out)
+  * [Default every users page size](#default-every-users-page-size)
+  * [Change the Title of Jellyfin in the browser tab](#change-the-title-of-jellyfin-in-the-browser-tab)
+- [Adding a footer to jellyfin](#adding-a-footer-to-jellyfin)
+- [changing live tv movies from portrait cards to landscape](#changing-live-tv-movies-from-portrait-cards-to-landscape)
+  * [NGINX Serviceworker.js fix](#fix-the-serviceworkerjs-so-it-does-not-throw-errors-and-plays-nice-in-nginx)
+    + [CSS Modifications](#css-modifications)
+  * [my custom css](#my-custom-css-jellyflix-with-a-set-of-my-own-modifications-tweaks-added)
+- [Some Extra tools to be used with Jellyfin](#some-extra-tools-to-be-used-with-jellyfin)
+
 ---
 
 ## Auto-hide the music player bar at the bottom when mouse is idle

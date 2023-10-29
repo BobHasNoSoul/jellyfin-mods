@@ -9,6 +9,7 @@ This is just a guide for various modifications and dumping ground for jellyfin m
 ## Table of Contents
 
 - [jellyfin-mods](#jellyfin-mods)
+  * [Featured Content Bar](https://github.com/BobHasNoSoul/jellyfin-featured/)
   * [Auto-hide the music player bar at the bottom when mouse is idle](#auto-hide-the-music-player-bar-at-the-bottom-when-mouse-is-idle)
   * [Add links to other shows inside of the metadata](#add-links-to-other-shows-inside-of-the-metadata)
   * [Add picture links to metadata of a show / movie](#add-picture-links-to-metadata-of-a-show--movie)
@@ -33,6 +34,13 @@ This is just a guide for various modifications and dumping ground for jellyfin m
     + [CSS Modifications](#css-modifications)
   * [my custom css](#my-custom-css-jellyflix-with-a-set-of-my-own-modifications-tweaks-added)
 - [Some Extra tools to be used with Jellyfin](#some-extra-tools-to-be-used-with-jellyfin)
+
+---
+## Featured Content Bar 10.8.XX
+
+[2023-10-29 12-00-53-1.webm](https://github.com/BobHasNoSoul/jellyfin-featured/assets/23018412/b41b28e3-5cf4-4c3a-a702-8eab59e10358)
+
+This allows the user to add custom featured content to be pinned to the homepage please see [the seperate repo for this for more details](https://github.com/BobHasNoSoul/jellyfin-featured/) 
 
 ---
 

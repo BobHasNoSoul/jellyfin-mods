@@ -38,11 +38,10 @@ This is just a guide for various modifications and dumping ground for jellyfin m
 ---
 ## Featured Content Bar 10.8.XX
 
-[2023-10-29 12-00-53-1.webm](https://github.com/BobHasNoSoul/jellyfin-featured/assets/23018412/b41b28e3-5cf4-4c3a-a702-8eab59e10358)
+![Screenshot 2023-11-08 171638](https://github.com/BobHasNoSoul/jellyfin-featured/assets/23018412/c0765ae0-1eaa-4126-8963-792697d13a68)
+![Screenshot 2023-11-08 171524](https://github.com/BobHasNoSoul/jellyfin-featured/assets/23018412/c8865f2b-1a91-4c38-ad49-ce3e768395bb)
+![Screenshot 2023-11-08 171453](https://github.com/BobHasNoSoul/jellyfin-featured/assets/23018412/d44b5c3c-7c2f-469f-a1ba-bc433f27633d)
 
-![Screenshot 2023-10-29 at 22-05-39 Jellyfin](https://github.com/BobHasNoSoul/jellyfin-featured/assets/23018412/6589502e-b85c-4d53-9c9e-881072401c35)
-
-![Screenshot 2023-10-29 at 22-04-33 Jellyfin](https://github.com/BobHasNoSoul/jellyfin-featured/assets/23018412/94c112a9-4da5-4667-8f82-a304b03c0365)
 
 
 This allows the user to add custom featured content to be pinned to the homepage please see [the seperate repo for this for more details](https://github.com/BobHasNoSoul/jellyfin-featured/) 

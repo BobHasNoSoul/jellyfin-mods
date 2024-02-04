@@ -40,7 +40,7 @@ This is just a guide for various modifications and dumping ground for jellyfin m
 ## Change the title ##
 to be clear this is the title that appears in browser tabs from jellyfin to your own unique name like "myawesome server"
 
-go to your webroot for jellyfin `/usr/share/jellyfin/web/` and then run 'sudo nano main.jellyfin.bundle.js' press ctrl+w and paste the following and hit enter `document.title="Jellyfin"` now edit the part that says Jellyfin to something else so for example 'document.title="myawesome server"' then save it by using ctrl+x and y when it asks you to overwrite the original file.
+go to your webroot for jellyfin `/usr/share/jellyfin/web/` and then run `sudo nano main.jellyfin.bundle.js` press ctrl+w and paste the following and hit enter `document.title="Jellyfin"` now edit the part that says Jellyfin to something else so for example `document.title="myawesome server"` then save it by using ctrl+x and y when it asks you to overwrite the original file.
 
 ## Featured Content Bar 10.8.XX
 

@@ -9,7 +9,7 @@ This is just a guide for various modifications and dumping ground for jellyfin m
 ## Table of Contents
 
 - [jellyfin-mods](#jellyfin-mods)
-  * Change title of the page
+  * [Change title of the page](https://github.com/BobHasNoSoul/jellyfin-mods/blob/main/README.md#change-the-title)
   * [Featured Content Bar](https://github.com/BobHasNoSoul/jellyfin-featured/)
   * [Auto-hide the music player bar at the bottom when mouse is idle](#auto-hide-the-music-player-bar-at-the-bottom-when-mouse-is-idle)
   * [Add links to other shows inside of the metadata](#add-links-to-other-shows-inside-of-the-metadata)

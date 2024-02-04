@@ -9,6 +9,7 @@ This is just a guide for various modifications and dumping ground for jellyfin m
 ## Table of Contents
 
 - [jellyfin-mods](#jellyfin-mods)
+  * Change title of the page
   * [Featured Content Bar](https://github.com/BobHasNoSoul/jellyfin-featured/)
   * [Auto-hide the music player bar at the bottom when mouse is idle](#auto-hide-the-music-player-bar-at-the-bottom-when-mouse-is-idle)
   * [Add links to other shows inside of the metadata](#add-links-to-other-shows-inside-of-the-metadata)
@@ -36,6 +37,11 @@ This is just a guide for various modifications and dumping ground for jellyfin m
 - [Some Extra tools to be used with Jellyfin](#some-extra-tools-to-be-used-with-jellyfin)
 
 ---
+## Change the title ##
+to be clear this is the title that appears in browser tabs from jellyfin to your own unique name like "myawesome server"
+
+go to your webroot for jellyfin `/usr/share/jellyfin/web/` and then run 'sudo nano main.jellyfin.bundle.js' press ctrl+w and paste the following and hit enter 'document.title="Jellyfin"' now edit the part that says Jellyfin to something else so for example 'document.title="myawesome server"' then save it by using ctrl+x and y when it asks you to overwrite the original file.
+
 ## Featured Content Bar 10.8.XX
 
 ![Screenshot 2023-11-08 171638](https://github.com/BobHasNoSoul/jellyfin-featured/assets/23018412/c0765ae0-1eaa-4126-8963-792697d13a68)

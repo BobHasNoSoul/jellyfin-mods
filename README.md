@@ -345,31 +345,6 @@ now directly after this string paste the following (but ammend for your own logo
 
 ---
 
-## add a link to get more avatars on the profile page 
-(this is great to host your own avatars but needs the user to manually download them :/ here is a full guide for a selfhosted pack https://github.com/BobHasNoSoul/jellyfin-avatars but the one bellow is for litterally any other host you want to use)
-
-![Capture](https://user-images.githubusercontent.com/23018412/115957171-d65a0300-a4f8-11eb-8a8a-698e4620ea6d.PNG)
-
-i have mine opening a new tab on a host with loads of avatars from many different services, psn, xbl, netflix and a few others
-
-![Capture](https://user-images.githubusercontent.com/23018412/115976186-3eddca00-a563-11eb-8597-81341924c750.PNG)
-
-open the file user-profile-index-html.xxxxxxxxxxxxxxxxxxxxx.bundle.js (xs are placeholders) from your jellyfin web root (/usr/share/jellyfin/web) then
-
-replace the following string
-
-    <span>${DeleteImage}</span> </button>
-
-with the following string obviously replace the capitalised link that clearly is just a placeholder all of mine are selfhosted so a link to me would be worthless
-
-    <span>${DeleteImage}</span> </button> <button is="emby-buttoon" type="button" class="raised" id="btnMoreImages">><STYLE>A {text-decoration: none; color: #def3fb} </STYLE><span>${<a href="https://YOURLINKTOAVATARS.COM" target="_blank">More Images</a>}</span></button>
-
-save and reload the profile page
-
-
-
----
-
 ## Trailers tab to Requests tab
 
 ![Capture](https://user-images.githubusercontent.com/23018412/115976129-c5de7280-a562-11eb-9a07-62338388aa9c.PNG)

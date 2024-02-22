@@ -9,6 +9,7 @@ This is just a guide for various modifications and dumping ground for jellyfin m
 ## Table of Contents
 
 - [jellyfin-mods](#jellyfin-mods)
+  * [Avatars for users](https://github.com/BobHasNoSoul/jellyfin-avatars)
   * [Change title of the page](https://github.com/BobHasNoSoul/jellyfin-mods/blob/main/README.md#change-the-title)
   * [Featured Content Bar](https://github.com/BobHasNoSoul/jellyfin-featured/)
   * [Auto-hide the music player bar at the bottom when mouse is idle](#auto-hide-the-music-player-bar-at-the-bottom-when-mouse-is-idle)
@@ -37,6 +38,33 @@ This is just a guide for various modifications and dumping ground for jellyfin m
 - [Some Extra tools to be used with Jellyfin](#some-extra-tools-to-be-used-with-jellyfin)
 
 ---
+## Avatars library for your users ##
+
+Updated for 10.8.x
+
+![screencapture-blueboxofdoom-uk-web-avatars-pop-pop-html-2024-02-22-17_15_21](https://github.com/BobHasNoSoul/jellyfin-mods/assets/23018412/b62a4881-634c-4c42-9a47-ffe4eb0a69a7)
+
+![screencapture-blueboxofdoom-uk-web-avatars-Steam-gallery-html-2024-02-22-17_16_00](https://github.com/BobHasNoSoul/jellyfin-mods/assets/23018412/703b7a00-7884-4c84-82c6-b9946ae71c11)
+
+![screencapture-blueboxofdoom-uk-web-avatars-360-360-html-2024-02-22-17_18_58](https://github.com/BobHasNoSoul/jellyfin-mods/assets/23018412/7c483249-2d51-4eb9-9857-08a82a9df69b)
+
+![screencapture-blueboxofdoom-uk-web-avatars-nf-nf-html-2024-02-22-17_20_00](https://github.com/BobHasNoSoul/jellyfin-mods/assets/23018412/49dca657-cf1b-4c67-8c9f-2ecce64985a6)
+
+![screencapture-blueboxofdoom-uk-web-avatars-one-one-html-2024-02-22-17_20_40](https://github.com/BobHasNoSoul/jellyfin-mods/assets/23018412/2da96360-73f8-4774-8fd5-d14f5c3c1def)
+
+![screencapture-blueboxofdoom-uk-web-avatars-playstation-playstation-html-2024-02-22-17_21_07](https://github.com/BobHasNoSoul/jellyfin-mods/assets/23018412/cc71e8ca-18c7-4fd0-b618-92ca2f261606)
+
+![screencapture-blueboxofdoom-uk-web-avatars-playstation-playstation-html-2024-02-22-17_21_07](https://github.com/BobHasNoSoul/jellyfin-mods/assets/23018412/0510732b-debc-4c70-92ee-28ac498fc052)
+
+![screencapture-blueboxofdoom-uk-web-avatars-ps2-index-html-2024-02-22-17_22_02](https://github.com/BobHasNoSoul/jellyfin-mods/assets/23018412/c0c3f357-1aa2-4b7f-b6d5-9d7089c8b4e0)
+
+![306088109-e641792f-f408-4834-a5b1-c77d5e9a17d4](https://github.com/BobHasNoSoul/jellyfin-mods/assets/23018412/e6d54434-6262-4aaa-83d9-80af6b3b415f)
+
+![306088112-339d0f5b-ca10-4a47-9fce-baf6345cf465](https://github.com/BobHasNoSoul/jellyfin-mods/assets/23018412/fa81553a-9bd5-4655-aaaf-81bbcb25b302)
+
+
+For full instructions please visit the repo for it https://github.com/BobHasNoSoul/jellyfin-avatars but effectivly this adds a button next to the user profile image that links straight to a avatars library that works with a simple click to download them so your user can upload them and use them on the server
+
 ## Change the title ##
 to be clear this is the title that appears in browser tabs from jellyfin to your own unique name like "myawesome server"
 

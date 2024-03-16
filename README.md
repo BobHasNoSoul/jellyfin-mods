@@ -43,7 +43,7 @@ This is just a guide for various modifications and dumping ground for jellyfin m
 
 An updated take on jellyfin fanart background but less clunky and has a more configurable approach made by Intrinsically-Sublime
 
-you can find the repo including full instructions https://github.com/Intrinsically-Sublime/jellyfin-login-background/tree/main]
+you can find the repo including full instructions https://github.com/Intrinsically-Sublime/jellyfin-login-background/tree/main
 
 Picture to come later when i get some free time
 

@@ -38,6 +38,15 @@ This is just a guide for various modifications and dumping ground for jellyfin m
 - [Some Extra tools to be used with Jellyfin](#some-extra-tools-to-be-used-with-jellyfin)
 
 ---
+## login background
+
+An updated take on jellyfin fanart background but less clunky and has a more configurable approach made by Intrinsically-Sublime
+
+you can find the repo including full instructions [https://github.com/Intrinsically-Sublime/jellyfin-login-background/tree/main](here on Intrinsically-Sublime's Repo)
+
+Picture to come later when i get some free time
+
+---
 ## Avatars library for your users ##
 
 Updated for 10.8.x

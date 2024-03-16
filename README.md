@@ -9,6 +9,7 @@ This is just a guide for various modifications and dumping ground for jellyfin m
 ## Table of Contents
 
 - [jellyfin-mods](#jellyfin-mods)
+  * [Login Background](https://github.com/BobHasNoSoul/jellyfin-mods/blob/main/README.md#login-background)
   * [Avatars for users](https://github.com/BobHasNoSoul/jellyfin-avatars)
   * [Change title of the page](https://github.com/BobHasNoSoul/jellyfin-mods/blob/main/README.md#change-the-title)
   * [Featured Content Bar](https://github.com/BobHasNoSoul/jellyfin-featured/)

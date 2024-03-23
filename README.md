@@ -508,7 +508,7 @@ This is a fairly simple mod, all you have to do is edit the main.xxxxxxxxxx.bund
 
 Change the text from Jellyfin to whatever you want, Then open up index.html in the same folder and find `<title>Jellyfin</title>` and change that as well.
 
-## Change the password reset processs for use with jfa-go email password reseting
+## Change the password reset process for use with jfa-go email password reseting
 
 This should be used in combination with some other service (such as [jfa-go](https://github.com/hrfee/jfa-go)) which will manage the password reseting for you.
 The default flow of jellyfin is to give you a message that a pin has been saved in a file, then clicking the button leads to the pin reset screen. Depending on how you want to manage password resets, you may not even want the user to get here.

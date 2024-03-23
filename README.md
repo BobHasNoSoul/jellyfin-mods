@@ -31,6 +31,7 @@ This is just a guide for various modifications and dumping ground for jellyfin m
   * [Pan and tilt the backdrops with fades in and out](#pan-and-tilt-the-backdrops-with-fades-in-and-out)
   * [Default every users page size](#default-every-users-page-size)
   * [Change the Title of Jellyfin in the browser tab](#change-the-title-of-jellyfin-in-the-browser-tab)
+  * [Change the password reset processs for use with jfa-go email password reseting](#change-the-password-reset-process-for-use-with-jfa-go-email-password-reseting)
 - [Adding a footer to jellyfin](#adding-a-footer-to-jellyfin)
 - [changing live tv movies from portrait cards to landscape](#changing-live-tv-movies-from-portrait-cards-to-landscape)
   * [NGINX Serviceworker.js fix](#fix-the-serviceworkerjs-so-it-does-not-throw-errors-and-plays-nice-in-nginx)
@@ -506,6 +507,45 @@ This is a fairly simple mod, all you have to do is edit the main.xxxxxxxxxx.bund
 `document.title="Jellyfin"` and `document.title=e||"Jellyfin"}`
 
 Change the text from Jellyfin to whatever you want, Then open up index.html in the same folder and find `<title>Jellyfin</title>` and change that as well.
+
+## Change the password reset process for use with jfa-go email password reseting
+
+This should be used in combination with some other service (such as [jfa-go](https://github.com/hrfee/jfa-go)) which will manage the password reseting for you.
+The default flow of jellyfin is to give you a message that a pin has been saved in a file, then clicking the button leads to the pin reset screen. Depending on how you want to manage password resets, you may not even want the user to get here.
+
+Go to your web root for jellyfin /usr/share/jellyfin/web/ and use nano (or your own text editor) to edit the session-forgotPassword.xxxxxxxxxxxxxx.chunk.js file
+press ctrl+w and find the string
+
+     if("PinCode"==e.Action){var t=a.ZP.translate("MessageForgotPasswordFileCreated");
+
+Change
+
+    var t=a.ZP.translate("MessageForgotPasswordFileCreated");
+
+To
+
+    var t="";
+
+Change
+
+    t+="<br/>",t+="Enter PIN here to finish Password Reset<br/>",t+="<br/>",t+=e.PinFile,t+="<br/>",
+
+To
+
+    t+="<br/>",t+="An email has been sent with a link to reset your password<br/>",
+Removing: `,t+="<br/>",t+=e.PinFile,t+="<br/>",` entirely
+
+
+
+If you want to make the button on the message take you back to the login page instead of going to the pin page if you are setting up resets via email on jfa-go
+
+Change
+callback:function(){n.ZP.navigate("forgotpasswordpin.html")}})}}
+
+
+To
+callback:function(){history.back()}})}}
+
 
 ---
 

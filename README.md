@@ -25,6 +25,7 @@ This is just a guide for various modifications and dumping ground for jellyfin m
   * [Adding your logo at the top of the login page](#adding-your-logo-at-the-top-of-the-login-page)
   * [add a link to get more avatars on the profile page](#add-a-link-to-get-more-avatars-on-the-profile-page)
   * [Trailers tab to Requests tab](#trailers-tab-to-requests-tab)
+  * [Upcoming tab to Requests tab](#upcoming-tab-to-requests-tab)
   * [Add custom link to side bar](#add-custom-link-to-side-bar)
   * [Seasonal Animations](#seasonal-animations)
   * [Hide Scrollbar in older microsoft edge (xbox clients)](#hide-scrollbar-in-older-microsoft-edge-xbox-clients)
@@ -371,6 +372,38 @@ find the string
 replace it with this (replace the obvious part inside the string too)	
 
     <div class="pageTabContent" id="trailersTab" data-index="2"> <div> <iframe src="https://REPLACEME.COM" width="100%" height="850px"></iframe> </div> </div> 
+
+
+
+---
+
+## Upcoming tab to Requests tab
+
+This is basically the same mod as replacing the trailers tab above, but for replacing the upcoming tab in tv show libraries
+
+the first file
+
+    sudo nano shows-tvrecommended.xxxxxxxxxxxxxx.chunk.js
+
+find the string
+
+    {name:h.ZP.translate("Upcoming")}
+
+replace it with
+
+    {name:h.ZP.translate("Requests")}
+	
+the second file (a little bit more complex)
+
+    sudo nano shows-tvrecommended-html.xxxxxxxxxxxxxxxxxx.chunk.js
+
+find the string
+
+    <div class="pageTabContent" id="upcomingTab" data-index="2"> <div id="upcomingItems"> </div> <div class="noItemsMessage centerMessage" style="display:none"> <h1>${MessageNothingHere}</h1> <p>${MessagePleaseEnsureInternetMetadata}</p> </div> </div> 
+	
+replace it with this (replace the obvious part inside the string too)	
+
+    <div class="pageTabContent" id="upcomingTab" data-index="2"> <div id="upcomingItems"> </div> <div class="noItemsMessage" style="display:none"></div> <iframe src="https://REPLACEME.COM" width="100%" height="820px"></iframe></div>
 
 
 

@@ -1,5 +1,7 @@
 # jellyfin-mods
 
+## Update: if you are looking for updated 10.9.x mods https://github.com/BobHasNoSoul/jellyfin-mods/blob/main/10.9.x.md has them until i can port more over, this should be by the end of this weekend or by next weekends end.
+
 If you are having issues with finding the web root you may need to see the [help.md](https://github.com/BobHasNoSoul/jellyfin-mods/blob/main/help.md) to find help with your particular deployment (yes this includes docker)
 
 This is just a guide for various modifications and dumping ground for jellyfin mods i have been kicking around so i dont have to make a new jftool for every platform and revision when they change one single thing that can break it for those that cant or dont want to recompile (yes recompiling would be the way forward but it is not for everyone)

@@ -1,0 +1,319 @@
+/*admin dash fix stops the pannels going too far right*/
+.dashboardSection {
+  width: 75vw;
+}
+
+/*Custom login page of awesome*/
+#loginPage {
+
+  background-image: url('/Branding/Splashscreen?format=jpg&foregroundLayer=20.0');
+  background-position: top left;
+  /*background-size: cover;*/
+  background-size: 200%;
+  background-attachment: fixed;
+  animation: backgroundAnimation 150s infinite alternate;
+  z-index: 2;
+}
+
+@keyframes backgroundAnimation {
+  0% {
+    background-position: top left;
+  }
+  25% {
+    background-position: bottom right;
+  }
+  50% {
+    background-position: bottom left;
+  }
+  100% {
+    background-position: top left;
+  }
+}
+
+.skinHeader.semiTransparent.noHeaderRight {
+  background: transparent !important;
+}
+
+div#loginPage {
+  margin-top: 0 !important;
+  overflow: hidden scroll;
+}
+
+#loginPage h1::after {
+  content: "Sign In";
+  font-size: 32px;
+}
+
+#loginPage h1 {
+  font-weight: 700;
+  font-size: 0;
+  margin-bottom: 21.44px;
+  margin-top: 32px !important;
+  text-align: left;
+}
+
+.inputContainer {
+  margin-bottom: 1.8em;
+  margin-top: 1.8em;
+}
+
+#loginPage .padded-left.padded-right.padded-bottom-page {
+    background: #000000bf;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    margin: 21px;
+    position: absolute;
+    border-radius: 10px;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    padding: 3em !important;
+}
+
+#loginPage .readOnlyContent {
+  padding: 0 !important;
+  width: 100% !important;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.manualLoginForm {
+  height: 100%;
+  width: 100%;
+}
+
+#loginPage .inputContainer {
+  background: #333;
+  border-radius: var(--rounding);
+  height: 4em;
+  position: relative;
+}
+
+#loginPage .inputLabel.inputLabelFocused,
+#loginPage .inputLabel:not(.inputLabel-float) {
+  font-size: 0.8em;
+  left: 4%;
+  top: 4%;
+  transform: none;
+}
+
+.visualLoginForm {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+#divUsers {
+  flex-flow: revert;
+  overflow: scroll visible;
+  justify-content: flex-start;
+}
+
+#loginPage .emby-input {
+  height: 100%;
+  border: none;
+  background: transparent !important;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  box-shadow: none !important;
+  padding: 4% !important;
+  font-size: 1.1em;
+  border: none !important;
+}
+
+#loginPage .inputLabel {
+  position: absolute;
+  top: 50%;
+  left: 4%;
+  transform: translateY(-50%);
+  font-size: 1.5em;
+  font-weight: 300;
+  transition: 0.2s ease;
+  color: #8c8c8c;
+}
+
+#loginPage .inputContainer:focus,
+#loginPage .inputContainer:focus-within {
+  background: #454545;
+}
+
+
+/*featured iframe border fix*/
+.featurediframe {color: rgba(6, 6, 6, 0) !important;}
+
+/*custom logo in header*/
+/*.pageTitleWithDefaultLogo {    background-image: url(URLLOGOHERE) !important;}*/
+
+/*Splash logo change*/
+/*.splashLogo{background-image:url(URLFORLOGOHERE) !important;}*/
+
+/*increased admin logos*/
+div.sessionNowPlayingInfo img {max-height: 100% !important; max-width: 100% !important; height: 70% !important;}
+
+/*fix the admin dashboard being so shit*/
+.dashboardSection { width: 80vw !important;}
+
+/*fix mobile featurediframe*/
+@media only screen and (max-device-width: 767px) {.featurediframe {height: 16vh !important;}}
+
+
+/*The following is from https://github.com/alexyle/jellyfin-theme/tree/main/glassmorphism using only the parts for the item details page so thank you alexyle for your contribution*/
+
+
+.layout-desktop .detailLogo {
+  left: 5%;
+  background-position: top left;
+}
+
+.layout-desktop .itemBackdrop {
+  background-attachment: scroll;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 80vw;
+  position: relative;
+  right: -20%;
+}
+
+.layout-desktop .itemBackdrop:after {
+  background: url("https://raw.githubusercontent.com/alexyle/jellyfin-theme/main/glassmorphism/mask.png");
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.layout-desktop .detailPageWrapperContainer {
+  margin-top: -65vh;
+  /* inicial: 73 */
+}
+
+.layout-desktop .detailImageContainer .card,
+.layout-desktop .itemTags{
+  display: none;
+}
+
+.layout-desktop .detailPagePrimaryContainer,
+.layout-desktop .detailPageContent {
+  padding-left: 5%;
+}
+
+.layout-desktop .detailPagePrimaryContent {
+  width: 45%;
+}
+
+.layout-desktop .detailPagePrimaryContainer {
+  display: inline-table;
+  z-index: 2;
+  left: 5%;
+}
+
+.layout-desktop .detailPageSecondaryContainer {
+  margin: 0 0 1.25em 0;
+}
+
+.layout-desktop .itemDetailsGroup {
+  margin-top: 0;
+}
+
+.layout-desktop a.overview-expand.emby-button {
+  margin: none;
+  padding: none;
+}
+
+
+.layout-desktop .itemName.originalTitle {
+  display: none;
+}
+
+.layout-desktop .itemName,
+.layout-mobile .itemName {
+  font-weight: normal;
+}
+
+/* buttons section styles */
+
+.layout-desktop .mainDetailButtons {
+  margin-top: 1.5em;
+}
+
+.layout-desktop .btnPlay {
+  /*border: 2px solid #cecece;*/
+  border-radius: 2em;
+  /*width: 7vw;*/
+  background-color: #0000003d;
+  backdrop-filter: blur(var(--blur));
+  -webkit-backdrop-filter: blur(var(--blur));
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  /*padding: 0.4em!important;*/
+  /*margin-right: 30%!important;*/
+}
+
+.layout-desktop .btnPlay:hover {
+  background-color: #00a5dc28;
+  transform: scale(1.05) translateX(5px);
+}
+
+.layout-desktop .btnPlay::after {
+  content: attr(title);
+  margin: 0 10px 0 2px;
+  color: white;
+}
+
+.layout-desktop .material-icons.detailButton-icon.play_arrow {
+  color: white;
+
+}
+
+.layout-desktop .btnPlay.detailButton {
+  flex-direction: row;
+}
+
+
+
+/*  season section  */
+.layout-desktop .vertical-list {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.layout-desktop .listItem-withContentWrapper {
+  align-items: flex-start;
+  flex-direction: column;
+  width: 32%;
+}
+
+.layout-desktop .listItem-content {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.layout-desktop .listItemImage-large {
+  height: 16vw;
+  width: 100%;
+}
+
+.detailRibbon {
+  background: transparent;
+}
+
+.noBackdropTransparency .detailPageSecondaryContainer {
+  background-color: transparent;
+}
+
+/*fix the background issue that pops up when you have a backdrop and a long page*/
+.detailRibbon {
+  background: transparent;
+}
+
+.noBackdropTransparency .detailPageSecondaryContainer {
+  background-color: transparent;
+}

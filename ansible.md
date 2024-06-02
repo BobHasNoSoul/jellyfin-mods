@@ -19,7 +19,7 @@ if you'd like to contribute playbooks for other environments. That said, most of
 - A remote machine to run the playbook from. I believe there are ways to run Ansible locally but as far as I know the intent is to run it remotely and thus I have written the files with this in mind.
 - [SSH keys](https://www.freecodecamp.org/news/the-ultimate-guide-to-ssh-setting-up-ssh-keys/) from remote to host machine.
 - Ansible Core or Ansible Full ([install instructions](https://docs.ansible.com/ansible/latest/installation_guide/installation_distros.html)) on the remote machine.
-- An Ansible [`inventory` file](https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html) for the second bullet point. This file should contain the IP or hostname of your remote machine and be placed in the same directory as your `jellyfin-mods.yaml` file for ease of use.
+- An Ansible [`inventory` file](https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html) for the remote machine. This file should contain the IP or hostname of your host machine and be placed in the same directory as your `jellyfin-mods.yaml` file for ease of use.
 
 
 # Recommended directory structure

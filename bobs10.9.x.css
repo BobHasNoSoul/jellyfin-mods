@@ -1,3 +1,36 @@
+/*Featured Iframe fix for padding*/
+.featurediframe {margin-top: 1vh;}
+
+/*ItemDetails logo fix for title text*/
+#itemDetailPage .itemName.infoText.parentNameLast > bdi:nth-child(1) {
+    display: none;
+}
+
+.hide+.detailPageWrapperContainer .itemName > bdi:nth-child(1) {
+    display: block !important;
+}
+
+#itemDetailPage .parentName > bdi:nth-child(1) {
+    display: none;
+}
+
+.hide+.parentName > bdi:nth-child(1) {
+    display: block !important;
+}
+
+/*.itemName > bdi:nth-child(1) {display:none !important}*/
+/*.parentName > bdi:nth-child(1) {display:none !important}*/
+
+/*fix logo on the itemspages*/
+.itemName {
+  padding-top: 24vh;
+}
+
+.detailLogo {
+  height: 26vh !important;
+  width: 45vw !important;
+}
+
 /*admin dash fix stops the pannels going too far right*/
 .dashboardSection {
   width: 75vw;
@@ -147,12 +180,12 @@ div#loginPage {
 /*featured iframe border fix*/
 .featurediframe {color: rgba(6, 6, 6, 0) !important;}
 
-/*custom logo in header*/
-/*.pageTitleWithDefaultLogo {    background-image: url(URLLOGOHERE) !important;}*/
-
-/*Splash logo change*/
-/*.splashLogo{background-image:url(URLFORLOGOHERE) !important;}*/
-
+/*custom logo in header
+.pageTitleWithDefaultLogo {    background-image: url(https://www.blueboxofdoom.uk/filebrowser/api/public/dl/kXAiVZpC?inline=true) !important;}
+*/
+/*Splash logo change
+.splashLogo{background-image:url(https://www.blueboxofdoom.uk/filebrowser/api/public/dl/kXAiVZpC?inline=true) !important;}
+*/
 /*increased admin logos*/
 div.sessionNowPlayingInfo img {max-height: 100% !important; max-width: 100% !important; height: 70% !important;}
 
@@ -161,10 +194,6 @@ div.sessionNowPlayingInfo img {max-height: 100% !important; max-width: 100% !imp
 
 /*fix mobile featurediframe*/
 @media only screen and (max-device-width: 767px) {.featurediframe {height: 16vh !important;}}
-
-
-/*The following is from https://github.com/alexyle/jellyfin-theme/tree/main/glassmorphism using only the parts for the item details page so thank you alexyle for your contribution*/
-
 
 .layout-desktop .detailLogo {
   left: 5%;
@@ -222,6 +251,18 @@ div.sessionNowPlayingInfo img {max-height: 100% !important; max-width: 100% !imp
   margin-top: 0;
 }
 
+.itemDetailsGroup {
+  margin-top: 0;
+}
+a.overview-expand.emby-button {
+  margin: none;
+  padding: none;
+}
+
+
+.itemName.originalTitle {
+  display: none;
+}
 .layout-desktop a.overview-expand.emby-button {
   margin: none;
   padding: none;
@@ -308,12 +349,8 @@ div.sessionNowPlayingInfo img {max-height: 100% !important; max-width: 100% !imp
 .noBackdropTransparency .detailPageSecondaryContainer {
   background-color: transparent;
 }
-
-/*fix the background issue that pops up when you have a backdrop and a long page*/
-.detailRibbon {
-  background: transparent;
-}
-
-.noBackdropTransparency .detailPageSecondaryContainer {
-  background-color: transparent;
+/*netflix font*/
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+html, body, h1, h2, h2, h4, h5 {
+	font-family: "Montserrat", sans-serif;
 }

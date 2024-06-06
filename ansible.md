@@ -8,6 +8,7 @@ to the `jellyfin-web` directory.
 
 ## ⚠️ IMPORTANT
 
+- In this guide, I will refer to **"remote machine"** and **"host machine"** a lot. To clarify what this means, the remote machine is the one you will run Ansible from, the host machine is the one which has your Jellyfin instance installed on it.
 - For the time being, these playbooks are designed for Jellyfin version >10.9.5 on a bare-metal Debian install. Please create pull requests
 if you'd like to contribute playbooks for other environments. That said, most of these tasks, with the exception of package updates and systemd service events should work on most Linux distros.
 - This does not include every mod (yet). Please create an issue or pull request if there's a particular one you'd like to be added.
@@ -15,7 +16,7 @@ if you'd like to contribute playbooks for other environments. That said, most of
 - These playbooks come in the form of snippets within this document and not complete YAML files. The reasoning for this is that the user should only add snippets they want, and some snippets require the user to edit certain strings in order to match their configuration. Copy the snippets one by one into your own `jellyfin-mods.yaml` file.
 
 ## Prerequisites
-- Jellyfin version >10.9.x (including `jellyfin-server`, `jellyfin-web` and `jellyfin-ffmpeg6`) on the host machine.
+- Jellyfin version >10.9.5 (including `jellyfin-server`, `jellyfin-web` and `jellyfin-ffmpeg6`) on the host machine.
 - A remote machine to run the playbook from. I believe there are ways to run Ansible locally but as far as I know the intent is to run it remotely and thus I have written the files with this in mind.
 - [SSH keys](https://www.freecodecamp.org/news/the-ultimate-guide-to-ssh-setting-up-ssh-keys/) from remote to host machine.
 - Ansible Core or Ansible Full ([install instructions](https://docs.ansible.com/ansible/latest/installation_guide/installation_distros.html)) on the remote machine.
@@ -43,7 +44,7 @@ ansible-playbook -K -i inventory jellyfin-mods.yaml
 
 `-i` specifies the inventory file which is needed to tell Ansible which machine to perform these tasks on.
 
-Ansible will now ask for the sudo password of the user on the remote machine by querying `BECOME password:`. Type it in and press enter. Then Ansible will perform each step specified in your `jellyfin-mods.yaml` file on your remote machine.
+Ansible will now ask for the sudo password of the user on the host machine by querying `BECOME password:`. Type it in and press enter. Then Ansible will perform each step specified in your `jellyfin-mods.yaml` file on the host machine.
 I recommend linting and checking your files first. You can do this by issuing these commands:
 ```sh
 ansible-lint jellyfin-mods.yaml
@@ -73,7 +74,7 @@ This ansible playbook requires certain global parameters to be set before we can
 
   tasks:
 ```
-You must edit the `remote_user: jane` section, replacing `jane` with the username on your remote machine you intend to run the playbook as. This user must have `sudo` access as the files we intend to edit are owned by root. The rest can be left as is.
+You must edit the `remote_user: jane` section, replacing `jane` with the username on your host machine you intend to run the playbook as. This user must have `sudo` access as the files we intend to edit are owned by root. The rest can be left as is.
 
 ## Update Jellyfin packages with Aptitude
 
@@ -356,8 +357,8 @@ For this, create a new file in your playbook directory called `restore-jf-web.ya
       become: true
 ```
 
-Again, change the user [as outlined here](#start-of-file) to a sudo user on the remote machine.
-Alternatively, just run the following on the remote machine:
+Again, change the user [as outlined here](#start-of-file) to a sudo user on the host machine.
+Alternatively, just run the following in the host machine's shell:
 
 ```sh
 sudo apt --reinstall install jellyfin-web

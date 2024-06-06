@@ -8,7 +8,7 @@ to the `jellyfin-web` directory.
 
 ## ⚠️ IMPORTANT
 
-- For the time being, these playbooks are designed for Jellyfin version >10.9.x on a bare-metal Debian install. Please create pull requests
+- For the time being, these playbooks are designed for Jellyfin version >10.9.5 on a bare-metal Debian install. Please create pull requests
 if you'd like to contribute playbooks for other environments. That said, most of these tasks, with the exception of package updates and systemd service events should work on most Linux distros.
 - This does not include every mod (yet). Please create an issue or pull request if there's a particular one you'd like to be added.
 - Do not rely on this to work forever, the Jellyfin team often make mod-breaking changes across versions (especially major versions). Running these playbooks in this case may cause Jellyfin or parts of it to stop working, in which case there is a playbook at the bottom of this document which you can run to reinstall the `jellyfin-web` package, which should restore all the modified files to their original state.
@@ -207,7 +207,7 @@ If you have set up [this section](#copy-directory-with-custom-branding-assets-to
 ```yaml
     - name: Adding banner to sidebar...
       ansible.builtin.replace:
-        path: /usr/share/jellyfin/web/73233.bce0f70761dae6c47906.chunk.js
+        path: /usr/share/jellyfin/web/73233.4d2a29454aacb263d3bf.chunk.js
         regexp: >-
           <div style="height:\.5em;"><\/div>
         replace: >-
@@ -272,14 +272,14 @@ In this snippet you need to change every instance of `CHANGEME` to whatever you 
 ```yaml
     - name: Changing page title (step 1/6)...
       ansible.builtin.replace:
-        path: /usr/share/jellyfin/web/73233.bce0f70761dae6c47906.chunk.js
+        path: /usr/share/jellyfin/web/73233.4d2a29454aacb263d3bf.chunk.js
         regexp: 'document\.title="Jellyfin"'
         replace: 'document.title="CHANGEME"'
       become: true
 
     - name: Changing page title (step 2/6)...
       ansible.builtin.replace:
-        path: /usr/share/jellyfin/web/73233.bce0f70761dae6c47906.chunk.js
+        path: /usr/share/jellyfin/web/73233.4d2a29454aacb263d3bf.chunk.js
         regexp: 'document\.title=e\|\|"Jellyfin"'
         replace: 'document.title=e||"CHANGEME"'
       become: true

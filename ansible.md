@@ -201,6 +201,20 @@ Enables image backdrops in Jellyfin by default for all users.
       become: true
 ```
 
+
+## Disable Next Episode info for all users
+
+Useful if you have [intro-skipper](https://github.com/jumoog/intro-skipper) enabled with the "Skip Credits" button.
+
+```yaml
+    - name: Disabling Next Episode info for all users...
+      ansible.builtin.replace:
+        path: /usr/share/jellyfin/web/main.jellyfin.bundle.js
+        regexp: 'enableNextVideoInfoOverlay:function\(\){return I}'
+        replace: "enableNextVideoInfoOverlay:function(){return _}"
+      become: true
+```
+
 ## Add banner image to the Jellyfin sidebar
 
 If you have set up [this section](#copy-directory-with-custom-branding-assets-to-jellyfin-web-in-order-to-change-logo-icons-and-images) correctly, or if you want to use the stock Jellyfin logo you do not need to edit anything in this snippet. Otherwise, replace the URL in `img src="/web/assets/img/banner-light.png"` with the URL to a different image.

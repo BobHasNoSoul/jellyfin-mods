@@ -222,7 +222,7 @@ If you have set up [this section](#copy-directory-with-custom-branding-assets-to
 ```yaml
     - name: Adding banner to sidebar...
       ansible.builtin.replace:
-        path: /usr/share/jellyfin/web/73233.4d2a29454aacb263d3bf.chunk.js
+        path: /usr/share/jellyfin/web/73233.87c77dce22de92e7c77a.chunk.js
         regexp: >-
           <div style="height:\.5em;"><\/div>
         replace: >-
@@ -287,14 +287,14 @@ In this snippet you need to change every instance of `CHANGEME` to whatever you 
 ```yaml
     - name: Changing page title (step 1/6)...
       ansible.builtin.replace:
-        path: /usr/share/jellyfin/web/73233.4d2a29454aacb263d3bf.chunk.js
+        path: /usr/share/jellyfin/web/73233.87c77dce22de92e7c77a.chunk.js
         regexp: 'document\.title="Jellyfin"'
         replace: 'document.title="CHANGEME"'
       become: true
 
     - name: Changing page title (step 2/6)...
       ansible.builtin.replace:
-        path: /usr/share/jellyfin/web/73233.4d2a29454aacb263d3bf.chunk.js
+        path: /usr/share/jellyfin/web/73233.87c77dce22de92e7c77a.chunk.js
         regexp: 'document\.title=e\|\|"Jellyfin"'
         replace: 'document.title=e||"CHANGEME"'
       become: true

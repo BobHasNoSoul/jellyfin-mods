@@ -9,7 +9,7 @@ to the `jellyfin-web` directory.
 ## ⚠️ IMPORTANT
 
 - In this guide, I will refer to **"remote machine"** and **"host machine"** a lot. To clarify what this means, the remote machine is the one you will run Ansible from, the host machine is the one which has your Jellyfin instance installed on it.
-- For the time being, these playbooks are designed for Jellyfin version >10.9.5 on a bare-metal Debian install. Please create pull requests
+- For the time being, these playbooks are designed for Jellyfin version >10.9.9 on a bare-metal Debian install. Please create pull requests
 if you'd like to contribute playbooks for other environments. That said, most of these tasks, with the exception of package updates and systemd service events should work on most Linux distros.
 - This does not include every mod (yet). Please create an issue or pull request if there's a particular one you'd like to be added.
 - Do not rely on this to work forever, the Jellyfin team often make mod-breaking changes across versions (especially major versions). Running these playbooks in this case may cause Jellyfin or parts of it to stop working, in which case there is a playbook at the bottom of this document which you can run to reinstall the `jellyfin-web` package, which should restore all the modified files to their original state.
@@ -196,8 +196,8 @@ Enables image backdrops in Jellyfin by default for all users.
     - name: Enabling backdrops for all users...
       ansible.builtin.replace:
         path: /usr/share/jellyfin/web/main.jellyfin.bundle.js
-        regexp: 'enableBackdrops:function\(\){return _}'
-        replace: "enableBackdrops:function(){return P}"
+        regexp: 'enableBackdrops:function\(\){return L}'
+        replace: "enableBackdrops:function(){return _}"
       become: true
 ```
 

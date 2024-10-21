@@ -1,8 +1,8 @@
 # jellyfin-mods
 
-If you are having issues with finding the web root, you may need to see the [help.md](https://github.com/BobHasNoSoul/jellyfin-mods/blob/main/help.md) to find help with your particular deployment.
-
 These mods are working and tested on **Jellyfin 10.9.x** (mods for older versions can be found here: https://github.com/BobHasNoSoul/jellyfin-mods/blob/main/10.8.x.md) More will be added when I get the chance, or if you want please feel free to submit a pull request with your own mods to add to the collection. 
+
+If you are having issues with finding the web root, you may need to see the [help.md](https://github.com/BobHasNoSoul/jellyfin-mods/blob/main/help.md) to find help with your particular deployment.
 
 #### Please note this method of Jellyfin modding is intended for those who do not want or are unable to compile the web client yourself... There are better ways of doing these mods, but if you insist, this is the way to do it. (Not preaching, it's your server after all :D )
 
@@ -49,7 +49,7 @@ This mod takes the title text away when an item has a valid logo loaded, thus no
 
 ---
 
-## Custom login page that looks similar to Netflix with a custom background and styling (Ignore the custom logo, that's a mod further down.)
+## Custom login page that looks similar to Netflix with a custom background and styling (Ignore the custom logo, that's a mod further down)
 
 <img width="960" alt="Screenshot 2024-05-18 193326" src="https://github.com/BobHasNoSoul/jellyfin-mods/assets/23018412/7d69fb07-1b08-4c0b-9050-e0334dcdb55a">
 
@@ -341,7 +341,7 @@ In 'main.jellyfin.bundle.js' simply search for `enableBackdrops:function(){retur
 Save the file and reload the cache on your clients to see your changes.
 
 
-*** If you cannot find it (because of regex in search like in nano) try searching for `enableBackdrops:function` this should give you the ability to find the string above ***
+*** If you cannot find it (because of regex in search like in nano) try searching for `enableBackdrops:function`. This should give you the ability to find the string above ***
 
 ---
 

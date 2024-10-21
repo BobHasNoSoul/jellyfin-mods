@@ -744,7 +744,7 @@ These are some extremely helpful tools that can be used with Jellyfin to increas
 ## Jfa-Go
 This is a Jellyfin account management tool that can be used to generate links to invite people to your Jellyfin server and allow them to create their own username and passsword. It's written in Go and can be installed on most OS's. You can get it here: https://github.com/hrfee/jfa-go
 ## Jellyseerr
-A free and open source software application for managing requests for your media library. After adding a custom link in the side bar, when your friends or family want to request media, they can request it using Jellyseerr, which also integrates with Radarr, Sonarr, any other relevant services. You can get it here: https://github.com/Fallenbagel/jellyseerr
+A free and open source software application for managing requests for your media library. After adding a custom link in the side bar, when your friends or family want to request media, they can request it using Jellyseerr, which also integrates with Radarr, Sonarr, and other relevant services. You can get it here: https://github.com/Fallenbagel/jellyseerr
 ## Ombi
 A legacy alternative to Jellyseerr, Ombi is a media requesting service that can be used with Jellyfin. You can get it here: https://github.com/Ombi-app/Ombi
 ## ErsatzTV

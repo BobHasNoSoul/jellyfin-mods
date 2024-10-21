@@ -1,262 +1,371 @@
 # jellyfin-mods
 
-## Update: if you are looking for updated 10.9.x mods https://github.com/BobHasNoSoul/jellyfin-mods/blob/main/10.9.x.md has them until i can port more over, this should be by the end of this weekend or by next weekends end.
+If you are having issues with finding the web root, you may need to see the [help.md](https://github.com/BobHasNoSoul/jellyfin-mods/blob/main/help.md) to find help with your particular deployment.
 
-If you are having issues with finding the web root you may need to see the [help.md](https://github.com/BobHasNoSoul/jellyfin-mods/blob/main/help.md) to find help with your particular deployment (yes this includes docker)
+These mods are working and tested on **Jellyfin 10.9.x** (mods for older versions can be found here: https://github.com/BobHasNoSoul/jellyfin-mods/blob/main/10.8.x.md) More will be added when I get the chance, or if you want please feel free to submit a pull request with your own mods to add to the collection. 
 
-This is just a guide for various modifications and dumping ground for jellyfin mods i have been kicking around so i dont have to make a new jftool for every platform and revision when they change one single thing that can break it for those that cant or dont want to recompile (yes recompiling would be the way forward but it is not for everyone)
-
-#### Please note this is if you do not want or are unable to compile the web client yourself.. there are better ways of doing these mods but if you insist here is the way to run at it. (not preaching its your server after all :D )
+#### Please note this method of Jellyfin modding is intended for those who do not want or are unable to compile the web client yourself... There are better ways of doing these mods, but if you insist, this is the way to do it. (Not preaching, it's your server after all :D )
 
 ## Table of Contents
-
 - [jellyfin-mods](#jellyfin-mods)
-  * [Login Background](https://github.com/BobHasNoSoul/jellyfin-mods/blob/main/README.md#login-background)
-  * [Avatars for users](https://github.com/BobHasNoSoul/jellyfin-avatars)
-  * [Change title of the page](https://github.com/BobHasNoSoul/jellyfin-mods/blob/main/README.md#change-the-title)
-  * [Featured Content Bar](https://github.com/BobHasNoSoul/jellyfin-featured/)
-  * [Auto-hide the music player bar at the bottom when mouse is idle](#auto-hide-the-music-player-bar-at-the-bottom-when-mouse-is-idle)
-  * [Add links to other shows inside of the metadata](#add-links-to-other-shows-inside-of-the-metadata)
-  * [Add picture links to metadata of a show / movie](#add-picture-links-to-metadata-of-a-show--movie)
-  * [Force Theme Music for all users (10.8.x)](#force-theme-music-for-all-users-108x)
-  * [Force backdrops for all users (10.8.x)](#force-backdrops-for-all-users-108x)
-  * [Change splash logo](#change-splash-logo)
-  * [Change font to whatever you want](#change-font-to-whatever-you-want)
-  * [Login Background that changes every 10 seconds and reload](#login-background-that-changes-every-10-seconds-and-reload)
-  * [Adding logo to sidebar](#adding-logo-to-sidebar)
-  * [Adding your logo at the top of the login page](#adding-your-logo-at-the-top-of-the-login-page)
-  * [add a link to get more avatars on the profile page](#add-a-link-to-get-more-avatars-on-the-profile-page)
-  * [Trailers tab to Requests tab](#trailers-tab-to-requests-tab)
-  * [Upcoming tab to Requests tab](#upcoming-tab-to-requests-tab)
-  * [Add custom link to side bar](#add-custom-link-to-side-bar)
-  * [Seasonal Animations](#seasonal-animations)
-  * [Hide Scrollbar in older microsoft edge (xbox clients)](#hide-scrollbar-in-older-microsoft-edge-xbox-clients)
-  * [Pan and tilt the backdrops with fades in and out](#pan-and-tilt-the-backdrops-with-fades-in-and-out)
-  * [Default every users page size](#default-every-users-page-size)
-  * [Change the Title of Jellyfin in the browser tab](#change-the-title-of-jellyfin-in-the-browser-tab)
-  * [Change the password reset processs for use with jfa-go email password reseting](#change-the-password-reset-process-for-use-with-jfa-go-email-password-reseting)
-- [Adding a footer to jellyfin](#adding-a-footer-to-jellyfin)
-- [changing live tv movies from portrait cards to landscape](#changing-live-tv-movies-from-portrait-cards-to-landscape)
-  * [NGINX Serviceworker.js fix](#fix-the-serviceworkerjs-so-it-does-not-throw-errors-and-plays-nice-in-nginx)
-    + [CSS Modifications](#css-modifications)
-  * [my custom css](#my-custom-css-jellyflix-with-a-set-of-my-own-modifications-tweaks-added)
-- [Some Extra tools to be used with Jellyfin](#some-extra-tools-to-be-used-with-jellyfin)
+  - [Use the media item's logo and hide plain text title when present](#use-the-item-logo-and-hide-plain-text-title-when-present)
+  - [Custom login page that looks similar to Netflix](#custom-login-page-that-looks-similar-to-netflix-with-a-custom-background-and-styling-ignore-the-custom-logo-thats-a-mod-further-down)
+  - [Avatar library for your users](#avatar-library-for-your-users)
+  - [Change the title of the page](#change-the-title-of-the-page)
+  - [Change the default iOS/Android "app" title and description](#change-the-default-iosandroid-app-title-and-description)
+  - [Featured Content Bar](#featured-content-bar)
+  - [Force backdrops for all users](#force-backdrops-for-all-users)
+  - [Force theme music for all users](#force-theme-music-for-all-users)
+  - [Change font to whatever you want](#change-font-to-whatever-you-want)
+  - [Set limit on how long items should be in the next up section](#set-limit-on-how-long-items-should-be-in-the-next-up-section)
+  - [Add a custom logo at the top of the login page](#add-a-custom-logo-at-the-top-of-the-login-page)
+  - [Add a custom link button under login page](#add-a-custom-link-button-under-login-page)
+  - [Add a custom logo to side bar](#add-a-custom-logo-to-side-bar)
+  - [Add a custom link to side bar](#add-a-custom-link-to-side-bar)
+  - [Add requests tab](#add-requests-tab)
+  - [Hide scrollbar on older Microsoft edge (Xbox clients)](#hide-scrollbar-on-older-microsoft-edge-xbox-clients)
+  - [Pan and tilt the backdrops with fades in and out](#pan-and-tilt-the-backdrops-with-fades-in-and-out)
+  - [Default user page size](#default-user-page-size)
+  - [Change the favicon](#change-the-favicon)
+  - [CSS mods](#css-mods)
+  - [Seasonal themes](#omg-seasonal-themes-are-back)
+- [Bugfixes / Workarounds](#bugfixes--workarounds)
+- [Some extra tools to be used with Jellyfin](#some-extra-tools-to-be-used-with-jellyfin)
 
 ---
-## login background
 
-An updated take on jellyfin fanart background but less clunky and has a more configurable approach made by Intrinsically-Sublime
+## Use the media item's logo and hide plain text title when present
 
-you can find the repo including full instructions https://github.com/Intrinsically-Sublime/jellyfin-login-background/tree/main
+This mod takes the title text away when an item has a valid logo loaded, thus not showing you the logo of "Game of Thrones" for example, and then also saying "Game of Thrones" in plain text underneath... This is a small mod that is applied in the "Custom CSS Code" area in the General tab of your Jellyfin admin panel. Simply copy and paste the following:
 
-Picture to come later when i get some free time
+````
+/*If the logo is present on the details page of an item, hide the items' title*/
+#itemDetailPage .itemName.infoText.parentNameLast > bdi:nth-child(1) {display: none;}
+.hide+.detailPageWrapperContainer .itemName > bdi:nth-child(1) {display: block !important;}
+/*Do the same for the single episodes link back title*/
+#itemDetailPage .parentName > bdi:nth-child(1) {display: none;}
+.hide+.parentName > bdi:nth-child(1) {display: block !important;}
+````
 
 ---
-## Avatars library for your users ##
 
-Updated for 10.8.x
+## Custom login page that looks similar to Netflix with a custom background and styling (Ignore the custom logo, that's a mod further down.)
+
+<img width="960" alt="Screenshot 2024-05-18 193326" src="https://github.com/BobHasNoSoul/jellyfin-mods/assets/23018412/7d69fb07-1b08-4c0b-9050-e0334dcdb55a">
+
+In your admin panel, under General, check 'Enable the splash screen' and click save. Then add the following to the custom CSS, click save again, then reload your login page.
+
+````
+/*Custom login page of awesome*/
+
+#loginPage {
+
+  background-image: url('/Branding/Splashscreen?format=jpg&foregroundLayer=20.0');
+  background-position: top left;
+  background-size: 200%;
+  background-attachment: fixed;
+  animation: backgroundAnimation 150s infinite alternate;
+  z-index: 2;
+}
+
+@keyframes backgroundAnimation {
+  0% {
+    background-position: top left;
+  }
+  25% {
+    background-position: bottom right;
+  }
+  50% {
+    background-position: bottom left;
+  }
+  100% {
+    background-position: top left;
+  }
+}
+
+.skinHeader.semiTransparent.noHeaderRight {
+  background: transparent !important;
+}
+
+div#loginPage {
+  margin-top: 0 !important;
+  overflow: hidden scroll;
+}
+
+#loginPage h1::after {
+  content: "Sign In";
+  font-size: 32px;
+}
+
+#loginPage h1 {
+  font-weight: 700;
+  font-size: 0;
+  margin-bottom: 21.44px;
+  margin-top: 32px !important;
+  text-align: left;
+}
+
+.inputContainer {
+  margin-bottom: 1.8em;
+  margin-top: 1.8em;
+}
+
+#loginPage .padded-left.padded-right.padded-bottom-page {
+    background: #000000bf;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    margin: 21px;
+    position: absolute;
+    border-radius: 10px;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    padding: 3em !important;
+}
+
+#loginPage .readOnlyContent {
+  padding: 0 !important;
+  width: 100% !important;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.manualLoginForm {
+  height: 100%;
+  width: 100%;
+}
+
+#loginPage .inputContainer {
+  background: #333;
+  border-radius: var(--rounding);
+  height: 4em;
+  position: relative;
+}
+
+#loginPage .inputLabel.inputLabelFocused,
+#loginPage .inputLabel:not(.inputLabel-float) {
+  font-size: 0.8em;
+  left: 4%;
+  top: 4%;
+  transform: none;
+}
+
+.visualLoginForm {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+#divUsers {
+  flex-flow: revert;
+  overflow: scroll visible;
+  justify-content: flex-start;
+}
+
+#loginPage .emby-input {
+  height: 100%;
+  border: none;
+  background: transparent !important;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  box-shadow: none !important;
+  padding: 4% !important;
+  font-size: 1.1em;
+  border: none !important;
+}
+
+#loginPage .inputLabel {
+  position: absolute;
+  top: 50%;
+  left: 4%;
+  transform: translateY(-50%);
+  font-size: 1.5em;
+  font-weight: 300;
+  transition: 0.2s ease;
+  color: #8c8c8c;
+}
+
+#loginPage .inputContainer:focus,
+#loginPage .inputContainer:focus-within {
+  background: #454545;
+}
+````
+
+---
+
+## Avatar library for your users
 
 ![306088109-e641792f-f408-4834-a5b1-c77d5e9a17d4](https://github.com/BobHasNoSoul/jellyfin-mods/assets/23018412/e6d54434-6262-4aaa-83d9-80af6b3b415f)
 
 ![306088112-339d0f5b-ca10-4a47-9fce-baf6345cf465](https://github.com/BobHasNoSoul/jellyfin-mods/assets/23018412/fa81553a-9bd5-4655-aaaf-81bbcb25b302)
 
+For full instructions, please visit the dedicated repo at: https://github.com/BobHasNoSoul/jellyfin-avatars
 
-For full instructions please visit the repo for it https://github.com/BobHasNoSoul/jellyfin-avatars but effectivly this adds a button next to the user profile image that links straight to a avatars library that works with a simple click to download them so your user can upload them and use them on the server
+Effectively, this adds a button next to the user profile image that links straight to an avatar library that works with a simple click to download images, enabling your users to upload them and use them on the server.
 
-## Change the title ##
-to be clear this is the title that appears in browser tabs from jellyfin to your own unique name like "myawesome server"
+## Change the title of the page
+To be clear, this mod changes the title that appears in browser tabs from "Jellyfin" to your own unique name like "My Awesome Server" or in the example code "YOUR TITLE HERE". You can use either method.
 
-go to your webroot for jellyfin `/usr/share/jellyfin/web/` and then run `sudo nano main.jellyfin.bundle.js` press ctrl+w and paste the following and hit enter `document.title="Jellyfin"` now edit the part that says Jellyfin to something else so for example `document.title="myawesome server"` then save it by using ctrl+x and y when it asks you to overwrite the original file.
+#### Method 1
+Go to your web root and run `sudo nano index.html` 
 
-## Featured Content Bar 10.8.XX
+Then, inside the <body> tags, add the following: 
 
-![Screenshot 2023-11-08 171638](https://github.com/BobHasNoSoul/jellyfin-featured/assets/23018412/c0765ae0-1eaa-4126-8963-792697d13a68)
-![Screenshot 2023-11-08 171524](https://github.com/BobHasNoSoul/jellyfin-featured/assets/23018412/c8865f2b-1a91-4c38-ad49-ce3e768395bb)
-![Screenshot 2023-11-08 171453](https://github.com/BobHasNoSoul/jellyfin-featured/assets/23018412/d44b5c3c-7c2f-469f-a1ba-bc433f27633d)
+```
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Change the document title to "YOUR TITLE HERE"
+            document.title = "YOUR TITLE HERE";
 
+            // Create a MutationObserver to prevent any changes to the title
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'childList') {
+                        if (document.title !== "YOUR TITLE HERE") {
+                            document.title = "YOUR TITLE HERE";
+                        }
+                    }
+                });
+            });
 
+            // Observe the document title for changes
+            observer.observe(document.querySelector('title'), { childList: true });
 
-This allows the user to add custom featured content to be pinned to the homepage please see [the seperate repo for this for more details](https://github.com/BobHasNoSoul/jellyfin-featured/) 
+            // Set up a fallback in case of attempts to change the title through direct assignment
+            Object.defineProperty(document, 'title', {
+                set: function() {
+                    return "YOUR TITLE HERE";
+                },
+                get: function() {
+                    return "YOUR TITLE HERE";
+                }
+            });
+        });
+    </script>
 
-it allows users to use a specific accounts favorites to gain content up there or custom lists that are user defined to throw them up via crontab 
+```
+Obviously change the "YOUR TITLE HERE" parts to your personal custom title you want the server to have.
+
+Save the file and reload the cache on your clients to see your changes.
+
+#### Method 2 (The old way)
+
+Go to your web root and create a new file called `title.sh` and inside that file add the following:
+
+````
+grep -rl 'document\.title="Jellyfin"' . | while read -r file; do
+    sed -i 's/document\.title="Jellyfin"/document\.title="YOUR TITLE HERE"/g' "$file"
+done
+grep -rl 'document.title=e||"Jellyfin"' . | while IFS= read -r file; do
+    sed -i 's/document.title=e||"Jellyfin"/document.title=e||"YOUR TITLE HERE"/g' "$file"
+done
+
+````
+Obviously change the "YOUR TITLE HERE" parts to your personal custom title you want the server to have.
+
+Save the file, then run `sudo chmod +x title.sh sudo ./title.sh`
+
+Reload the cache on your clients to see your changes.
 
 ---
 
-## Auto-hide the music player bar at the bottom when mouse is idle
+## Change the default iOS/Android "app" title and description
+This mod changes the title that appears when adding the site to your homescreen as a webapp from "Jellyfin" to your own unique name like "My Awesome Server" or in the example code "YOUR TITLE HERE".
 
-![ezgif-1-8eb65ab839](https://user-images.githubusercontent.com/23018412/153445894-56040fe0-3561-40fb-8b0e-e2c7951cc22a.gif)
+Go to your web root and run `grep -oP '<link[^>]*rel="manifest"[^>]*href="[^"]*"' index.html | grep -oP '(?<=href=")[^"]*'`
 
-this one is very hard to screenshot properly but basically it hides that music bar on the bottom of the screen when the mouse is idle as a bonus it also hides the overlay bug (the following is a picture of the overlay bug)
-
-![overlay](https://user-images.githubusercontent.com/23018412/153467810-38a146a3-f03a-499b-80e3-446ef9bad94e.png)
-
-to do this simply run the following in your webroot directory
-
-`sudo nano index.html`
-
-add the following just before the final `</body>` tag
+This command will output a JSON filename, copy it, then run `sudo nano <YOUR_COPIED_FILENAME.json>` to edit the file.
 
 ```
-<script>
-let idleTimer = null;
-let idleState = false;
-
-function showFoo(time) {
-  clearTimeout(idleTimer);
-  if (idleState == true) {
-    document.getElementsByClassName("appfooter")[0].style.visibility = "visible";
-  }
-  idleState = false;
-  idleTimer = setTimeout(function() {
-    document.getElementsByClassName("appfooter")[0].style.visibility = "hidden";
-    idleState = true;
-  }, time);
+{
+    "name": "YOUR TITLE HERE",
+    "description": "YOUR DESCRIPTION HERE",
+    "lang": "en-US",
+    "short_name": "YOUR TITLE HERE",
+    "start_url": "index.html#/home.html",
+    "theme_color": "#101010",
+    "background_color": "#101010",
+    "display": "standalone",
+    "icons": [
+        {
+            "sizes": "72x72",
+            "src": "touchicon72.png",
+            "type": "image/png"
+        },
+        {
+            "sizes": "114x114",
+            "src": "touchicon114.png",
+            "type": "image/png"
+        },
+        {
+            "sizes": "144x144",
+            "src": "touchicon144.png",
+            "type": "image/png"
+        },
+        {
+            "sizes": "512x512",
+            "src": "touchicon512.png",
+            "type": "image/png"
+        }
+    ]
 }
-
-showFoo(2000);
-
-$(window).mousemove(function(){
-    showFoo(2000);
-});
-</script>
-
 ```
+Obviously change the "YOUR TITLE HERE" and "YOUR DESCRIPTION HERE" parts to your personal custom title/description you want the homescreen shortcut to have, but leave everything else as is.
 
-save it with `ctrl+x` and confirm with y and enter then you can clear the cache on your client device and boom auto hide on mouse idle for the appfooter (music player bar) and it auto comes back when you move the mouse when you need it.
-
----
-
-## Add links to other shows inside of the metadata
-
-![Screenshot 2021-12-13 123925](https://user-images.githubusercontent.com/23018412/145814230-f9571084-daa0-4567-bed2-a8e315b28b2e.png)
-
-
-note this requires you to go into season 1 for a link to a single season tv series or it will infitite load or the root of the series (the page listing all seasons) for a series with multiple seasons.
-
-in the metadata just add the following but adjust the link near the bottom
-
-    <style>
-    redbutton {
-        border: 0;
-        line-height: 2.5;
-        padding: 0 20px;
-        font-size: 1rem;
-        text-align: center;
-        color: #fff;
-        text-shadow: 1px 1px 1px #000;
-        border-radius: 10px;
-        background-color: rgba(220, 0, 0, 1);
-        background-image: linear-gradient(to top left,
-                                          rgba(0, 0, 0, .2),
-                                          rgba(0, 0, 0, .2) 30%,
-                                          rgba(0, 0, 0, 0));
-        box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
-                    inset -2px -2px 3px rgba(0, 0, 0, .6);
-    }
-    
-    redbutton:hover {
-        background-color: rgba(255, 0, 0, 1);
-    }
-    redbutton:active {
-        box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
-                    inset 2px 2px 3px rgba(0, 0, 0, .6);
-    }
-    </style>
-    <redbutton>
-    <a href="https://YOUR.LINK.HERE.COM/INDEX.PHP" target="_blank" rel="noreferrer">LINK NAME HERE</a>
-    </redbutton>
-
-and click save, all should work if not please check the note above this code segment because that is a known bug.
+Save the file and reload the cache on your clients to see your changes.
 
 ---
 
-## Add picture links to metadata of a show / movie
+## Featured Content Bar
 
-![screen](https://user-images.githubusercontent.com/23018412/153666157-07623158-9c3d-4bdf-a446-0cbf07860c48.png)
+<img width="212" alt="Screenshot 2024-05-18 200753" src="https://github.com/BobHasNoSoul/jellyfin-mods/assets/23018412/d3351fc8-ed95-477c-8bbe-655a0d61d078">
 
-to do this simply click edit meta data and add the following *change the url to your own as needed* you can also modify the first image url to a static page link for a series or tv show if you want also.
+<img width="950" alt="Screenshot 2024-05-18 200934" src="https://github.com/BobHasNoSoul/jellyfin-mods/assets/23018412/0e0f5b14-30a4-4325-b732-29f6be9308e9">
 
-    <style>
-    metimage {
-    height: 300px;
-    padding-bottom: 500px;
-    padding-left: 16vw; /*adjust as needed to center or off center what ever you like*/
-    padding-top: 50vh;
-    overflow: hidden;
-    }
-    metimage img {
-    transition: transform .5s ease;
-    }
-    metimage:hover img {
-    transform: scale(1.3);
-    }</style>
-    <br><br>
-    <metimage><a href="https://URL.COM/IMAGE.jpg" target="_blank"><img src="https://URL.COM/IMAGE.jpg" width=200vw"></a></metimage>
-    <br><br><br>
+This allows the user to add custom featured content to be pinned to the homepage. Please see [the separate repo for this](https://github.com/BobHasNoSoul/jellyfin-featured/) for more details.
 
-the br tags just add a slight spacer to expand the metadata box jellyfin creates
-
-on a side note this is very very similar to what i attempted to do with extrafanart mod back in the day.. funny how times fly.
+Allows for the use of a specific account's favorites to promote content, as well as user-defined custom lists that are looped through via crontab.
 
 ---
 
-## Force Theme Music for all users (10.8.x)
+## Force backdrops for all users
 
-Modify this string in your main.jellyfin.bundle.js to default it to tick (forcing most users default.. unless disabled by them)
+In 'main.jellyfin.bundle.js' simply search for `enableBackdrops:function(){return _}` and replace it with `enableBackdrops:function(){return E}`
 
-    enableThemeSongs:function(){return w}
+Save the file and reload the cache on your clients to see your changes.
 
-Change it to
-
-    enableThemeSongs:function(){return _}
-
-Save and clear cache reload on clients
-
-*** If you cannot find it (because of regex in search like in nano) try searching for `enableThemeSongs:function` this should give you the ability to find the string above ***
-
-Pro tip: use the theme songs plugin to grab many theme songs for tv shows in one go ( https://github.com/danieladov/jellyfin-plugin-themesongs ) or manually add a theme.mp3 at in the root of each tv show folder i.e. `/tv/breaking bad/theme.mp3` also works for movies but you will have to manuall grab them.
-
----
-
-## Force backdrops for all users (10.8.x)
-
-Modify this string in your main.jellyfin.bundle.js to default it to tick (forcing most users default.. unless disabled by them)
-
-    enableBackdrops:function(){return P}
-
-Change it to
-
-    enableBackdrops:function(){return _}
-
-Save and clear cache reload on clients
 
 *** If you cannot find it (because of regex in search like in nano) try searching for `enableBackdrops:function` this should give you the ability to find the string above ***
 
 ---
 
-## Change splash logo 
-besides changing the logo image in the web root files location (/usr/share/jellyfin/web/assets/img/ banner-light.png and icon-transparent.png) which is easy but stops them being animated you can modify index.html to add in your own image or custom gif personally i use a gif that is animated to pulse with my server "BlueBoxOfDOOM" logo
+## Force theme music for all users
 
-to do this find this string but add what ever you like in where the icon-transparent.png is i.e. if you have a gif in your web root just replace "assets/img/icon-transparent.png" with mygif.gif (this assumes that your gif is named mygif.gif) 
+In 'main.jellyfin.bundle.js' simply search for `enableThemeSongs:function(){return j}` and replace it with `enableThemeSongs:function(){return P}`
 
-    background-image: url(assets/img/icon-transparent.png);
-
-and then replace the other instance in the splashlogo that is originally this string:
-
-    background-image: url(assets/img/banner-light.png)
-    
-you can even direct it outside of your host to any other host by changing the part inside the brackets to a full form url e.g. https://media.tenor.com/images/f0e22aca6a9498ce63497ca56fb49602/tenor.gif for that cool 80s rick roll feeling or you can go more proffesional looking... i dont care, its not my server.. your the one modding and using it.
+Save the file and reload the cache on your clients to see your changes.
 
 
+*** If you cannot find it (because of regex in search like in nano) try searching for `enableThemeSongs:function`. This should give you the ability to find the string above ***
+
+Pro tip: Use the theme songs plugin to grab multiple theme songs for TV shows in one go (https://github.com/danieladov/jellyfin-plugin-themesongs), or manually add a theme .mp3 at the root of each TV show folder (i.e. `/tv/breaking bad/theme.mp3`). This mod also works for movies of course, but you will have to manually grab each theme song as the mentioned plugin does not work with movies.
 
 ---
 
 ## Change font to whatever you want
-firstly get a font pack.. there are many out there.. seriously many so take the next few mins to look for the one you like the look of and download the font pack (you can get some from https://google-webfonts-helper.herokuapp.com/fonts/ or from other sources) and unzip it into a new folder you will be making in the web root called "fonts" (your font pack should contain woff woff2 tff eot and svg files). for this example i used the ubuntu font (dont judge me). You can get the same font from here https://google-webfonts-helper.herokuapp.com/api/fonts/ubuntu-mono?download=zip&subsets=latin&variants=regular this will work out the box with the following example extract the woff etc into the following directory:
+First, get a font pack... there are many out there... so take your time looking for one you really like the look of and download it. You can get some free fonts from https://google-webfonts-helper.herokuapp.com/fonts/, but there are many other free sources. Once you've found a font, navigate to your Jellyfin web root and create a new folder called "fonts" (your font pack should contain .woff .woff2 .tff .eot and .svg files), and unzip the contents of your font archive into this folder. For this example, I used the Ubuntu font (don't judge me). You can get the same font from here https://google-webfonts-helper.herokuapp.com/api/fonts/ubuntu-mono?download=zip&subsets=latin&variants=regular
+
+Extract the contents of your font archive into following directory:
 
     /usr/share/jellyfin/web/fonts/
 
-once you have the files in there simply add the following to your css (rename them for your files in turn unless using the linked pack)
+Then, simply add the following to your custom CSS (rename them for your files in turn unless you're using the linked Ubuntu font):
 
     /* ubuntu-regular - latin */
     @font-face {
@@ -273,149 +382,85 @@ once you have the files in there simply add the following to your css (rename th
     }
     html { font-family: "Ubuntu" !important;}
 
-Easy mode copy paste commands for ubuntu font.. you can use this as a guide to do this for other fonts too if you like
+(Alternative download method) Easy mode for Ubuntu font... (You can use this as a guide to do this for other fonts too if you prefer downloading through the terminal)
 
     cd /usr/share/jellyfin/web/
     sudo mkdir fonts
     sudo wget https://google-webfonts-helper.herokuapp.com/api/fonts/ubuntu-mono?download=zip&subsets=latin&variants=regular
 
-that wget might do what looks like an error [1] [2] but just ignore that and press ctrl+c and go to the next command
+The 'wget' command might output what looks like an error [1] [2] but just ignore that and press Ctrl+C and go to the next command:
 
     sudo mv ubuntu-mono* fonts/ubuntu.zip
     sudo unzip fonts/ubuntu.zip
     
-and your font is now where it should be, just modify the css to suit different names of fonts
-
-
-
+Now your font is where it should be, just modify the CSS in the General tab of your Jellyfin admin panel to suit different names of fonts.
 
 ---
 
-## Login Background that changes every 10 seconds and reload
+## Set limit on how long items should be in the next up section
 
-(yes all images can also be changed for whatever you like or even add more or less depending on use case) here are some examples.
+The default time for this is one year (365 days).
 
-![1](https://user-images.githubusercontent.com/23018412/114848291-75cf1580-9dd6-11eb-982c-02c1829785aa.PNG)
-![2](https://user-images.githubusercontent.com/23018412/114848300-78ca0600-9dd6-11eb-8120-174a7d22f3ab.PNG)
-![3](https://user-images.githubusercontent.com/23018412/114848306-79fb3300-9dd6-11eb-8880-ecdba1b47650.PNG)
+To change this, simply go to your web root and run `sudo nano main.jellyfin.bundle.js`
 
-this one was just a quick javascript and some files for backgrounds that will let a user be more impressed by certain content you can decide to showcase for that please visit the repo i made http://git.bbod.tk/BobHasNoSoul/jellyfin-fanartbackground it explains it in full and has some screen shots and all required files to download. (including some simple copy paste commands to install it)
+Find `t("maxDaysForNextUp",e.toString(),!1);var t=parseInt(this.get("maxDaysForNextUp",!1),10);return 0===t?0:t||365}}` and replace the 365 with whatever value you want in days.
 
----
-
-## Adding logo to sidebar
-
-![logosidebar](https://camo.githubusercontent.com/ffd52556715cd72021af339118fe1bb3466b7686c3d75bd473c694d0ff1228a3/68747470733a2f2f692e696d6775722e636f6d2f74386d316f79362e706e67)
-
-This one is failry simmilar to adding a custom side bar link so edit main.jellyfin.bundle.js
-
-find this string:
-
-    <div style="height:.5em;"></div>',
-
-replace it with the following (replace the img src for a different url or image if you wish by default it will grab the logowhite.png from the web root which will need to be added by the user, any full form url will also work instead of "/web/logowhite.png"):
-
-    <div style="height:.5em;"></div>',t+='<img src="/web/logowhite.png" width=250px style="padding: 5px;display:block; margin-left: auto; margin-right: auto;">',
-
-
+Save the file and reload the cache on your clients to see your changes.
 
 ---
 
-## Adding your logo at the top of the login page
+## Add a custom logo at the top of the login page
 
-![Capture](https://user-images.githubusercontent.com/23018412/115956212-6b59fd80-a4f3-11eb-915c-324688cf10cb.PNG)
-![Capture2](https://user-images.githubusercontent.com/23018412/115956214-6dbc5780-a4f3-11eb-902c-c1068de13163.PNG)
+<img width="960" alt="Screenshot 2024-05-18 193326" src="https://github.com/BobHasNoSoul/jellyfin-mods/assets/23018412/e69aea0d-d1a3-4fb0-9e9b-31a008daa8b0">
 
-simply go to your web root for jellyfin /usr/share/jellyfin/web/ and use nano (or your own text editor) to edit the session-login-index-html.xxxxxxxxxxxxxxxxxxxxx.bundle.js file
-for nano just use 
+
+Simply go to your web root and edit the session-login-index-html.xxxxxxxxxxxxxxxxxxxxx.chunk.js file:
 
     sudo nano session-login-index-html.*.bundle.js
 
-press ctrl+w and find the string
+Press Ctrl+W and find the following string:
 
      <div class="padded-left padded-right padded-bottom-page margin-auto-y">
 
-now directly after this string paste the following (but ammend for your own logo it can even be a gif if you want animated etc)
+Now, directly after this string paste the following (but obviously amend for your own logo, it can even be a GIF if you want):
 
     <img src="/web/logo.png" width=350px style="padding: 0px;display:block; margin-left: auto; margin-right: auto;">
 
 
+---
+
+## Add a custom link button under login page
+
+![Screenshot 2024-08-17 124955](https://github.com/user-attachments/assets/726ea558-464b-4eef-bef5-7e8d0a43cf5d)
+
+In your web root run `sudo nano session-login-index-html.*.chunk.js` then use find and replace ( Ctrl+\ ) 
+
+Find `<div class="loginDisclaimer` and replace it with `<a href="https://www.example.com" class="emby-button raised block btnCUSTOMBUTTON">NEW LINK BUTTON TEST</a> <div class="loginDisclaimer` 
+
+Save the file and reload the cache on your clients to see your changes.
 
 ---
 
-## Trailers tab to Requests tab
+## Add a custom logo to side bar
 
-![Capture](https://user-images.githubusercontent.com/23018412/115976129-c5de7280-a562-11eb-9a07-62338388aa9c.PNG)
+<img width="934" alt="Screenshot 2024-05-18 194802" src="https://github.com/BobHasNoSoul/jellyfin-mods/assets/23018412/ad1be764-d76b-43e9-9f38-41f683a74e76">
 
-this replaces the broken trailers tab with a working requests tab, giving clients the ability to login to your ombi from the movie requests tab :D
+In your web root run `grep -r -l -n 'customMenuOptions' .`
 
-okay so first you need to modify two files located inside your jellyfin webroot (/usr/share/jellyfin/web/) obviously change the xs to your unique identication
+This command will output a filename, copy it, then run `sudo nano <YOUR_COPIED_FILENAME>` to edit the file.
 
-the first file
+Find `<div style="height:.5em;"></div>',n+='` and replace it with the following (obviously replace YOURLOGOURLHERE with your actual URL):
+`<div style="height:.5em;"></div>',n+='<img src="YOURLOGOURLHERE" width=250px style="padding: 5px;display:block; margin-left: auto; margin-right: auto;">`
 
-    sudo nano movies-moviesrecommended.xxxxxxxxxxx.bundle.js
-
-find the string
-
-    {name:h.ZP.translate("Trailers")}
-
-replace it with
-
-    {name:h.ZP.translate("Requests")}
-	
-the second file (a little bit more complex)
-
-    sudo nano movies-movies-html.xxxxxxxxxxxx.bundle.js
-
-find the string
-
-    <div class="pageTabContent" id="trailersTab" data-index="2"> <div class="flex align-items-center justify-content-center flex-wrap-wrap padded-top padded-left padded-right padded-bottom"> <div class="paging"></div> <button is="paper-icon-button-light" class="btnSort autoSize" title="${Sort}"><span class="material-icons sort_by_alpha"></span></button> <button is="paper-icon-button-light" class="btnFilter autoSize" title="${Filter}"><span class="material-icons filter_list"></span></button> </div> <div class="alphaPicker alphaPicker-fixed alphaPicker-fixed-right alphaPicker-vertical"> </div> <div is="emby-itemscontainer" class="itemsContainer vertical-wrap padded-left padded-right"> </div> <div class="flex align-items-center justify-content-center flex-wrap-wrap padded-top padded-left padded-right padded-bottom"> <div class="paging"></div> </div> </div> <div class="pageTabContent" id="favoritesTab" data-index="3"> <div class="flex align-items-center justify-content-center flex-wrap-wrap padded-top padded-left padded-right padded-bottom"> <div class="paging"></div> <button is="paper-icon-button-light" class="btnSelectView autoSize" title="${ButtonSelectView}"><span class="material-icons view_comfy"></span></button> </div> <div is="emby-itemscontainer" class="itemsContainer padded-left padded-right"> </div> <div class="flex align-items-center justify-content-center flex-wrap-wrap padded-top padded-left padded-right padded-bottom"> <div class="paging"></div> </div> </div> <div class="pageTabContent" id="collectionsTab" data-index="4"> <div class="flex align-items-center justify-content-center flex-wrap-wrap padded-top padded-left padded-right padded-bottom"> <div class="paging"></div> <button is="paper-icon-button-light" class="btnSelectView autoSize" title="${ButtonSelectView}"><span class="material-icons view_comfy"></span></button> <button is="paper-icon-button-light" class="btnSort autoSize" title="${Sort}"><span class="material-icons sort_by_alpha"></span></button> <button type="button" is="paper-icon-button-light" class="btnNewCollection autoSize"><span class="material-icons add"></span></button> </div> <div is="emby-itemscontainer" class="itemsContainer vertical-wrap centered padded-left padded-right" style="text-align:center"> </div> <div class="flex align-items-center justify-content-center flex-wrap-wrap padded-top padded-left padded-right padded-bottom"> <div class="paging"></div> </div> </div> 
-	
-replace it with this (replace the obvious part inside the string too)	
-
-    <div class="pageTabContent" id="trailersTab" data-index="2"> <div> <iframe src="https://REPLACEME.COM" width="100%" height="850px"></iframe> </div> </div> 
-
-
+Save the file and reload the cache on your clients to see your changes.
 
 ---
 
-## Upcoming tab to Requests tab
+## Add a custom link to side bar
 
-This is basically the same mod as replacing the trailers tab above, but for replacing the upcoming tab in tv show libraries
+Find the 'config.json' file in your web root. Change the "menuLinks" section to the following and adjust the properties to suit your needs (icons are from [Material Design Icons](https://jossef.github.io/material-design-icons-iconfont/)).
 
-the first file
-
-    sudo nano shows-tvrecommended.xxxxxxxxxxxxxx.chunk.js
-
-find the string
-
-    {name:h.ZP.translate("Upcoming")}
-
-replace it with
-
-    {name:h.ZP.translate("Requests")}
-	
-the second file (a little bit more complex)
-
-    sudo nano shows-tvrecommended-html.xxxxxxxxxxxxxxxxxx.chunk.js
-
-find the string
-
-    <div class="pageTabContent" id="upcomingTab" data-index="2"> <div id="upcomingItems"> </div> <div class="noItemsMessage centerMessage" style="display:none"> <h1>${MessageNothingHere}</h1> <p>${MessagePleaseEnsureInternetMetadata}</p> </div> </div> 
-	
-replace it with this (replace the obvious part inside the string too)	
-
-    <div class="pageTabContent" id="upcomingTab" data-index="2"> <div id="upcomingItems"> </div> <div class="noItemsMessage" style="display:none"></div> <iframe src="https://REPLACEME.COM" width="100%" height="820px"></iframe></div>
-
-
-
----
-
-## Add custom link to side bar
-
-Find the file config.json in your webroot. In the section "menuLinks" change it to the following and change the properties to suit your needs (icons are from [Material Design Icons](https://jossef.github.io/material-design-icons-iconfont/)).
-
-	"menuLinks": [
+    "menuLinks": [
     {
         "name": "Custom Link",
         "url": "https://jellyfin.org"
@@ -425,78 +470,59 @@ Find the file config.json in your webroot. In the section "menuLinks" change it 
         "icon": "attach_money",
         "url": "https://demo.jellyfin.org/stable"
     }
-	],
+    ],
 
 If you only want one link, make sure to remove the comma after the closing bracket (}). If you want to add more links, add a comma for every entry except the last one.
 
 ---
 
-## Seasonal Animations
+## Add requests tab
 
-*note the snow animation has been upgraded for a more blizzard effect*
-
-![screen](https://i.imgur.com/xDWkJkc.gif)
-
-simply run the following
-
-    cd /usr/share/jellyfin/web
-    sudo git clone http://git.bbod.tk/BobHasNoSoul/jellyfin-mods.git
-    cd jellyfin-mods
-    sudo mv seasonal ../ 
-    cd ..
-    sudo rm -r jellyfin-mods
+![image](https://github.com/user-attachments/assets/b0860546-edc0-4d42-acba-3caa095ee666)
 
 
-to manually change to each animation you can run the scripts located:
-    /usr/share/jellyfin/seasonal/add*.sh
-and to remove run the remove script
+- Before doing anything, remember to backup the files we are going to edit
+- Go to your web root and edit the `index.html` file
+- Find `</body></html>` and paste the following right before it:
+````
+<script>const createRequestTab = () => {const title = document.createElement("div");title.classList.add("emby-button-foreground");title.innerText = "Requisições";const button = document.createElement("button");button.type = "button";button.is = "empty-button";button.classList.add("emby-tab-button", "emby-button", "lastFocused");button.setAttribute("data-index", "2");button.setAttribute("id", "requestTab");button.appendChild(title);(function e() {const tabb = document.querySelector(".emby-tabs-slider");tabb ? !document.querySelector("#requestTab") && tabb.appendChild(button) : setTimeout(e, 500)})();}</script>
+````
+- Save the file with your changes. This is the script that creates the tab.
+- Now edit the `home-html.*.chunk.js` file
+- Find `data-backdroptype="movie,series,book">` and paste the following right after it:
+````
+<style>:root{--save-gut:max(env(safe-area-inset-left),3.3%)}.requestIframe{margin:0 .4em;padding:0 var(--save-gut);width:calc(100% - (.4em * 2) - (var(--save-gut) * 2));height:85vh;border:none;position:absolute;top:0}</style><script>setTimeout(() => {createRequestTab()}, 500)</script>
+````
+- This is what will make it look good and start the script that creates the tab.
+- And now, find `id="favoritesTab" data-index="1"> <div class="sections"></div> </div>` and paste the following right after it:
+````
+<div class="tabContent pageTabContent" id="requestsTab" data-index="2"> <div class="sections"><iframe class="requestIframe" src="[YOUR_REQUEST_SERVICE_HERE]"></iframe></div> </div>
+````
+- This is what will make the service open in the correct tab.
 
-
-insert these into your crontab for automated changing
-
-    ## adding seasonal themes
-    ## add snow (uncomment one of the snow effects bellow and comment the others out, by default the most snow is enabled)
-    #0 0 1 12 * /usr/share/jellyfin/web/seasonal/addsnow.sh
-    #0 0 1 12 * /usr/share/jellyfin/web/seasonal/addsnowflakes.sh
-    0 0 1 12 * /usr/share/jellyfin/web/seasonal/addmoresnow.sh
-    ## remove snow
-    0 0 26 12 * /usr/share/jellyfin/web/seasonal/removeseasonal.sh
-    ## add hearts
-    0 0 14 2 * /usr/share/jellyfin/web/seasonal/addhearts.sh
-    ## remove hearts
-    0 0 15 2 * /usr/share/jellyfin/web/seasonal/removeseasonal.sh
-    ## add pattysday
-    0 0 17 3 * /usr/share/jellyfin/web/seasonal/addpattysday.sh
-    ## remove pattysday
-    0 0 18 3 * /usr/share/jellyfin/web/seasonal/removeseasonal.sh
-    ## add halloween
-    0 0 1 10 * /usr/share/jellyfin/web/seasonal/addshalloween.sh
-    ## remove halloween
-    0 0 1 11 * /usr/share/jellyfin/web/seasonal/removeseasonal.sh
-    ## Adding fireworks (DISABLED BY DEFAULT THIS BREAKS XBOX MICROSOFT EDGE)
-    #0 0 31 12 * /usr/share/jellyfin/web/seasonal/addfireworks.sh
-    ## Remove fireworks (Disabled by default)
-    # 0 0 1 1 * /usr/share/jellyfin/web/seasonal/removeseasonal.sh
+For example, I'm using Jellyseerr as my request service, so, my last part would be `<iframe class="requestIframe" src="[MY_LOCAL_IP]:5055"></iframe>`
 
 ---
 
-## Hide Scrollbar in older microsoft edge (xbox clients) 
+## Hide scrollbar on older Microsoft edge (Xbox clients) 
 
     sudo sed -i -e '$abody { -ms-overflow-style: none !important; }' /usr/share/jellyfin/web/themes/dark/theme.css
 
-this adds a line to make it hide the scroll bar while retaining function of the scroll.. yay no more invasive scroll bar from the early 00s
+This adds a line to make it hide the scrollbar while retaining scroll functionality... so yay no more invasive scrollbar from the early 00s!
 
 --- 
 
 ## Pan and tilt the backdrops with fades in and out
 
-video of this in action:
+Video of this in action:
 https://gfycat.com/sizzlingcavernousgalapagospenguin
 
-this is custom css and you can use and adjust all or any values you like but personally i like these values
+This mod works really well with the forced backdrop mod!
+
+It's simply custom CSS, and you can use and adjust any and all values you like. Personally, I like these values:
 
 ```
-/*pan the background for backdrops*/
+/*Pan the background for backdrops*/
 @keyframes backgroundScroll {
 0% { background-position: 99% 1%; opacity:0;}
 33% { background-position: 50% 50%;opacity:1;}
@@ -511,274 +537,219 @@ this is custom css and you can use and adjust all or any values you like but per
 33% { background-position: 50% 50%;opacity:1;}
 40% { background-position: 1% 99%; opacity:0}
 66% { background-position: 99% 50%; }
-75% { background-position: 99%% 99%; }
+75% { background-position: 99% 99%; }
 100% { background-position: 50% 50%; }}
 @media (max-width: 600px) {
   .backdropImage {background-size: 150% 150% cover; opacity:0 ; background-position: 99% 1%; animation: backgroundScrollmob 60s ease-in-out 1s;}
 }
+
+/*Thanks to poiaman for the fix for mobile devices below*/
+@Keyframes backgroundScroll {
+0% { background-position: 99% 1%; opacity: 0; filter: blur(0px); }
+5% { opacity: 1; filter: blur(0px); }
+33% { background-position: 50% 50%; opacity: 1; filter: blur(0px); }
+40% { background-position: 99% 99%; opacity: 0; filter: blur(0px); }
+66% { background-position: 50% 50%; filter: blur(0px); }
+75% { background-position: 1% 1%; filter: blur(0px); }
+100% { background-position: 50% 50%; opacity: 0.5; filter: blur(5px); } 
+}
+
+.backdropImage {
+background-size: cover;
+opacity: 0;
+background-position: center center; 
+animation: backgroundScroll 60s ease-in-out 0s; 
+filter: blur(0px); 
+}
+
+@Keyframes backgroundScrollmob {
+0% { background-position: 99% 1%; opacity: 0; filter: blur(0px); }
+5% { opacity: 1; filter: blur(0px); }
+33% { background-position: 50% 50%; opacity: 1; filter: blur(0px); }
+40% { background-position: 1% 99%; opacity: 0; filter: blur(0px); }
+66% { background-position: 99% 50%; filter: blur(0px); }
+75% { background-position: 99% 99%; filter: blur(0px); }
+100% { background-position: 50% 50%; opacity: 0.5; filter: blur(5px); } 
+}
+
+@media (max-width: 600px) {
+.backdropImage {
+background-size: cover;
+opacity: 0;
+background-position: center center;
+animation: backgroundScrollmob 60s ease-in-out 0s;
+filter: blur(0px);
+}
+}
 ```
-simply paste that into your custom css in general settings and hit save (works really well with forced backdrop mod)
+Just paste that into your custom CSS in the General tab of your Jellyfin admin panel and click save.
 
 ---
 
-## Default every users page size
+## Default user page size
 
-change this in your main.xxxxxxxxxxxx.bundle.js (so `sudo nano main.*.bundle.js` )
+In your web root, find and edit your 'main.xxxxxxxxxxxx.bundle.js' by running `sudo nano main.*.bundle.js`
 
-from this
+Then, find this:
 `this.get("libraryPageSize",!1),10);return 0===t?0:t||100}`
 
-to this
+And change it to this (300 in this example):
 `this.get("libraryPageSize",!1),10);return 0===t?0:t||300}`
 
-you can modifiy the number from 100 to any number you want each users default to be.. note requires users to clear cache in their browser to see the new change.
+You can modify the number from 100 to any number you want the user default to be.
+
+Save the file and reload the cache on your clients to see your changes.
 
 ---
 
-## Change the Title of Jellyfin in the browser tab
+## Change the favicon
 
-This is a fairly simple mod, all you have to do is edit the main.xxxxxxxxxx.bundle.js in the Jellyfin install directory. Open it up and in the massive wall of text find
-
-`document.title="Jellyfin"` and `document.title=e||"Jellyfin"}`
-
-Change the text from Jellyfin to whatever you want, Then open up index.html in the same folder and find `<title>Jellyfin</title>` and change that as well.
-
-## Change the password reset process for use with jfa-go email password reseting
-
-This should be used in combination with some other service (such as [jfa-go](https://github.com/hrfee/jfa-go)) which will manage the password reseting for you.
-The default flow of jellyfin is to give you a message that a pin has been saved in a file, then clicking the button leads to the pin reset screen. Depending on how you want to manage password resets, you may not even want the user to get here.
-
-Go to your web root for jellyfin /usr/share/jellyfin/web/ and use nano (or your own text editor) to edit the session-forgotPassword.xxxxxxxxxxxxxx.chunk.js file
-press ctrl+w and find the string
-
-     if("PinCode"==e.Action){var t=a.ZP.translate("MessageForgotPasswordFileCreated");
-
-Change
-
-    var t=a.ZP.translate("MessageForgotPasswordFileCreated");
-
-To
-
-    var t="";
-
-Change
-
-    t+="<br/>",t+="Enter PIN here to finish Password Reset<br/>",t+="<br/>",t+=e.PinFile,t+="<br/>",
-
-To
-
-    t+="<br/>",t+="An email has been sent with a link to reset your password<br/>",
-Removing: `,t+="<br/>",t+=e.PinFile,t+="<br/>",` entirely
+<img width="150" alt="Screenshot 2024-05-19 175358" src="https://github.com/BobHasNoSoul/jellyfin-mods/assets/23018412/48c33a4b-4458-41ce-a240-11a36b268b85">
 
 
+As of a recent update, the favicon now lives in the web root as a random string followed by .ico
 
-If you want to make the button on the message take you back to the login page instead of going to the pin page if you are setting up resets via email on jfa-go
+Thankfully, it is the only (should be the only) .ico in there, so run the following command inside your web root to find it:
+`ls | grep .ico` 
 
-Change
-callback:function(){n.ZP.navigate("forgotpasswordpin.html")}})}}
+Copy the output of this command, as this is what you will name your custom favicon file.
 
+Now, simply grab your new favicon from wherever and save it to your web root named as the output of the previous grep command. This may require you to either use a volume to map that file to the new file, or simply just replace the file using a new volume that isn't web root in the Docker and mapped to a transfer folder on your server.
 
-To
-callback:function(){history.back()}})}}
+Example:
 
+`./transfer:/jellyfin/transfer`
+
+Then you would simply do the following inside the web root after you have created the .ico in the transfer folder on your host. (This only applies to Docker. If you installed without Docker, just replace the file like you would any other file.) 
+
+Run this command from within web root `cp /jellyfin/transfer/*.ico ./`
+
+This will copy the .ico from your transfer folder to the web root without having to do any other weird fancy tricks.
+
+Reload the cache on your clients to see your changes.
 
 ---
 
-# Adding a footer to jellyfin
+## CSS mods
 
-![footer](https://user-images.githubusercontent.com/23018412/128029941-9e0074e0-7668-45d3-9f36-936b1271e75f.png)
-
-This will add a footer to your jellyfin server (see red arrow in the picture) that will auto hide on 5 seconds of mouse inactivity and appear when there is mouse activity this would be typically used for down time of a private server to tell clients that are using the server when to expect there to be "down time" or you could change it to say whatever you like really just modify the footer contents in the index.html once done if that is the case. this will also allow you to turn it off and on at will using the custom css in the admin panel without the need to edit the index.html multiple times (unless you want to change the message for whatever reason).
-
-add the following into your index.html just before the last `</body></html>` tags
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-    <script>
-    var timedelay = 1;
-    function delayCheck()
-    {
-    if(timedelay == 5)
-    {
-    $('#footer').fadeOut();
-    timedelay = 1;
-    }
-    timedelay = timedelay+1;
-    }
-    $(document).mousemove(function() {
-    $('#footer').fadeIn();
-    timedelay = 1;
-    clearInterval(_delay);
-    _delay = setInterval(delayCheck, 500);
-    });
-    // page loads starts delay timer
-    _delay = setInterval(delayCheck, 500)
-    </script><div id="footer">Scheduled Server Maintenance on Tuesday 3PM - 4PM BST. The Server will be down for this time.</div>
-
-nearly done just add this in your custom css (Admin panel> General> Custom CSS)
-
-    #footer {position: fixed;  bottom: 0; width: 100%; height: 20px; background: #191818; z-index: 0;text-align: center;
-    /*comment out below to hide footer*/
-    /*display: none !important;*/
-    }
-
-obviously when you want to deactivate it just uncomment the display line to hide it
-
----
-
-## Add a footer that you can edit from admin panel
-
-like the option above you need to add the following to your index.html before the final `</body></html>` tags
-
-    <script>
-    var timedelay = 1;
-    function delayCheck()
-    {
-    if(timedelay == 5)
-    {
-    $('#footer').fadeOut();
-    timedelay = 1;
-    }
-    timedelay = timedelay+1;
-    }
-    $(document).mousemove(function() {
-    $('#footer').fadeIn();
-    timedelay = 1;
-    clearInterval(_delay);
-    _delay = setInterval(delayCheck, 500);
-    });
-    // page loads starts delay timer
-    _delay = setInterval(delayCheck, 500)
-    </script><div id="footer"><span></span></div>
-
-note that this version has no content but instead a span tag.. that is because we will be inserting the message via css, this is not how it is meant to be done but can be done to make life a little easier i guess. 
-
-next we add the following to your custom css in the admin panel
-
-    #footer {position: fixed;  bottom: 0; width: 100%; height: 20px; background: #191818; z-index: 0;text-align: center;
-    /*comment out below to hide banner*/
-    /*display: none !important;*/
-    }
-    
-    #footer span {
-      display: none;
-    }
-    #footer:after {
-      content: 'YOUR MESSAGE HERE, SERIOUSLY CHANGE ME';
-    }
-
-
----
-
-# changing live tv movies from portrait cards to landscape
-
-Some xmltv guides may not contain a portrait image and if that is the case you get something like the following
-
-![livetvbefore](https://user-images.githubusercontent.com/23018412/129268597-70e68e8a-ed35-4044-bf50-1b68064d0d50.PNG)
-
-but this can look a bit messy so here are the steps to fix it and make it look like this
-
-![livetvafter](https://user-images.githubusercontent.com/23018412/129268615-539b4ca8-30ab-4847-be67-c6009ef37927.PNG)
-
-simply modify the following file in your web root (replace the * with your uuid) livetv-livetvsuggested.*.bundle.js
-
-find `"upcomingTvMovieItems",null,{shape:v()?"overflowPortrait":"portrait"`
-
-replace it with `"upcomingTvMovieItems",null,{shape:v()?"overflowBackdrop":"backdrop"`
-
-now save it and close the file
-
-this will effect the live tv page, however you will notice you still have the same issue when you press the movie header inside the live tv section 
-
-![moviesbefore](https://user-images.githubusercontent.com/23018412/129268691-21cc2c2d-96db-4871-adc0-52bf40eaba6e.PNG)
-
-lets fix that so it looks like the following
-
-![moviesafter](https://user-images.githubusercontent.com/23018412/129268768-2c5204ff-7730-49b9-9f52-0b70475c50f5.PNG)
-
-open the file list.*.bundle.js from inside your webroot (replace the * with your uuid)
-
-find `"Recordings"===r.type?(t="true"===r.IsMovie?"portrait":"autoVertical",i="true"!==r.IsMovie&&"auto",o="true"===r.IsMovie?"portrait":"backdrop"`
-
-replace it with `"Recordings"===r.type?(t="true"===r.IsMovie?"backdrop":"autoVertical",i="true"!==r.IsMovie&&"auto",o="true"===r.IsMovie?"backdrop":"backdrop"`
-
-save then close the file
-
-all done, you will need to clear the cache in your client browser to see the change.
-
----
-
-## Fix the serviceworker.js so it does not throw errors and plays nice in nginx
-
-![error](https://user-images.githubusercontent.com/23018412/119361783-eefa3c00-bca3-11eb-870c-7908e2b01886.PNG)
-
-Tested working on 10.7.5
-
-edit your main.XXXXXXXXXXXXXX.bundle.js and find this string `/serviceworker.js` and replace it with `/web/serviceworker.js` then simply download the serviceworker.js from this repo and upload into your jellyfin-web root `/usr/share/jellyfin/web/` this will give you a working service worker for use with nginx reverse proxy (please see the serviceworker.js.LICENSE file for the license of that file) 
-
-wait, it looks like the same file?
-no its simmilar i removed a few errors mainly the woff2 files being reffered to as auto then the original file name which lead to a non existing file that did not exist, then also bug fixed the issues with the /web/ dir locations.. nothing too fancy but this allows it to actually be ran like it should.
-
-if all went well you can see a install button next to the address bar on the right, this also will not throw any errors in developer tools in chrome. (may need a cache clear on the client)
-
----
-
-### CSS Modifications
-
----
-
-## my custom css (jellyflix with a set of my own modifications/ tweaks added)
-
-simply copy the contents of customcss.css (in this repo http://git.bbod.tk/BobHasNoSoul/jellyfin-mods/blob/main/customcss.css ) to your general custom css tab and paste.. or host it yourself or link to it the following is an example if you download customcss.css to your web root (/usr/share/jellyfin/web/)
-
-    @import url("customcss.css");  
-    /*fix text being half over to the left on details page*/
-    .detail-clamp-text {width: 98vw !important; left: 1% !important; right 1% !important;}
-    .detailPagePrimaryContent {padding-bottom: 1rem !important;}
-    .backgroundContainer { background-color: #181818 !important;}
-    /*fix spacing on the my media*/
-    .card {    margin-left: auto !important;    margin-right: auto !important; padding-top: 22px !important;}
-
-this theme does use the font pack for ubuntu you can find this here https://google-webfonts-helper.herokuapp.com/api/fonts/ubuntu-mono?download=zip&subsets=latin&variants=regular and you can just unzip that font pack into /usr/share/jellyfin/web/fonts so .woff files etc are in that dir (not a nested folder)
-
-the following hides please login dialog and prevents the login going up to the top by adding a margin.
+The following hides "please login" dialog and prevents the login going too far up top by adding a margin.
 
     /*Hide "please login" text, margin is to prevent login form moving too far up*/
     #loginPage h1 {display: none}
     #loginPage .padded-left.padded-right.padded-bottom-page {margin-top: 10px}
 
-lighten the backdrop background using the following
+Lighten the backdrop background using the following:
 
     /*Lighten background*/
     .backgroundContainer.withBackdrop {background-color: rgba(0, 0, 0, 0.34) !important;}
 
-Transparent top bar using the following
+Transparent top bar using the following:
     
     /*transparent top bar*/
     .skinHeader-withBackground {background-color: #20202000 !important;}
 
-Partially transparent side menu with the following
+Partially transparent side menu with the following:
 
-    /*Partialy transparent side bar*/
+    /*Partially transparent side bar*/
     div.mainDrawer {background-color: rgba(0,0,0,0.6) !important;}
 
-Remove the title "My Media" with the following
+Remove the title "My Media" with the following:
 
     /* remove My Media title */
     .section0 .sectionTitle {display: none;}
 
 ---
-# Some Extra tools to be used with Jellyfin
-these are some extremely helpfull tools that can be used with Jellyfin and increase functionality.
+
+## OMG seasonal themes are back
+
+This is currently being revived so no auto scripts, yet... There may be bugs so please let me know and submit issues.
+
+Installation: 
+First, in the web root you need to create a 'seasonal' folder and fill it with the contents of the 'seasonal' folder from this repo. Once you do that, to activate a theme just add the following to your 'index.html' just before the final `</body></html>` tags 
+
+### Snowstorm
+
+![snowstorm](https://github.com/BobHasNoSoul/jellyfin-mods/assets/23018412/e0bab815-c273-49c6-ba7e-79e5ebae3c62)
+
+To apply the snowstorm theme simply add:
+`<script src="seasonal/snowstorm.js"></script>`
+
+### Snowflakes
+
+![snowflakes](https://github.com/BobHasNoSoul/jellyfin-mods/assets/23018412/e171aa80-8185-45ff-a6a8-eb08ea4e9c88)
+
+To apply the snowflakes theme simply add:
+```
+<link rel="stylesheet" href="seasonal/snowflakes.css">
+<snowflake><div class="snowflakes" aria-hidden="true">  <div class="snowflake">  ❅  </div>  <div class="snowflake">  ❆  </div>  <div class="snowflake">  ❅  </div>  <div class="snowflake">  ❆  </div>  <div class="snowflake">  ❅  </div>  <div class="snowflake">  ❆  </div>  <div class="snowflake">    ❅  </div>  <div class="snowflake">    ❆  </div>  <div class="snowflake">    ❅  </div>  <div class="snowflake">    ❆  </div>  <div class="snowflake">    ❅  </div>  <div class="snowflake">    ❆  </div></div></snowflake>
+```
+
+### Fireworks
+
+![fireworks](https://github.com/BobHasNoSoul/jellyfin-mods/assets/23018412/8bbaaec8-3277-48c4-a79a-d8ab1ab37199)
+
+To apply the fireworks theme simply add:
+
+````
+<snowflake><div class="pyro">  <div class="before"></div>  <div class="after"></div></div></snowflake>
+<link rel="stylesheet" href="seasonal/fireworks.css">
+````
+Note: A known bug with fireworks is they don't scroll with the user, they stay near the top of the page, and may cause infinite loading due to a JS bug... this does need fixing.
+
+### Hearts 
+
+To apply the hearts theme simply add:
+
+`<link rel="stylesheet" href="seasonal/hearts.css">
+<snowflake><div class="snowflakes" aria-hidden="true"><div class="snowflake">  ❤️  </div>  <div class="snowflake">  ❤️  </div>  <div class="snowflake">  ❤️  </div>  <div class="snowflake"> ❤️  </div>  <div class="snowflake">  ❤️  </div>  <div class="snowflake">  ❤️  </div>  <div class="snowflake">    ❤️  </div>  <div class="snowflake">    ❤️  </div>  <div class="snowflake">    ❤️  </div>  <div class="snowflake">   ❤️  </div>  <div class="snowflake">    ❤️  </div>  <div class="snowflake">    ❤️  </div></div></snowflake>`
+
+### Halloween
+
+![halloween](https://github.com/BobHasNoSoul/jellyfin-mods/assets/23018412/ad5eb524-395a-440e-bb0f-4fe846493793)
+
+To apply the Halloween theme simply add:
+
+`<link rel="stylesheet" href="/web/seasonal/halloween.css">
+<snowflake><div class="snowflakes" aria-hidden="true">  <div class="snowflake">  <img src="/web/seasonal/ghost_20x20.png">  </div>  <div class="snowflake">  <img src="/web/seasonal/bat_20x20.png"> </div>  <div class="snowflake">  <img src="/web/seasonal/pumpkin_20x20.png">  </div>  <div class="snowflake">  <img src="/web/seasonal/ghost_20x20.png"> </div>  <div class="snowflake">  <img src="/web/seasonal/bat_20x20.png">  </div>  <div class="snowflake">  <img src="/web/seasonal/pumpkin_20x20.png">  </div>  <div class="snowflake">    <img src="/web/seasonal/ghost_20x20.png">  </div>  <div class="snowflake">    <img src="/web/seasonal/bat_20x20.png">  </div>  <div class="snowflake">    <img src="/web/seasonal/pumpkin_20x20.png">  </div>  <div class="snowflake">    <img src="/web/seasonal/ghost_20x20.png"> </div>  <div class="snowflake">    <img src="/web/seasonal/bat_20x20.png">  </div>  <div class="snowflake">    <img src="/web/seasonal/pumpkin_20x20.png">  </div></div></snowflake>`
+
+TO DO: Automation scripts that crontab in and out these effects for holidays and seasons.
+
+---
+
+# Bugfixes / Workarounds
+
+## Xbox won't play a lot of files due to "Fatal playback error"
+
+This bug is due to the Edge browser being identified incorrectly on the Jellyfin server. Jellyfin thinks it is Chromium (which is correct to an extent seeing as it is based on Chromium) but it is missing a few of the features it needs, such as functioning to surround sound. To fix this, you just need to set your `audio channels` to `stereo` in your `profile > playback` settings in your Xbox's Edge browser. Hit save and it will play the files without any issues. (Note that you may still see a few hls issues reported in the log for FFmpeg, but that is just a warning, not an error, and can be ignored.)
+
+---
+
+## Fix Live TV by changing the fmp4 container for all users
+
+Have you experienced HDHomeRun audio sync issues, or stutter on playback from IPTV even if its from a Gtmedia tuner on your own LAN?
+So did I until I saw that this is a known bug in the 10.9 version of Jellyfin that has the fmp4 container used for Live TV and found the fix was to disable fmp4 container for each user. However, you can set this by default by editing the playback config.
+
+`sudo nano user-playback.*.chunk.js`
+
+Then find `e.querySelector(".chkPreferFmp4HlsContainer").checked=i.preferFmp4HlsContainer()`
+
+And replace it with `e.querySelector(".chkPreferFmp4HlsContainer").checked==i.preferFmp4HlsContainer()`
+
+Save the file and reload the cache on your clients to see your changes.
+
+---
+
+# Some extra tools to be used with Jellyfin
+These are some extremely helpful tools that can be used with Jellyfin to increase functionality.
 ## Jfa-Go
-This is a Jellyfin account manager and creator that can be used to make links to invite people to Jellyfin and allow them to create their username and passsword. Its written in go and can be installed on most OS's. You can find it here https://github.com/hrfee/jfa-go
+This is a Jellyfin account management tool that can be used to generate links to invite people to your Jellyfin server and allow them to create their own username and passsword. It's written in Go and can be installed on most OS's. You can get it here: https://github.com/hrfee/jfa-go
+## Jellyseerr
+A free and open source software application for managing requests for your media library. After adding a custom link in the side bar, when your friends or family want to request media, they can request it using Jellyseerr, which also integrates with Radarr, Sonarr, any other relevant services. You can get it here: https://github.com/Fallenbagel/jellyseerr
 ## Ombi
-Ombi is a media requesting service that can be used with Jellyfin. After adding a custom link in the sidebar , when your friends on family want to request a media, they can request it on Ombi, which will then using integration with Radarr, Sonarr among ohers download it. You can get it here https://github.com/Ombi-app/Ombi
+A legacy alternative to Jellyseerr, Ombi is a media requesting service that can be used with Jellyfin. You can get it here: https://github.com/Ombi-app/Ombi
 ## ErsatzTV
-ErsatzTV is a bit like PseudoTV for Kodi but more like a Live TV media server. its open source and you can get it here https://github.com/jasongdove/ErsatzTV
-## Intros Plugin
-Intros Plugin allows you to use a video from preroll.video or a custom video to be played before a movie or show. The offical intros repo seems to be down so you can get it from here https://github.com/dab2020/intro-skipper
-
+ErsatzTV is a bit like PseudoTV for Kodi but more like a Live TV media server. You can get it here: https://github.com/jasongdove/ErsatzTV
+## Intro Skipper
+Intro Skipper plugin analyzes the audio of television episodes to detect and skip over intros. You can get it here: https://github.com/intro-skipper/intro-skipper
 ## Jellyfin-Announce
-This script send a message to all currently active users that are watching videos to tell them a message (i use mine to tell my users the server will be shutting down for maintenance in 60 mins, then 30 mins then 10 mins, 5 min, 4, 3, 2, 1 mins you can set all these things up with basic effort however this is python based so may not be useful for everyone).
-[https://github.com/BobHasNoSoul/Jellyfin-Announce](https://github.com/BobHasNoSoul/Jellyfin-Announce)
-
+This script sends a message to all currently active users that are watching media. (For example, I use this to inform users the server will be shutting down for maintenance in 60 mins, then 30 mins, then 10 mins, 5 min, 4 min, 3 min, and so on. This is easily setup with basic configuration.) You can get it here: https://github.com/BobHasNoSoul/Jellyfin-Announce

@@ -728,12 +728,22 @@ Reload the cache on your clients to see your changes.
 
 ## CSS mods
 
-The following hides "please login" dialog and prevents the login going too far up top by adding a margin.
+Hide the "please login" dialog and prevent the login area moving up too far by adding a margin:
 
 ```css
 /*Hide "please login" text, margin is to prevent login form moving too far up*/
 #loginPage h1 {display: none}
 #loginPage .padded-left.padded-right.padded-bottom-page {margin-top: 10px}
+```
+
+Change the background image of the login page:
+
+```css
+/*Change login page background*/
+#loginPage {
+    background: url(https://i.imgur.com/Ewk3Pqw.png) !important;
+    background-size: cover !important;
+}
 ```
 
 Lighten the backdrop background using the following:
@@ -746,7 +756,7 @@ Lighten the backdrop background using the following:
 Transparent top bar using the following:
 
 ```css
-/*transparent top bar*/
+/*Transparent top bar*/
 .skinHeader-withBackground {background-color: #20202000 !important;}
 ```
 
@@ -760,7 +770,7 @@ div.mainDrawer {background-color: rgba(0,0,0,0.6) !important;}
 Remove the title "My Media" with the following:
 
 ```css
-/* remove My Media title */
+/*Remove "My Media" title*/
 .section0 .sectionTitle {display: none;}
 ```
 

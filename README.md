@@ -15,8 +15,8 @@ If you are having issues with finding the web root, you may need to see the [hel
     - [Transparent top bar](#transparent-top-bar)
     - [Lighten the backdrop background](#lighten-the-backdrop-background)
     - [Partially transparent side menu](#partially-transparent-side-menu)
-    - [Use the media item's logo and hide plain text title when present](#use-the-media-items-logo-and-hide-plain-text-title-when-present)
-    - [Remove the "My Media" title](#remove-the-my-media-title)
+    - [Use the media item's logo and hide title when present](#use-the-media-items-logo-and-hide-title-when-present)
+    - [Remove the "My Media" section title](#remove-the-my-media-section-title)
   - [Custom Netflix-like login page](#custom-netflix-like-login-page)
   - [Avatar library for your users](#avatar-library-for-your-users)
   - [Change the title of the page](#change-the-title-of-the-page)
@@ -77,28 +77,28 @@ body:not(:has(#loginPage:not(.hide))) .skinHeader {
 }
 ```
 
-### Transparent top bar using the following:
+### Transparent top bar:
 
 ```css
 /*Transparent top bar*/
 .skinHeader-withBackground {background-color: #20202000 !important;}
 ```
 
-### Lighten the backdrop background using the following:
+### Lighten the backdrop background:
 
 ```css
 /*Lighten background*/
 .backgroundContainer.withBackdrop {background-color: rgba(0, 0, 0, 0.34) !important;}
 ```
 
-### Partially transparent side menu with the following:
+### Partially transparent side menu:
 
 ```css
 /*Partially transparent side bar*/
 div.mainDrawer {background-color: rgba(0,0,0,0.6) !important;}
 ```
 
-### Use the media item's logo and hide plain text title when present
+### Use the media item's logo and hide title when present:
 
 This mod takes the title text away when an item has a valid logo loaded, thus avoiding the problem of showing you the logo of *Game of Thrones* for example, and then also saying *Game of Thrones* in plain text underneath...
 
@@ -111,7 +111,7 @@ This mod takes the title text away when an item has a valid logo loaded, thus av
 .hide+.parentName > bdi:nth-child(1) {display: block !important;}
 ```
 
-### Remove the "My Media" title with the following:
+### Remove the "My Media" section title:
 
 ```css
 /*Remove "My Media" title*/

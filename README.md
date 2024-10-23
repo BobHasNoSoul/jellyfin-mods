@@ -8,8 +8,16 @@ If you are having issues with finding the web root, you may need to see the [hel
 
 ## Table of Contents
 - [jellyfin-mods](#jellyfin-mods)
-  - [Use the media item's logo and hide plain text title when present](#use-the-media-items-logo-and-hide-plain-text-title-when-present)
-  - [Custom login page that looks similar to Netflix](#custom-login-page-that-looks-similar-to-netflix-with-a-custom-background-and-styling-ignore-the-custom-logo-thats-a-mod-further-down)
+  - [CSS mods](#css-mods)
+    - [Hide the "Please sign in" dialog](#hide-the-please-sign-in-dialog-and-prevent-the-login-area-moving-up-too-far-by-adding-a-margin)
+    - [Change the background image of the login page](#change-the-background-image-of-the-login-page)
+    - [Hide the top bar on the login page](#hide-the-top-bar-on-the-login-page)
+    - [Transparent top bar](#transparent-top-bar)
+    - [Lighten the backdrop background](#lighten-the-backdrop-background)
+    - [Partially transparent side menu](#partially-transparent-side-menu)
+    - [Use the media item's logo and hide plain text title when present](#use-the-media-items-logo-and-hide-plain-text-title-when-present)
+    - [Remove the "My Media" title](#remove-the-my-media-title)
+  - [Custom Netflix-like login page](#custom-netflix-like-login-page)
   - [Avatar library for your users](#avatar-library-for-your-users)
   - [Change the title of the page](#change-the-title-of-the-page)
   - [Change the default iOS/Android "app" title and description](#change-the-default-iosandroid-app-title-and-description)
@@ -19,7 +27,7 @@ If you are having issues with finding the web root, you may need to see the [hel
   - [Change font to whatever you want](#change-font-to-whatever-you-want)
   - [Set limit on how long items should be in the next up section](#set-limit-on-how-long-items-should-be-in-the-next-up-section)
   - [Add a custom logo at the top of the login page](#add-a-custom-logo-at-the-top-of-the-login-page)
-  - [Add a custom link button under login page](#add-a-custom-link-button-under-login-page)
+  - [Add a custom link button under the login page](#add-a-custom-link-button-under-the-login-page)
   - [Add a custom logo to side bar](#add-a-custom-logo-to-side-bar)
   - [Add a custom link to side bar](#add-a-custom-link-to-side-bar)
   - [Add requests tab](#add-requests-tab)
@@ -27,16 +35,72 @@ If you are having issues with finding the web root, you may need to see the [hel
   - [Pan and tilt the backdrops with fades in and out](#pan-and-tilt-the-backdrops-with-fades-in-and-out)
   - [Default user page size](#default-user-page-size)
   - [Change the favicon](#change-the-favicon)
-  - [CSS mods](#css-mods)
   - [Seasonal themes](#omg-seasonal-themes-are-back)
 - [Bugfixes / Workarounds](#bugfixes--workarounds)
 - [Some extra tools to be used with Jellyfin](#some-extra-tools-to-be-used-with-jellyfin)
 
 ---
 
-## Use the media item's logo and hide plain text title when present
+## CSS mods
 
-This mod takes the title text away when an item has a valid logo loaded, thus not showing you the logo of "Game of Thrones" for example, and then also saying "Game of Thrones" in plain text underneath... This is a small mod that is applied in the "Custom CSS Code" area in the General tab of your Jellyfin admin panel. Simply copy and paste the following:
+##### These mods are very easy to apply. Simply copy and paste the relevant code into the "Custom CSS code" textbox in the General tab of your Jellyfin admin dashboard. 
+
+### Hide the "Please sign in" dialog and prevent the login area moving up too far by adding a margin:
+
+```css
+/*Hide "Please sign in" text, margin is to prevent login form moving too far up*/
+#loginPage h1 {display: none}
+#loginPage .padded-left.padded-right.padded-bottom-page {margin-top: 10px}
+```
+
+### Change the background image of the login page:
+
+```css
+/*Change login page background*/
+#loginPage {
+    background: url(https://i.imgur.com/Ewk3Pqw.png) !important;
+    background-size: cover !important;
+}
+```
+
+### Hide the top bar on the login page:
+
+```css
+/*Hide the top bar when the login page is visible*/
+body:has(#loginPage:not(.hide)) .skinHeader {
+    display: none !important;
+}
+
+/*Show the top bar when the login page is hidden or absent*/
+body:not(:has(#loginPage:not(.hide))) .skinHeader {
+    display: flex !important;
+}
+```
+
+### Transparent top bar using the following:
+
+```css
+/*Transparent top bar*/
+.skinHeader-withBackground {background-color: #20202000 !important;}
+```
+
+### Lighten the backdrop background using the following:
+
+```css
+/*Lighten background*/
+.backgroundContainer.withBackdrop {background-color: rgba(0, 0, 0, 0.34) !important;}
+```
+
+### Partially transparent side menu with the following:
+
+```css
+/*Partially transparent side bar*/
+div.mainDrawer {background-color: rgba(0,0,0,0.6) !important;}
+```
+
+### Use the media item's logo and hide plain text title when present
+
+This mod takes the title text away when an item has a valid logo loaded, thus avoiding the problem of showing you the logo of *Game of Thrones* for example, and then also saying *Game of Thrones* in plain text underneath...
 
 ```css
 /*If the logo is present on the details page of an item, hide the items' title*/
@@ -47,13 +111,22 @@ This mod takes the title text away when an item has a valid logo loaded, thus no
 .hide+.parentName > bdi:nth-child(1) {display: block !important;}
 ```
 
+### Remove the "My Media" title with the following:
+
+```css
+/*Remove "My Media" title*/
+.section0 .sectionTitle {display: none;}
+```
+
 ---
 
-## Custom login page that looks similar to Netflix with a custom background and styling (Ignore the custom logo, that's a mod further down)
+## Custom Netflix-like login page
+
+*Note: Ignore the custom logo; that's covered in a mod further down.*
 
 <img width="960" alt="Screenshot 2024-05-18 193326" src="https://github.com/BobHasNoSoul/jellyfin-mods/assets/23018412/7d69fb07-1b08-4c0b-9050-e0334dcdb55a">
 
-In your admin panel, under General, check 'Enable the splash screen' and click save. Then add the following to the custom CSS, click save again, then reload your login page.
+In your admin dashboard, under General, check 'Enable the splash screen' and click save. Then add the following to the custom CSS, click save again, then reload your login page.
 
 ```css
 /*Custom login page of awesome*/
@@ -209,7 +282,7 @@ For full instructions, please visit the dedicated repo at: https://github.com/Bo
 Effectively, this adds a button next to the user profile image that links straight to an avatar library that works with a simple click to download images, enabling your users to upload them and use them on the server.
 
 ## Change the title of the page
-To be clear, this mod changes the title that appears in browser tabs from "Jellyfin" to your own unique name like "My Awesome Server" or in the example code "YOUR TITLE HERE". You can use either method.
+To be clear, this mod changes the title that appears in browser tabs from "Jellyfin" to your own unique name like "My Awesome Server" or in the example code `<YOUR TITLE HERE>`. You can use either method.
 
 #### Method 1
 Go to your web root and run: 
@@ -223,15 +296,15 @@ Then, inside the <body> tags, add the following:
 ```css
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        // Change the document title to "YOUR TITLE HERE"
-        document.title = "YOUR TITLE HERE";
+        // Change the document title to "<YOUR TITLE HERE>"
+        document.title = "<YOUR TITLE HERE>";
 
         // Create a MutationObserver to prevent any changes to the title
         const observer = new MutationObserver(function(mutations) {
             mutations.forEach(function(mutation) {
                 if (mutation.type === 'childList') {
-                    if (document.title !== "YOUR TITLE HERE") {
-                        document.title = "YOUR TITLE HERE";
+                    if (document.title !== "<YOUR TITLE HERE>") {
+                        document.title = "<YOUR TITLE HERE>";
                     }
                 }
             });
@@ -243,16 +316,16 @@ Then, inside the <body> tags, add the following:
         // Set up a fallback in case of attempts to change the title through direct assignment
         Object.defineProperty(document, 'title', {
             set: function() {
-                return "YOUR TITLE HERE";
+                return "<YOUR TITLE HERE>";
             },
             get: function() {
-                return "YOUR TITLE HERE";
+                return "<YOUR TITLE HERE>";
             }
         });
     });
 </script>
 ```
-Obviously change the "YOUR TITLE HERE" parts to your personal custom title you want the server to have.
+Obviously change the `<YOUR TITLE HERE>` parts to your personal custom title you want the server to have.
 
 Save the file and reload the cache on your clients to see your changes.
 
@@ -262,13 +335,13 @@ Go to your web root and create a new file called `title.sh` and inside that file
 
 ```sh
 grep -rl 'document\.title="Jellyfin"' . | while read -r file; do
-    sed -i 's/document\.title="Jellyfin"/document\.title="YOUR TITLE HERE"/g' "$file"
+    sed -i 's/document\.title="Jellyfin"/document\.title="<YOUR TITLE HERE>"/g' "$file"
 done
 grep -rl 'document.title=e||"Jellyfin"' . | while IFS= read -r file; do
-    sed -i 's/document.title=e||"Jellyfin"/document.title=e||"YOUR TITLE HERE"/g' "$file"
+    sed -i 's/document.title=e||"Jellyfin"/document.title=e||"<YOUR TITLE HERE>"/g' "$file"
 done
 ```
-Obviously change the "YOUR TITLE HERE" parts to your personal custom title you want the server to have.
+Obviously change the `<YOUR TITLE HERE>` parts to your personal custom title you want the server to have.
 
 Save the file, then run:
 ```sh
@@ -280,7 +353,7 @@ Reload the cache on your clients to see your changes.
 ---
 
 ## Change the default iOS/Android "app" title and description
-This mod changes the title that appears when adding the site to your homescreen as a webapp from "Jellyfin" to your own unique name like "My Awesome Server" or in the example code "YOUR TITLE HERE".
+This mod changes the title and description that appear when adding the site to your homescreen as a webapp from "Jellyfin" to your own unique name like "My Awesome Server" or in the example code `<YOUR TITLE HERE>`.
 
 Go to your web root and run:
 
@@ -288,14 +361,14 @@ Go to your web root and run:
 grep -oP '<link[^>]*rel="manifest"[^>]*href="[^"]*"' index.html | grep -oP '(?<=href=")[^"]*'
 ```
 
-This command will output a JSON filename, copy it, then run `sudo nano <YOUR_COPIED_FILENAME.json>` to edit the file.
+This command will output a JSON filename, copy it, then run `sudo nano <YOUR_COPIED_FILENAME>` to edit the file.
 
 ```json
 {
-    "name": "YOUR TITLE HERE",
-    "description": "YOUR DESCRIPTION HERE",
+    "name": "<YOUR TITLE HERE>",
+    "description": "<YOUR DESCRIPTION HERE>",
     "lang": "en-US",
-    "short_name": "YOUR TITLE HERE",
+    "short_name": "<YOUR TITLE HERE>",
     "start_url": "index.html#/home.html",
     "theme_color": "#101010",
     "background_color": "#101010",
@@ -324,7 +397,7 @@ This command will output a JSON filename, copy it, then run `sudo nano <YOUR_COP
     ]
 }
 ```
-Obviously change the "YOUR TITLE HERE" and "YOUR DESCRIPTION HERE" parts to your personal custom title/description you want the homescreen shortcut to have, but leave everything else as is.
+Obviously change the `<YOUR TITLE HERE>` and `<YOUR DESCRIPTION HERE>` parts to your personal custom title/description you want the homescreen shortcut to have, but leave everything else as is.
 
 Save the file and reload the cache on your clients to see your changes.
 
@@ -421,7 +494,7 @@ sudo wget -O fonts/ubuntu.zip "https://google-webfonts-helper.herokuapp.com/api/
 sudo unzip fonts/ubuntu.zip -d fonts/
 ```
 
-Now your font is where it should be, just modify the CSS in the General tab of your Jellyfin admin panel to suit different names of fonts.
+Now your font is where it should be, just modify the CSS in the General tab of your Jellyfin admin dashboard to suit different names of fonts.
 
 ---
 
@@ -457,7 +530,7 @@ Simply go to your web root and edit the session-login-index-html.xxxxxxxxxxxxxxx
 sudo nano session-login-index-html.*.bundle.js
 ```
 
-Press Ctrl+W and find the following string:
+Press <kbd>Ctrl</kbd> + <kbd>W</kbd> and find the following string:
 
 ```js
 <div class="padded-left padded-right padded-bottom-page margin-auto-y">
@@ -471,7 +544,7 @@ Now, directly after this string paste the following (but obviously amend for you
 
 ---
 
-## Add a custom link button under login page
+## Add a custom link button under the login page
 
 ![Screenshot 2024-08-17 124955](https://github.com/user-attachments/assets/726ea558-464b-4eef-bef5-7e8d0a43cf5d)
 
@@ -481,7 +554,7 @@ In your web root run:
 sudo nano session-login-index-html.*.chunk.js
 ```
 
-Then, use find and replace ( Ctrl+\ ) to find:
+Then, use find and replace (<kbd>Ctrl</kbd> + <kbd>\</kbd>) to find:
 
 ```js
 <div class="loginDisclaimer
@@ -508,7 +581,7 @@ grep -r -l -n 'customMenuOptions' .
 
 This command will output a filename, copy it, then run `sudo nano <YOUR_COPIED_FILENAME>` to edit the file.
 
-Then, use find and replace ( Ctrl+\ ) to find:
+Then, use find and replace (<kbd>Ctrl</kbd> + <kbd>\</kbd>) to find:
 
 ```css
 <div style="height:.5em;"></div>',n+='
@@ -669,7 +742,7 @@ filter: blur(0px);
 }
 }
 ```
-Just paste that into your custom CSS in the General tab of your Jellyfin admin panel and click save.
+Just paste that into your custom CSS in the General tab of your Jellyfin admin dashboard and click save.
 
 ---
 
@@ -726,61 +799,11 @@ Reload the cache on your clients to see your changes.
 
 ---
 
-## CSS mods
-
-Hide the "please login" dialog and prevent the login area moving up too far by adding a margin:
-
-```css
-/*Hide "please login" text, margin is to prevent login form moving too far up*/
-#loginPage h1 {display: none}
-#loginPage .padded-left.padded-right.padded-bottom-page {margin-top: 10px}
-```
-
-Change the background image of the login page:
-
-```css
-/*Change login page background*/
-#loginPage {
-    background: url(https://i.imgur.com/Ewk3Pqw.png) !important;
-    background-size: cover !important;
-}
-```
-
-Lighten the backdrop background using the following:
-
-```css
-/*Lighten background*/
-.backgroundContainer.withBackdrop {background-color: rgba(0, 0, 0, 0.34) !important;}
-```
-
-Transparent top bar using the following:
-
-```css
-/*Transparent top bar*/
-.skinHeader-withBackground {background-color: #20202000 !important;}
-```
-
-Partially transparent side menu with the following:
-
-```css
-/*Partially transparent side bar*/
-div.mainDrawer {background-color: rgba(0,0,0,0.6) !important;}
-```
-
-Remove the title "My Media" with the following:
-
-```css
-/*Remove "My Media" title*/
-.section0 .sectionTitle {display: none;}
-```
-
----
-
 ## OMG seasonal themes are back
 
 This is currently being revived so no auto scripts, yet... There may be bugs so please let me know and submit issues.
 
-Installation: 
+**Installation:**
 First, in the web root you need to create a 'seasonal' folder and fill it with the contents of the 'seasonal' folder from this repo. Once you do that, to activate a theme just add the following to your 'index.html' just before the final `</body></html>` tags 
 
 ### Snowstorm

@@ -554,7 +554,7 @@ In your web root run:
 sudo nano session-login-index-html.*.chunk.js
 ```
 
-Then, use find and replace (<kbd>Ctrl</kbd> + <kbd>\</kbd>) to find:
+Then, use find and replace ( <kbd>Ctrl</kbd> + <kbd> \ </kbd> ) to find:
 
 ```js
 <div class="loginDisclaimer
@@ -581,7 +581,7 @@ grep -r -l -n 'customMenuOptions' .
 
 This command will output a filename, copy it, then run `sudo nano <YOUR_COPIED_FILENAME>` to edit the file.
 
-Then, use find and replace (<kbd>Ctrl</kbd> + <kbd>\</kbd>) to find:
+Then, use find and replace ( <kbd>Ctrl</kbd> + <kbd> \ </kbd> ) to find:
 
 ```css
 <div style="height:.5em;"></div>',n+='

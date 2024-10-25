@@ -15,6 +15,7 @@ If you are having issues with finding the web root, you may need to see the [hel
     - [Transparent top bar](#transparent-top-bar)
     - [Lighten the backdrop background](#lighten-the-backdrop-background)
     - [Partially transparent side menu](#partially-transparent-side-menu)
+    - [Hide the "Trailers" tab from movie libraries](#hide-the-trailers-tab-from-movie-libraries)
     - [Use the media item's logo and hide title when present](#use-the-media-items-logo-and-hide-title-when-present)
     - [Remove the "My Media" section title](#remove-the-my-media-section-title)
   - [Custom Netflix-like login page](#custom-netflix-like-login-page)
@@ -24,6 +25,7 @@ If you are having issues with finding the web root, you may need to see the [hel
   - [Featured Content Bar](#featured-content-bar)
   - [Force backdrops for all users](#force-backdrops-for-all-users)
   - [Force theme music for all users](#force-theme-music-for-all-users)
+  - [Force disable "Show next video info during playback"](#force-disable-show-next-video-info-during-playback)
   - [Change font to whatever you want](#change-font-to-whatever-you-want)
   - [Set limit on how long items should be in the next up section](#set-limit-on-how-long-items-should-be-in-the-next-up-section)
   - [Add a custom logo at the top of the login page](#add-a-custom-logo-at-the-top-of-the-login-page)
@@ -96,6 +98,17 @@ body:not(:has(#loginPage:not(.hide))) .skinHeader {
 ```css
 /*Partially transparent side bar*/
 div.mainDrawer {background-color: rgba(0,0,0,0.6) !important;}
+```
+
+### Hide the "Trailers" tab from movie libraries:
+
+*Note: This mod currently also hides the "Upcoming" tab from TV show libraries. Please submit a PR if you find a way to hide only the "Trailers" tab.
+
+```css
+/*Hide the "Trailers" tab in Movies and the "Upcoming" tab in TV Shows*/
+.emby-tab-button[data-index="2"] {
+  display: none !important;
+}
 ```
 
 ### Use the media item's logo and hide title when present:
@@ -417,7 +430,7 @@ Allows for the use of a specific account's favorites to promote content, as well
 
 ## Force backdrops for all users
 
-In 'main.jellyfin.bundle.js' simply search for:
+In `main.jellyfin.bundle.js` simply search for:
 
 ```js
 enableBackdrops:function(){return _}
@@ -438,7 +451,7 @@ Save the file and reload the cache on your clients to see your changes.
 
 ## Force theme music for all users
 
-In 'main.jellyfin.bundle.js' simply search for:
+In `main.jellyfin.bundle.js` simply search for:
 
 ```js
 enableThemeSongs:function(){return j}
@@ -456,6 +469,29 @@ Save the file and reload the cache on your clients to see your changes.
 *** If you cannot find it (because of regex in search like in nano) try searching for `enableThemeSongs:function`. This should give you the ability to find the string above ***
 
 Pro tip: Use the theme songs plugin to grab multiple theme songs for TV shows in one go (https://github.com/danieladov/jellyfin-plugin-themesongs), or manually add a theme .mp3 at the root of each TV show folder (i.e. `/tv/breaking bad/theme.mp3`). This mod also works for movies of course, but you will have to manually grab each theme song as the mentioned plugin does not work with movies.
+
+---
+
+## Force disable "Show next video info during playback"
+
+*This mod prevents conflict between the [Intro Skipper](https://github.com/intro-skipper/intro-skipper) plugin's "Next" dialog and Jellyfin's native dialog by disabling the ladder for all users. Unfortunately, Jellyfin's native dialog is much better, but there is currently no way to disable the dialog from Intro Skipper, and this is certainly better than having both of them overlap.*
+
+In `main.jellyfin.bundle.js` simply search for:
+
+```js
+enableNextVideoInfoOverlay:function(){return j}
+```
+
+And replace it with:
+
+```js
+enableNextVideoInfoOverlay:function(){return ne}
+```
+
+Save the file and reload the cache on your clients to see your changes.
+
+
+*** If you cannot find it (because of regex in search like in nano) try searching for `enableNextVideoInfoOverlay:function`. This should give you the ability to find the string above ***
 
 ---
 
@@ -599,7 +635,7 @@ Save the file and reload the cache on your clients to see your changes.
 
 ## Add a custom link to side bar
 
-Find the 'config.json' file in your web root. Change the "menuLinks" section to the following and adjust the properties to suit your needs (icons are from [Material Design Icons](https://jossef.github.io/material-design-icons-iconfont/)).
+Find the `config.json` file in your web root. Change the "menuLinks" section to the following and adjust the properties to suit your needs (icons are from [Material Design Icons](https://jossef.github.io/material-design-icons-iconfont/)).
 
 ```json
 "menuLinks": [
@@ -748,7 +784,7 @@ Just paste that into your custom CSS in the General tab of your Jellyfin admin d
 
 ## Default user page size
 
-In your web root, find and edit your 'main.xxxxxxxxxxxx.bundle.js' by running:
+In your web root, find and edit your `main.xxxxxxxxxxxx.bundle.js` by running:
 
 ```sh
 sudo nano main.*.bundle.js

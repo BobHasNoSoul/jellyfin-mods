@@ -228,8 +228,8 @@ Useful if you have [intro-skipper](https://github.com/jumoog/intro-skipper) enab
     - name: Disabling Next Episode info for all users...
       ansible.builtin.replace:
         path: /usr/share/jellyfin/web/main.jellyfin.bundle.js
-        regexp: 'enableNextVideoInfoOverlay:function\(\){return I}'
-        replace: "enableNextVideoInfoOverlay:function(){return _}"
+        regexp: 'enableNextVideoInfoOverlay:function\(\){return R}'
+        replace: "enableNextVideoInfoOverlay:function(){return M}"
       become: true
 ```
 

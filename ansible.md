@@ -9,14 +9,14 @@ to the `jellyfin-web` directory.
 ## ⚠️ IMPORTANT
 
 - In this guide, I will refer to **"remote machine"** and **"host machine"** a lot. To clarify what this means, the remote machine is the one you will run Ansible from, the host machine is the one which has your Jellyfin instance installed on it.
-- For the time being, these playbooks are designed for Jellyfin version >10.9.9 on a bare-metal Debian install. Please create pull requests
+- For the time being, these playbooks are designed for Jellyfin version >10.10.0 on a bare-metal Debian install. Please create pull requests
 if you'd like to contribute playbooks for other environments. That said, most of these tasks, with the exception of package updates and systemd service events should work on most Linux distros.
 - This does not include every mod (yet). Please create an issue or pull request if there's a particular one you'd like to be added.
 - Do not rely on this to work forever, the Jellyfin team often make mod-breaking changes across versions (especially major versions). Running these playbooks in this case may cause Jellyfin or parts of it to stop working, in which case there is a playbook at the bottom of this document which you can run to reinstall the `jellyfin-web` package, which should restore all the modified files to their original state.
 - These playbooks come in the form of snippets within this document and not complete YAML files. The reasoning for this is that the user should only add snippets they want, and some snippets require the user to edit certain strings in order to match their configuration. Copy the snippets one by one into your own `jellyfin-mods.yaml` file.
 
 ## Prerequisites
-- Jellyfin version >10.9.5 (including `jellyfin-server`, `jellyfin-web` and `jellyfin-ffmpeg6`) on the host machine.
+- Jellyfin version >10.10.0 (including `jellyfin-server`, `jellyfin-web` and `jellyfin-ffmpeg7`) on the host machine.
 - A remote machine to run the playbook from. I believe there are ways to run Ansible locally but as far as I know the intent is to run it remotely and thus I have written the files with this in mind.
 - [SSH keys](https://www.freecodecamp.org/news/the-ultimate-guide-to-ssh-setting-up-ssh-keys/) from remote to host machine.
 - Ansible Core or Ansible Full ([install instructions](https://docs.ansible.com/ansible/latest/installation_guide/installation_distros.html)) on the remote machine.
@@ -86,7 +86,7 @@ I recommend making this the first task to automate version updating, however if 
           - jellyfin
           - jellyfin-server
           - jellyfin-web
-          - jellyfin-ffmpeg6
+          - jellyfin-ffmpeg7
         state: latest
         update_cache: true
       become: true
@@ -103,6 +103,24 @@ This should be included in any playbook that edits javascript files as the chang
       become: true
 ```
 
+## Find files with variable names
+Some of the files we're editing will change names depending on the version we're updating to/from. Therefore we should add steps which look for those files and then call on them when needed.
+
+```yaml
+    - name: Finding the 73233.*.chunk.js file...
+      ansible.builtin.find:
+        paths: /usr/share/jellyfin/web/
+        patterns: '73233.*.chunk.js'
+      register: chunk_73233_js_file
+```
+
+```yaml
+    - name: Finding session-login-index-html.*.chunk.js file...
+      ansible.builtin.find:
+        paths: /usr/share/jellyfin/web/
+        patterns: 'session-login-index-html.*.chunk.js'
+      register: session_login_chunk_js_file
+```
 
 ## Copy directory with custom branding assets to `jellyfin-web` in order to change logo icons and images.
 
@@ -210,19 +228,19 @@ Useful if you have [intro-skipper](https://github.com/jumoog/intro-skipper) enab
     - name: Disabling Next Episode info for all users...
       ansible.builtin.replace:
         path: /usr/share/jellyfin/web/main.jellyfin.bundle.js
-        regexp: 'enableNextVideoInfoOverlay:function\(\){return I}'
-        replace: "enableNextVideoInfoOverlay:function(){return _}"
+        regexp: 'enableNextVideoInfoOverlay:function\(\){return R}'
+        replace: "enableNextVideoInfoOverlay:function(){return M}"
       become: true
 ```
 
 ## Add banner image to the Jellyfin sidebar
 
-If you have set up [this section](#copy-directory-with-custom-branding-assets-to-jellyfin-web-in-order-to-change-logo-icons-and-images) correctly, or if you want to use the stock Jellyfin logo you do not need to edit anything in this snippet. Otherwise, replace the URL in `img src="/web/assets/img/banner-light.png"` with the URL to a different image.
+If you have set up [this section](#copy-directory-with-custom-branding-assets-to-jellyfin-web-in-order-to-change-logo-icons-and-images) correctly, or if you want to use the stock Jellyfin logo you do not need to edit anything in this snippet. Otherwise, replace the URL in `img src="/web/assets/img/banner-light.png"` with the URL to a different image. As the name of the file we're trying to modify here changes in different Jellyfin versions, we have to look for it using known patterns. Please ensure you have added the step from [here](#find-files-with-variable-names) before proceeding.
 
 ```yaml
     - name: Adding banner to sidebar...
       ansible.builtin.replace:
-        path: /usr/share/jellyfin/web/73233.87c77dce22de92e7c77a.chunk.js
+        path: "{{ item.path }}"
         regexp: >-
           <div style="height:\.5em;"><\/div>
         replace: >-
@@ -231,22 +249,24 @@ If you have set up [this section](#copy-directory-with-custom-branding-assets-to
           5px;display:block; margin-left: auto; margin-right: auto;
           margin-top: 10px; margin-bottom: 10px;"></a>
       become: true
+      loop: "{{ chunk_73233_js_file.files }}"
 ```
 
 ## Add logo to login page
 
-If you have set up [this section](#copy-directory-with-custom-branding-assets-to-jellyfin-web-in-order-to-change-logo-icons-and-images) correctly, or if you want to use the stock Jellyfin logo you do not need to edit anything in this snippet. Otherwise, replace the URL in `img src="/web/assets/img/banner-light.png"` with the URL to a different image.
+If you have set up [this section](#copy-directory-with-custom-branding-assets-to-jellyfin-web-in-order-to-change-logo-icons-and-images) correctly, or if you want to use the stock Jellyfin logo you do not need to edit anything in this snippet. Otherwise, replace the URL in `img src="/web/assets/img/banner-light.png"` with the URL to a different image. Just like the previous step, let's find the file using known patterns.
 
 ```yaml
     - name: Adding logo to login page...
       ansible.builtin.replace:
-        path: /usr/share/jellyfin/web/session-login-index-html.c73c6453a153f384f752.chunk.js
+        path: "{{ item.path }}"
         regexp: '<div class="padded-left padded-right padded-bottom-page margin-auto-y">'
         replace: >-
            <div class="padded-left padded-right padded-bottom-page margin-auto-y">
            <img src="/web/assets/img/banner-light.png" width=350px style="padding:
            0px;display:block; margin-left: auto; margin-right: auto;">
       become: true
+      loop: "{{ session_login_chunk_js_file.files }}"
 ```
 
 ## Set pagination to infinite for all users
@@ -282,22 +302,24 @@ NOTE: If you're using a different Jellyfin theme than `dark`, you must edit the 
 
 ## Change Jellyfin's page title
 
-In this snippet you need to change every instance of `CHANGEME` to whatever you want your new page title to be.
+In this snippet you need to change every instance of `CHANGEME` to whatever you want your new page title to be. Again, be mindful of [finding files with variable names](#find-files-with-variable-names).
 
 ```yaml
     - name: Changing page title (step 1/6)...
       ansible.builtin.replace:
-        path: /usr/share/jellyfin/web/73233.87c77dce22de92e7c77a.chunk.js
+        path: "{{ item.path }}"
         regexp: 'document\.title="Jellyfin"'
         replace: 'document.title="CHANGEME"'
       become: true
+      loop: "{{ chunk_73233_js_file.files }}"
 
     - name: Changing page title (step 2/6)...
       ansible.builtin.replace:
-        path: /usr/share/jellyfin/web/73233.87c77dce22de92e7c77a.chunk.js
+        path: "{{ item.path }}"
         regexp: 'document\.title=e\|\|"Jellyfin"'
         replace: 'document.title=e||"CHANGEME"'
       become: true
+      loop: "{{ chunk_73233_js_file.files }}"
 
     - name: Changing page title (step 3/6)...
       ansible.builtin.replace:

@@ -309,14 +309,17 @@ Then, inside the <body> tags, add the following:
 ```css
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        // Change the document title to "<YOUR TITLE HERE>"
-        document.title = "<YOUR TITLE HERE>";
+        // Check if the title is "Jellyfin" before changing it
+        if (document.title === "Jellyfin") {
+            document.title = "<YOUR TITLE HERE>";
+        }
 
         // Create a MutationObserver to prevent any changes to the title
         const observer = new MutationObserver(function(mutations) {
             mutations.forEach(function(mutation) {
                 if (mutation.type === 'childList') {
-                    if (document.title !== "<YOUR TITLE HERE>") {
+                    // Only change the title if it's set to "Jellyfin"
+                    if (document.title === "Jellyfin") {
                         document.title = "<YOUR TITLE HERE>";
                     }
                 }
@@ -328,15 +331,21 @@ Then, inside the <body> tags, add the following:
 
         // Set up a fallback in case of attempts to change the title through direct assignment
         Object.defineProperty(document, 'title', {
-            set: function() {
-                return "<YOUR TITLE HERE>";
+            set: function(value) {
+                // Only allow the title to change if the new value is "Jellyfin"
+                if (value === "Jellyfin") {
+                    document.querySelector('title').textContent = "<YOUR TITLE HERE>";
+                } else {
+                    document.querySelector('title').textContent = value;
+                }
             },
             get: function() {
-                return "<YOUR TITLE HERE>";
+                return document.querySelector('title').textContent;
             }
         });
     });
 </script>
+
 ```
 Obviously change the `<YOUR TITLE HERE>` parts to your personal custom title you want the server to have.
 

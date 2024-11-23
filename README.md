@@ -860,6 +860,14 @@ To apply the snowstorm theme simply add:
 ```html
 <script src="seasonal/snowstorm.js"></script>
 ```
+then add this custom css to your custom css entry in the admin panel
+
+```
+/*fix snowstorm*/
+.content-primary, .padded-bottom-page, .page, .pageWithAbsoluteTabs .pageTabContent {  z-index: 4;}
+.videoPlayerContainer {  z-index: 3;}
+.skinHeader.osdHeader {    z-index: 5 !important;}
+```
 
 ### Snowflakes
 

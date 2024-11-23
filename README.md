@@ -867,6 +867,8 @@ then add this custom css to your custom css entry in the admin panel
 .content-primary, .padded-bottom-page, .page, .pageWithAbsoluteTabs .pageTabContent {  z-index: 4;}
 .videoPlayerContainer {  z-index: 3;}
 .skinHeader.osdHeader {    z-index: 5 !important;}
+.backgroundContainer { z-index: 0 !important;}
+.htmlvideoplayer {  z-index: 3;}
 ```
 
 ### Snowflakes

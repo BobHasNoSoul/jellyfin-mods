@@ -23,3 +23,46 @@ do i need this? no but it is cool and a nice upgrade even if it is a little weir
 can you make this easier for me on docker / windows? nope the guide is provided as is for the experimental and brave of you do not attempt if you have no clue what the things mean on the screen
 
 thanks to a friend for giving me the weird idea to mull over and then implement and test.. i would name drop but im unsure how they would feel about it.
+
+FLUSHED OUT GUIDE 21.12.24
+
+Verify Available Memory seriously dont just throw a random number in there make sure you have the space availible i use 30GB but i have a lot of ram.
+
+Create the Mount Point `sudo mkdir -p /mnt/ramdisk`
+
+Now you need to mount it but you seriously.. seriously guys make sure you change yours to the free ram note if you use it like i do it will have to be large amount of ram so change the size part for your own size you need on your system.. i will not even respond if you do not have enough free ram to do this i am not you babysitter or your dad. `sudo mount -t tmpfs -o size=30G tmpfs /mnt/ramdisk`
+change permissions so jellyfin can use it without having a fit. `sudo chmod 777 /mnt/ramdisk`
+
+Automatically Mount at Boot (Optional)
+
+`sudo nano /etc/fstab` Add the following line at the end of the file
+obviously adjust the size like before for your own system!
+`tmpfs   /mnt/ramdisk   tmpfs   defaults,size=30G   0   0`
+Save and exit (Ctrl+O, Enter, Ctrl+X).
+
+now you need to write a simple bash script to make it load the things to it and from it like a sync so you dont lose loads of data
+
+if you are only using this for transcoding.. you do not need to do this step but if you are using it for webui and metadata then continue.
+
+create a new location that it will sync to for example in a non privilaged folder like /home/USERNAMEHERE/jellyfinramdisksync just adjust to your username
+
+so now add this to `sudo crontab -e` 
+
+`*/15 * * * * rsync -avh --delete /mnt/jellyfinweb/ /home/USERNAMEHERE/jellyfinramdisksync/`
+
+this will sync all new files to the jellyfin ram disk every 15 mins to that new sync dir.. this is a good thing this lets you restore it on restart 
+
+now you need to initialise the first set of files to it this will do the jellyfinweb and jellyfinmetadata 
+
+for jellyfin-web:
+`sudo rsync -av --delete /var/www/html/ /mnt/jellyfinramdisk/web/`
+
+for the metadata:
+`sudo rsync -av --delete /var/lib/jellyfin/metadata/ /mnt/jellyfinramdisk/metadata/`
+
+now with that we have one last step which is needed on reboot you need to have this ran via sudo crontab -e 
+
+`@reboot rsync -av --delete /home/USERNAMEHERE/jellyfinramdisksync/ /mnt/jellyfinramdisk/`
+
+this lets the ram disk get mounted then populated at reboot fairly quickly
+

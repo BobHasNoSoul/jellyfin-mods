@@ -372,6 +372,21 @@ sudo chmod +x title.sh sudo ./title.sh
 
 Reload the cache on your clients to see your changes.
 
+#### Method 3 (Nginx Proxy)
+Open the file containing your jellyfin proxy settings
+
+Add the following lines at the end of your location block.
+```
+proxy_set_header Accept-Encoding "";
+sub_filter_once off;
+sub_filter '<title>Jellyfin</title>' '<title>YOUR_NEW_TITLE</title>';
+sub_filter '<meta name="application-name" content="Jellyfin">' '<meta name="application-name" content="YOUR_NEW_TITLE">';
+sub_filter '</head>' '<script>document.title="YOUR_NEW_TITLE",new MutationObserver(function(t){"Jellyfin"==document.title&&(document.title="YOUR_NEW_TITLE")}).observe(document.querySelector("title"),{subtree:!0,characterData:!0,childList:!0});</script></head>';
+```
+Make sure to replace `YOUR_NEW_TITLE` parts to your personal custom title you want the server to have.
+
+Restart your nginx proxy to apply changes, and reload the cache of your clients.
+
 ---
 
 ## Change the default iOS/Android "app" title and description

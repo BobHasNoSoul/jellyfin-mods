@@ -347,6 +347,8 @@ Then, inside the <body> tags, add the following:
 </script>
 
 ```
+To prevent the `Jellyfin` title from appearing briefly when loading, also change the title tag `<title>Jellyfin</title>`to `<title>YOUR TITLE HERE</title>`
+
 Obviously change the `<YOUR TITLE HERE>` parts to your personal custom title you want the server to have.
 
 Save the file and reload the cache on your clients to see your changes.

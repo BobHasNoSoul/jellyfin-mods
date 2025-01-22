@@ -690,7 +690,41 @@ If you only want one link, make sure to remove the comma after the closing brack
 - Go to your web root and edit the `index.html` file
 - Find `</body></html>` and paste the following right before it:
 ```html
-<script> const createRequestTab = () => { console.log("Creating request tab"); const title = document.createElement("div"); title.classList.add("emby-button-foreground"); title.innerText = "Requests"; const button = document.createElement("button"); button.type = "button"; button.is = "empty-button"; button.classList.add("emby-tab-button", "emby-button", "lastFocused"); button.setAttribute("data-index", "2"); button.setAttribute("id", "requestTab"); button.appendChild(title); (function e() { const tabb = document.querySelector(".emby-tabs-slider"); if (tabb && !document.querySelector("#requestTab")) { tabb.appendChild(button); } else if (!tabb) { setTimeout(e, 500); } })(); }; // Initial page load document.addEventListener("DOMContentLoaded", () => { createRequestTab(); }); // When navigating back or forward window.addEventListener("popstate", () => { createRequestTab(); }); </script>
+    <script>
+      const createRequestTab = () => {
+        console.log("Creating request tab");
+        const title = document.createElement("div");
+        title.classList.add("emby-button-foreground");
+        title.innerText = "Requests";
+  
+        const button = document.createElement("button");
+        button.type = "button";
+        button.is = "empty-button";
+        button.classList.add("emby-tab-button", "emby-button", "lastFocused");
+        button.setAttribute("data-index", "2");
+        button.setAttribute("id", "requestTab");
+        button.appendChild(title);
+  
+        (function e() {
+          const tabb = document.querySelector(".emby-tabs-slider");
+          if (tabb && !document.querySelector("#requestTab")) {
+            tabb.appendChild(button);
+          } else if (!tabb) {
+            setTimeout(e, 500);
+          }
+        })();
+      };
+  
+      // Initial page load
+      document.addEventListener("DOMContentLoaded", () => {
+        createRequestTab();
+      });
+  
+      // When navigating back or forward
+      window.addEventListener("popstate", () => {
+        createRequestTab();
+      });
+    </script>
 ```
 - Save the file with your changes. This is the script that creates the tab.
 - Now edit the `home-html.*.chunk.js` file

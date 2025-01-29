@@ -100,14 +100,14 @@ body:not(:has(#loginPage:not(.hide))) .skinHeader {
 div.mainDrawer {background-color: rgba(0,0,0,0.6) !important;}
 ```
 
-### Hide the "Trailers" tab from movie libraries:
+### Hide the "Trailers" tab from movie libraries: 
 
-*Note: This mod currently also hides the "Upcoming" tab from TV show libraries. Please submit a PR if you find a way to hide only the "Trailers" tab.
+Thanks to #64
 
 ```css
-/*Hide the "Trailers" tab in Movies and the "Upcoming" tab in TV Shows*/
-.emby-tab-button[data-index="2"] {
-  display: none !important;
+/*Hide the "Trailers" tab in Movies*/
+.mainDrawer:has(.navMenuOption-selected[href^="#/movies.html"]) + .skinHeader .emby-tab-button[data-index="2"] {
+display: none !important;
 }
 ```
 

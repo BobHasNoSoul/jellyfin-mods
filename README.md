@@ -486,7 +486,7 @@ enableThemeSongs:function(){return j}
 And replace it with:
 
 ```js
-enableThemeSongs:function(){return P}
+enableThemeSongs:function(){return M}
 ```
 
 Save the file and reload the cache on your clients to see your changes.

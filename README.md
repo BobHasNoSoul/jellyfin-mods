@@ -494,7 +494,6 @@ explanation !1 is NOT CHECKED and !0 is NOT UNCHECKED (i could have just removed
 Save the file and reload the cache on your clients to see your changes.
 
 
-*** If you cannot find it (because of regex in search like in nano) try searching for `enableThemeSongs:function`. This should give you the ability to find the string above ***
 
 Pro tip: Use the theme songs plugin to grab multiple theme songs for TV shows in one go (https://github.com/danieladov/jellyfin-plugin-themesongs), or manually add a theme .mp3 at the root of each TV show folder (i.e. `/tv/breaking bad/theme.mp3`). This mod also works for movies of course, but you will have to manually grab each theme song as the mentioned plugin does not work with movies.
 

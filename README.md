@@ -479,15 +479,17 @@ Save the file and reload the cache on your clients to see your changes.
 
 In `main.jellyfin.bundle.js` simply search for:
 
-```js
-enableThemeSongs:function(){return j}
+```
+"enableThemeSongs", !1), !1);
 ```
 
 And replace it with:
 
 ```js
-enableThemeSongs:function(){return M}
+"enableThemeSongs", !0), !0);
 ```
+
+explanation !1 is NOT CHECKED and !0 is NOT UNCHECKED (i could have just removed a ! apparently but i like the way it works with insanity)
 
 Save the file and reload the cache on your clients to see your changes.
 

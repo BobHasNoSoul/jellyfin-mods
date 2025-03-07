@@ -442,6 +442,18 @@ Save the file and reload the cache on your clients to see your changes.
 
 ---
 
+## PauseScreen
+
+this adds a screen when a user hits pause that has the disc art spinning (optional) and the logo and description of the item while dimming the video so it overlays nicely
+
+https://github.com/BobHasNoSoul/Jellyfin-PauseScreen
+
+![vlcsnap-2025-03-07-18h56m38s578](https://github.com/user-attachments/assets/b487d7d9-bc27-408b-8546-61962c32cd03)
+![vlcsnap-2025-03-07-18h56m23s810](https://github.com/user-attachments/assets/3edc7e02-895e-4495-9a5e-ebd8a3516d64)
+
+
+---
+
 ## Featured Content Bar
 
 <img width="212" alt="Screenshot 2024-05-18 200753" src="https://github.com/BobHasNoSoul/jellyfin-mods/assets/23018412/d3351fc8-ed95-477c-8bbe-655a0d61d078">

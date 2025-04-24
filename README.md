@@ -535,7 +535,7 @@ Save the file and reload the cache on your clients to see your changes.
 ---
 
 ## Change font to whatever you want
-First, get a font pack... there are many out there... so take your time looking for one you really like the look of and download it. You can get some free fonts from https://google-webfonts-helper.herokuapp.com/fonts/, but there are many other free sources. Once you've found a font, navigate to your Jellyfin web root and create a new folder called "fonts" (your font pack should contain .woff .woff2 .tff .eot and .svg files), and unzip the contents of your font archive into this folder. For this example, I used the Ubuntu font (don't judge me). You can get the same font from here https://google-webfonts-helper.herokuapp.com/api/fonts/ubuntu-mono?download=zip&subsets=latin&variants=regular
+First, get a font pack... there are many out there... so take your time looking for one you really like the look of and download it. You can get some free fonts from https://gwfh.mranftl.com/fonts, but there are many other free sources. Once you've found a font, navigate to your Jellyfin web root and create a new folder called "fonts" (your font pack should contain .woff .woff2 .tff .eot and .svg files), and unzip the contents of your font archive into this folder. For this example, I used the Ubuntu font (don't judge me). You can get the same font from here https://google-webfonts-helper.herokuapp.com/api/fonts/ubuntu-mono?download=zip&subsets=latin&variants=regular
 
 Extract the contents of your font archive into following directory:
 

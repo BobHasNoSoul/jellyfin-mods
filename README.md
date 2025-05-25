@@ -465,7 +465,18 @@ This allows the user to add custom featured content to be pinned to the homepage
 Allows for the use of a specific account's favorites to promote content, as well as user-defined custom lists that are looped through via crontab.
 
 ---
+## Quality tags for your media
 
+okay so lets say you want little badges or labels on the corner of your medias posters and thumbs and have it tell you if it is sd hd uhd well this does this and its doesnt need anything major like retagging all of your media.
+
+visit the repo for this mod (because it may need tweaking in the future if they change anything) https://github.com/BobHasNoSoul/Jellyfin-Qualitytags
+
+![Screenshot 2025-05-24 150125](https://github.com/user-attachments/assets/d2ebe083-6761-4a9a-869d-fc15970251ef)
+![Screenshot 2025-05-24 150328](https://github.com/user-attachments/assets/c1fa3cc1-7951-4e8b-93d3-f8fe4218fafc)
+![Screenshot 2025-05-24 150605](https://github.com/user-attachments/assets/e30616d5-8187-44d5-9291-0cf1dc7677af)
+
+
+---
 ## Force backdrops for all users
 
 In `main.jellyfin.bundle.js` simply search for:

@@ -477,6 +477,22 @@ visit the repo for this mod (because it may need tweaking in the future if they 
 
 
 ---
+## Force Audio channels for all users
+
+this fixes the issue of xbox clients having issues playing certain content on "auto" mode simply set it to stereo as default and users can then select to have higher or mono sound themselves. (i think this is due to the client detection and it thinking edge is on a pc but im not that sure since i gave it a small overlook).
+
+in `main.bundle.js` you need to find this string 
+
+`this.get("allowedAudioChannels",!1)||"-1"}`
+
+replace it with 
+
+`this.get("allowedAudioChannels",!1)||"2"}`
+
+now get your client to clear their cache and boom stereo default so no more errors from users that may have issues following basic instructions to change their audio output to stereo
+
+
+---
 ## Force backdrops for all users
 
 In `main.jellyfin.bundle.js` simply search for:

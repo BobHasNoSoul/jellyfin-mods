@@ -504,7 +504,7 @@ value:function(e){return void 0!==e?this.set("enableBackdrops",e.toString(),!1):
 And replace it with: 
 
 ```js
-value:function(e){return void 0!==e?this.set("enableBackdrops",e.toString(),!1):(0,i.G4)(this.get("enableBackdrops",!0),!0)}},
+value:function(e){return void 0!==e?this.set("enableBackdrops",e.toString(),!1):(0,i.G4)(this.get("enableBackdrops",!1),!0)}},
 ```
 
 Save the file and reload the cache on your clients to see your changes.
@@ -525,7 +525,7 @@ In `main.jellyfin.bundle.js` simply search for:
 And replace it with:
 
 ```js
-"enableThemeSongs", !0), !0);
+"enableThemeSongs", !1), !0);
 ```
 
 explanation !1 is NOT CHECKED and !0 is NOT UNCHECKED (i could have just removed a ! apparently but i like the way it works with insanity)

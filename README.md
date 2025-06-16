@@ -939,7 +939,33 @@ Reload the cache on your clients to see your changes.
 
 This is currently being revived so no auto scripts, yet... There may be bugs so please let me know and submit issues.
 
-**Installation:**
+update: AUTO SCRIPTS ARE HERE 16/6/25 
+a total rework for this new version simply put the "newseasonal" folders content into your webroot (this means take the holidays.js and zombie gifs and put them into the webroot or it will not work. add the following to your index.html before your </body> tag
+
+`<script defer src="holidays.js"></script>`
+
+now you can sit back and wait for the themes to automatically apply no need for crontab or scheduled tasks
+
+manually testing in the web client you can run the following to test them 
+`window.setHolidayEffect({ holiday: 'bonfireNight', disableVideoCheck: false });`
+`window.setHolidayEffect({ holiday: 'christmas', disableVideoCheck: false });`
+`window.setHolidayEffect({ holiday: 'valentines', disableVideoCheck: false });`
+`window.setHolidayEffect({ holiday: 'easter', disableVideoCheck: false });`
+`window.setHolidayEffect({ holiday: 'stPatricks', disableVideoCheck: false });`
+`window.setHolidayEffect({ holiday: 'halloween', disableVideoCheck: false });`
+
+example of each
+bonfireNight this gives you fireworks
+christmas this gives you snow
+valentines this gives you hearts
+easter this gives you bunnies and flowers
+stpatricks this gives you four leaf clovers
+halloween.. gives you a mini zombie that falls and tries to walk along all your items in the library however watch out he falls.. and bites.. probrably
+
+
+old version bellow for manual activation and variant themes that are not automatic
+
+**old version Installation:**
 First, in the web root you need to create a 'seasonal' folder and fill it with the contents of the 'seasonal' folder from this repo. Once you do that, to activate a theme just add the following to your 'index.html' just before the final `</body></html>` tags 
 
 ### Snowstorm

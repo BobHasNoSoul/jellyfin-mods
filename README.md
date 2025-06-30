@@ -562,7 +562,7 @@ Save the file and reload the cache on your clients to see your changes.
 ---
 
 ## Change font to whatever you want
-First, get a font pack... there are many out there... so take your time looking for one you really like the look of and download it. You can get some free fonts from https://google-webfonts-helper.herokuapp.com/fonts/, but there are many other free sources. Once you've found a font, navigate to your Jellyfin web root and create a new folder called "fonts" (your font pack should contain .woff .woff2 .tff .eot and .svg files), and unzip the contents of your font archive into this folder. For this example, I used the Ubuntu font (don't judge me). You can get the same font from here https://google-webfonts-helper.herokuapp.com/api/fonts/ubuntu-mono?download=zip&subsets=latin&variants=regular
+First, get a font pack... there are many out there... so take your time looking for one you really like the look of and download it. You can get some free fonts from https://gwfh.mranftl.com/fonts, but there are many other free sources. Once you've found a font, navigate to your Jellyfin web root and create a new folder called "fonts" (your font pack should contain .woff .woff2 .tff .eot and .svg files), and unzip the contents of your font archive into this folder. For this example, I used the Ubuntu font (don't judge me). You can get the same font from here https://gwfh.mranftl.com/api/fonts/ubuntu-mono?download=zip&subsets=latin&variants=regular
 
 Extract the contents of your font archive into following directory:
 
@@ -576,13 +576,13 @@ Then, simply add the following to your custom CSS (rename them for your files in
     font-family: 'Ubuntu';
     font-style: normal;
     font-weight: 400;
-    src: url('/web/fonts/ubuntu-v15-latin-regular.eot'); /* IE9 Compat Modes */
+    src: url('/web/fonts/ubuntu-v20-latin-regular.eot'); /* IE9 Compat Modes */
     src: local(''),
-        url('/web/fonts/ubuntu-v15-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-        url('/web/fonts/ubuntu-v15-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
-        url('/web/fonts/ubuntu-v15-latin-regular.woff') format('woff'), /* Modern Browsers */
-        url('/web/fonts/ubuntu-v15-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
-        url('/web/fonts/ubuntu-v15-latin-regular.svg#Ubuntu') format('svg'); /* Legacy iOS */
+        url('/web/fonts/ubuntu-v20-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+        url('/web/fonts/ubuntu-v20-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+        url('/web/fonts/ubuntu-v20-latin-regular.woff') format('woff'), /* Modern Browsers */
+        url('/web/fonts/ubuntu-v20-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+        url('/web/fonts/ubuntu-v20-latin-regular.svg#Ubuntu') format('svg'); /* Legacy iOS */
 }
 html { font-family: "Ubuntu" !important;}
 ```
@@ -592,7 +592,7 @@ html { font-family: "Ubuntu" !important;}
 ```sh
 cd /usr/share/jellyfin/web/
 sudo mkdir fonts
-sudo wget -O fonts/ubuntu.zip "https://google-webfonts-helper.herokuapp.com/api/fonts/ubuntu-mono?download=zip&subsets=latin&variants=regular"
+sudo wget -O fonts/ubuntu.zip "https://gwfh.mranftl.com/api/fonts/ubuntu-mono?download=zip&subsets=latin&variants=regular"
 sudo unzip fonts/ubuntu.zip -d fonts/
 ```
 

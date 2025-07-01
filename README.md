@@ -777,7 +777,7 @@ data-backdroptype="movie,series,book">
 Then paste the following right after it:
 
 ```js
-<style>:root{--save-gut:max(env(safe-area-inset-left),3.3%)}.requestIframe{margin:0 .4em;padding:0 var(--save-gut);width:calc(100% - (.4em * 2) - (var(--save-gut) * 2));height:85vh;border:none;position:absolute;top:0}</style><script>setTimeout(() => {createRequestTab()}, 500)</script>
+<style>:root{--save-gut:max(env(safe-area-inset-left),3.3%)}.requestIframe{margin:0 .4em;padding:0 var(--save-gut);width:calc(100% - (.4em * 2) - (var(--save-gut) * 2));height:85vh;border:none;position:absolute;top:7.4em}</style><script>setTimeout(() => {createRequestTab()}, 500)</script>
 ```
 
 - This is what will make it look good and start the script that creates the tab.

@@ -592,7 +592,7 @@ html { font-family: "Ubuntu" !important;}
 ```sh
 cd /usr/share/jellyfin/web/
 sudo mkdir fonts
-sudo wget -O fonts/ubuntu.zip "https://gwfh.mranftl.com/api/fonts/ubuntu-mono?download=zip&subsets=latin&variants=regular"
+sudo wget -O fonts/ubuntu.zip "https://gwfh.mranftl.com/api/fonts/ubuntu?download=zip&subsets=latin&variants=regular"
 sudo unzip fonts/ubuntu.zip -d fonts/
 ```
 

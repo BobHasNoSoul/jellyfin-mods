@@ -453,6 +453,19 @@ https://github.com/BobHasNoSoul/Jellyfin-PauseScreen
 
 
 ---
+## Jellyfin Updoot
+
+a mod that adds comments and reccomendations (or updoots) to your server check it out in its own repo here https://github.com/BobHasNoSoul/jellyfin-updoot
+
+![Screenshot 2025-07-04 195529](https://github.com/user-attachments/assets/36ee8662-b845-41cc-a072-7d883960eba2)
+![Screenshot 2025-07-04 195513](https://github.com/user-attachments/assets/fa0db9da-bd0a-47a4-8a7e-ea6495c5cec3)
+![Screenshot 2025-07-04 195820](https://github.com/user-attachments/assets/687ce374-e9f5-4209-b830-488b833216bf)
+![Screenshot 2025-07-04 195706](https://github.com/user-attachments/assets/80e24119-b22a-483b-9117-9212b56249a8)
+![Screenshot 2025-07-04 195653](https://github.com/user-attachments/assets/d1daa7b9-6081-4a19-9ae9-2c8f4ebbb236)
+![Screenshot 2025-07-04 195551](https://github.com/user-attachments/assets/9ed6c6eb-65c1-487d-8d15-252a261efc11)
+
+
+---
 
 ## Featured Content Bar
 

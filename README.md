@@ -22,6 +22,8 @@ If you are having issues with finding the web root, you may need to see the [hel
   - [Avatar library for your users](#avatar-library-for-your-users)
   - [Change the title of the page](#change-the-title-of-the-page)
   - [Change the default iOS/Android "app" title and description](#change-the-default-iosandroid-app-title-and-description)
+  - [jellyfin-pausescreen add a pause screen for your media so when it pauses it shows a logo, plot and or a disc image on a sleek dark background](#pausescreen)
+  - [jellyfin-updoot add comments and thumbs up reccomendations](#jellyfin-updoot)
   - [Featured Content Bar](#featured-content-bar)
   - [Force backdrops for all users](#force-backdrops-for-all-users)
   - [Force theme music for all users](#force-theme-music-for-all-users)

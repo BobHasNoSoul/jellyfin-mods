@@ -1,7 +1,222 @@
-/*Featured Iframe fix for padding*/
-.featurediframe {margin-top: 1vh;}
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+html, body, h1, h2, h2, h4, h5 {
+        font-family: "Montserrat", sans-serif;
+}
 
-/*ItemDetails logo fix for title text*/
+.itemMiscInfo, .nameContainer {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  position: relative;
+  left: 1vw;
+  padding-top: 1vh !important;
+}
+
+.skinHeader {
+  position: sticky !important;
+}
+
+.homeSectionsContainer {
+  position: relative;
+  top: 54vh !imporant;
+  z-index: 6;
+}
+
+#slides-container {
+  position: relative;
+  width: 100vw;
+  height: 80% !important;
+  overflow: hidden;
+  margin: 0 auto;
+  /*margin-top: 6vh;*/
+}
+
+trackSelections {
+  max-width: 44em;
+  padding-bottom: 2vh;
+  padding-top: 6vh;
+}
+
+@media (max-width: 100em) {
+  .withSectionTabs .headerTop {
+    padding-bottom: 1px;
+  }
+}
+
+.trackSelections {
+  max-width: 44em;
+  padding-bottom: 2vh;
+  padding-top: 3vh;
+}
+
+[dir="ltr"] .mediaInfoItem {
+  margin: 28px 1em 0 0;
+}
+
+.itemMiscInfo, .nameContainer {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  position: absolute;
+  left: 1vw;
+  padding-top: 33vh;
+}
+
+.layout-desktop .mainDetailButtons {
+  margin-top: 7.5em !important;
+  padding-right: 18vw !important;
+}
+
+.itemMiscInfo, .nameContainer {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  position: absolute;
+  left: 1vw;
+  padding-top: 32vh;
+}
+
+.headerTop {
+  padding: 1px !important;
+}
+
+
+
+.skinHeader-withBackground {
+  background-color: #00000047;
+}
+
+.layout-desktop [dir="ltr"] .detailRibbon, .layout-tv [dir="ltr"] .detailRibbon {
+  padding-left: 32.45vw;
+  padding-top: 14vh;
+}
+
+.trackSelections {
+  max-width: 44em;
+  padding-bottom: 2vh;
+}
+
+@supports (width:max(1px,1px)) {
+  [dir="ltr"] .padded-left {
+    padding-left: max(env(safe-area-inset-left),3.3%);
+    padding-top: 3vh;
+  }
+}
+
+.layout-desktop .detailPagePrimaryContent {
+  width: 100% !important;
+}
+
+.detailSectionContent { padding-top: 2vh;}
+
+.itemMiscInfo, .nameContainer {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  position: absolute;
+  left: 1vw;
+}
+
+[dir="ltr"] .detailPagePrimaryContent {
+  padding-left: 1vw;
+  padding-top: 7vh;
+}
+}
+
+.backgroundContainer.withBackdrop {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.noBackdropTransparency .detailPagePrimaryContainer, .noBackdropTransparency .detailPageSecondaryContainer {
+  background-color: #10101000;
+}
+* {
+  scrollbar-color: #3b3b3b00 #20202000;
+  scrollbar-width: thin;
+}
+
+@media only screen and (max-height: 767px) and (orientation: landscape) {
+  #slides-container {
+    height: 86vh !important;
+  }
+}
+
+.button-container {
+  position: absolute;
+  top: calc(50% + 25vh) !important;
+  left: 4vw;
+}
+
+@media only screen and (max-height: 767px) and (orientation: landscape) {
+  .plot-container {
+    top: calc(50% + 12vh) !important;
+  }
+}
+
+@media only screen and (max-height: 767px) and (orientation: landscape) {
+  .info-container {
+    top: calc(50% + 1vh) !important;
+  }
+}
+
+@media only screen and (max-height: 767px) and (orientation: landscape) {
+  .genre {
+    top: calc(50% + 7vh) !important;
+  }
+}
+
+@media only screen and (max-height: 767px) and (orientation: landscape) {
+  .logo-container {
+    height: 44% !important;
+  }
+}
+
+.emby-scroller-container {
+  position: relative;
+  top: 11vh;
+}
+
+#overlay-disc {
+  position: absolute !important;
+  top: calc(50vh - (26vw / 2)) !important;
+  right: 7% !important;
+  width: 26vw !important;
+  height: auto !important;
+  display: block !important;
+  animation: 30s linear infinite spin !important;
+  z-index: -1 !important;
+  filter: brightness(80%) !important;
+}
+
+#overlay-plot {
+  top: 61% !important;
+  max-width: 54% !important;
+  height: 50vh !important;
+  display: block !important;
+  right: 41vw !important;
+  position: absolute !important;
+  font-size: 21px !important;
+}
+
+#overlay-logo {
+    position: absolute !important;
+    max-width: 50vw !important; /* Max width is half the viewport width */
+    max-height: 23vh !important; /* Limits the height */
+    width: auto !important; /* Ensures no forced stretching */
+    height: auto !important; /* Preserves aspect ratio */
+    top: 25vh !important; /* Places it at a quarter of the viewport height */
+    left: 19vw !important; /* Centers within the left half */
+    transform: translateX(-50%) !important; /* Ensures true centering */
+    display: block !important;
+        margin-left: 12vw !important;
+    object-fit: contain; /* Prevents cropping/stretching */
+}
+
+
 #itemDetailPage .itemName.infoText.parentNameLast > bdi:nth-child(1) {
     display: none;
 }
@@ -22,8 +237,17 @@
 /*.parentName > bdi:nth-child(1) {display:none !important}*/
 
 /*fix logo on the itemspages*/
-.itemName {
-  padding-top: 24vh;
+/*.itemName {*/
+/*  padding-top: 24vh;*/
+/*}*/
+
+.layout-desktop .mainDetailButtons {
+  margin-top: 1.5em;
+  margin-right: 24vw !important;
+}
+
+.pageTitleWithDefaultLogo {
+  background-image: url(/web/banner-light.png) !important;
 }
 
 .detailLogo {
@@ -177,9 +401,6 @@ div#loginPage {
 }
 
 
-/*featured iframe border fix*/
-.featurediframe {color: rgba(6, 6, 6, 0) !important;}
-
 /*custom logo in header
 .pageTitleWithDefaultLogo {    background-image: url(https://www.blueboxofdoom.uk/filebrowser/api/public/dl/kXAiVZpC?inline=true) !important;}
 */
@@ -191,9 +412,6 @@ div.sessionNowPlayingInfo img {max-height: 100% !important; max-width: 100% !imp
 
 /*fix the admin dashboard being so shit*/
 .dashboardSection { width: 80vw !important;}
-
-/*fix mobile featurediframe*/
-@media only screen and (max-device-width: 767px) {.featurediframe {height: 16vh !important;}}
 
 .layout-desktop .detailLogo {
   left: 5%;
@@ -209,13 +427,6 @@ div.sessionNowPlayingInfo img {max-height: 100% !important; max-width: 100% !imp
   width: 80vw;
   position: relative;
   right: -20%;
-}
-
-.layout-desktop .itemBackdrop:after {
-  background: url("https://raw.githubusercontent.com/alexyle/jellyfin-theme/main/glassmorphism/mask.png");
-  background-size: cover;
-  width: 100%;
-  height: 100%;
 }
 
 .layout-desktop .detailPageWrapperContainer {
@@ -254,19 +465,11 @@ div.sessionNowPlayingInfo img {max-height: 100% !important; max-width: 100% !imp
 .itemDetailsGroup {
   margin-top: 0;
 }
-a.overview-expand.emby-button {
-  margin: none;
-  padding: none;
-}
-
 
 .itemName.originalTitle {
   display: none;
 }
-.layout-desktop a.overview-expand.emby-button {
-  margin: none;
-  padding: none;
-}
+
 
 
 .layout-desktop .itemName.originalTitle {
@@ -349,8 +552,42 @@ a.overview-expand.emby-button {
 .noBackdropTransparency .detailPageSecondaryContainer {
   background-color: transparent;
 }
-/*netflix font*/
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-html, body, h1, h2, h2, h4, h5 {
-	font-family: "Montserrat", sans-serif;
+
+
+#overlay-disc {
+  position: absolute !important;
+  top: calc(50vh - (26vw / 2)) !important;
+  right: 7% !important;
+  width: 26vw !important;
+  height: auto !important;
+  display: block !important;
+  animation: 30s linear infinite spin !important;
+  z-index: -1 !important;
+  filter: brightness(80%) !important;
 }
+
+#overlay-plot {
+  top: 61% !important;
+  max-width: 54% !important;
+  height: 50vh !important;
+  display: block !important;
+  right: 41vw !important;
+  position: absolute !important;
+  font-size: 21px !important;
+}
+
+#overlay-logo {
+    position: absolute !important;
+    max-width: 50vw !important; /* Max width is half the viewport width */
+    max-height: 23vh !important; /* Limits the height */
+    width: auto !important; /* Ensures no forced stretching */
+    height: auto !important; /* Preserves aspect ratio */
+    top: 25vh !important; /* Places it at a quarter of the viewport height */
+    left: 19vw !important; /* Centers within the left half */
+    transform: translateX(-50%) !important; /* Ensures true centering */
+    display: block !important;
+        margin-left: 12vw !important;
+    object-fit: contain; /* Prevents cropping/stretching */
+}
+
+

@@ -54,29 +54,9 @@ trackSelections {
   margin: 28px 1em 0 0;
 }
 
-.itemMiscInfo, .nameContainer {
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  flex-wrap: wrap;
-  position: absolute;
-  left: 1vw;
-  padding-top: 33vh;
-}
-
 .layout-desktop .mainDetailButtons {
   margin-top: 7.5em !important;
   padding-right: 18vw !important;
-}
-
-.itemMiscInfo, .nameContainer {
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  flex-wrap: wrap;
-  position: absolute;
-  left: 1vw;
-  padding-top: 32vh;
 }
 
 .headerTop {
@@ -111,15 +91,6 @@ trackSelections {
 }
 
 .detailSectionContent { padding-top: 2vh;}
-
-.itemMiscInfo, .nameContainer {
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  flex-wrap: wrap;
-  position: absolute;
-  left: 1vw;
-}
 
 [dir="ltr"] .detailPagePrimaryContent {
   padding-left: 1vw;
